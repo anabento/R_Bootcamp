@@ -1,0 +1,19 @@
+\frametitle{Arithmetic}
+
+Key commands to issue from the command line:
+\begin{itemize}
+  \item assigment using \code{<-}, e.g., \code{a<-5}
+  \item arithmetical operations +, -, *, /  e.g., \code{a+10}
+  \item ``combine'' values using \code{c}, e.g., \code{data <- c(2, 6, 16, 18)}
+\end{itemize}
+
+\begin{Schunk}
+\begin{Soutput}
+[1] 20
+\end{Soutput}
+\end{Schunk}
+
+\begin{exercise}
+  You know that $R_0$ for a simple $SIR$ epidemic is given by $R_0=\beta / \gamma$. Calculate $R_0$ for an epidemic where $\beta=1.2$ and $\gamma=0.6$.
+\end{exercise}
+

@@ -1,0 +1,242 @@
+% Presentation for REU workshop - Summer 2015
+
+\documentclass[10pt]{beamer}
+
+\usecolortheme{crane}
+\usetheme{Copenhagen}
+
+\setbeamertemplate{navigation symbols}{} 
+
+
+%Here we get rid of rounded corners and shading
+\setbeamertemplate{title page}[default]
+\setbeamertemplate{blocks}[default] 
+
+% this gets rid of vertical shading
+\pgfdeclareverticalshading[lower.bg,upper.bg]{bmb@transition}{200cm}{%
+  color(0pt)=(lower.bg); color(4pt)=(lower.bg); color(4pt)=(upper.bg)}
+
+\setbeamertemplate{items}[square]
+\setbeamertemplate{section in toc}[sections numbered]
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+
+\newcommand{\R}{\textsf{R}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newtheoremstyle{exercise}%
+  	{\topsep}	%      Space above
+		{\topsep}	%      Space below    
+		{}		%      Body font
+		{} % Indent amount (empty = no indent, \parindent = para indent)
+		{\bfseries}	% Thm head font
+		{.}		% Punctuation after thm head
+		{.5em}	 % Space after thm head (\newline = linebreak)
+		{\thmname{#1}\thmnumber{ #2}\thmnote{ #3}} % Thm head spec
+\theoremstyle{exercise}
+\newtheorem{exercise}{Exercise}
+\newtheorem{challenge}[exercise]{*Exercise}
+\newtheorem{Challenge}[exercise]{**Exercise}
+
+
+
+\title{Introduction to R and R Markdown for Reproducible Research}
+\author{John M. Drake}
+\titlegraphic{\includegraphics[width=3.5cm]{PBID_horiz-21.png}}
+\institute[UGA]{
+  Odum School of Ecology\\
+  University of Georgia\\
+  Athens, Georgia USA 30602-2202\\[1ex]
+  \texttt{jdrake@uga.edu}
+}
+
+\date{June 11, 2015}
+
+\usepackage{Sweave}
+\begin{document}
+\input{Drake-lab-beamer-v2-concordance}
+
+%----------- titlepage ----------------------------------------------%
+\begin{frame}[fragile]
+  \titlepage
+
+\end{frame}
+
+%----------- Table of contents----------------------------------------%
+\begin{frame}
+  \frametitle{Table of Contents}
+  \tableofcontents %create table of contents page
+
+\end{frame}
+
+%SECTION: WHAT IS REPRODUCIBLE RESEARCH?
+\section{What is reproducible research?}
+
+
+%----------- slide --------------------------------------------------%
+\begin{frame}[fragile]
+  \frametitle{Three R's: Replication, repeatability, and reproducibility}
+  
+Scientific knowledge aims to be general \textit{in some sense}. ``Three R's'' underwrite this generality:
+
+\begin{enumerate}
+  \item \textit{Replication} concerns the number of data points (observations, study subjects, etc.) and establishes the generality of the observed finding to a study population.
+  \item \textit{Repeatability} concerns the ability to arrive at the same findings when a study is repeated and establishes the generality of the observed finding to other study populations or systems.
+  \item \textit{Reproducibility} concerns the reliability of the logic that leads from data to conclusions -- that is, the \textit{data analysis}. It would seem that reproducibility is an essential ingredient of scientific knowledge. But, as data workflow become more and more complicated they also bring more subjective decision-making by the data analyst, more computations, and more opportunities for error.
+\end{enumerate}
+  
+\end{frame}
+  
+%--  
+
+\begin{frame}[fragile]
+  \frametitle{What is reproducible research?}
+
+{\Large Johns Hopkins Bloomberg School of Public Health:}
+
+\vspace{5mm}
+  
+\begin{itemize}
+  \item Reproducible Research is the idea that data analyses, and more generally, scientific claims, are published with their data and software code so that others may verify the findings and build upon them.\footnote{https://www.coursera.org/course/repdata}
+\end{itemize}
+  
+\end{frame}
+
+%--
+\begin{frame}[fragile]
+  \frametitle{Why should research be made reproducible?}
+  
+{\Large Four public virtues and one private one}
+
+\vspace{5mm}
+  
+\begin{itemize}
+  \item Enables readers to develop a complete and exact understanding of methods
+  \item Enables error detection and correction 
+  \item Facilitates critique
+  \item Enables extension and advancement
+  \item Saves time (private)
+\end{itemize}
+  
+\end{frame}
+
+%--
+\begin{frame}[fragile]
+  \frametitle{How can research be made reproducible?}
+  
+{\Large Three concepts}
+
+\vspace{5mm}
+  
+\begin{itemize}
+  \item Workflow/Dataflow
+  \item Literate statistical programming
+  \item Science archive
+\end{itemize}
+  
+\end{frame}
+
+%--
+\begin{frame}[fragile]
+  \frametitle{Workflow/Dataflow}
+  
+{\Large Workflow...}
+
+\vspace{3mm}
+  
+\begin{itemize}
+  \item is the idea that data analysis may be viewed as a repeatable pattern of computational activities. If these activities are truly repeatable and truly computational, then they may be encoded in an algorithm (programming). This principle of repeatable computation is the key to reproducible research. In reproducible research, a computer program is written to perform an analysis.
+\end{itemize}
+
+\vspace{10mm}
+
+{\Large Dataflow...}
+
+\vspace{3mm}
+  
+\begin{itemize}
+  \item is the idea that when a variable changes, downstream computations affected by that variable should change as well.
+\end{itemize}
+
+\end{frame}
+
+%--
+\begin{frame}[fragile]
+  \frametitle{Literate statistical programming}
+  
+{\Large Literate programming...}
+
+\vspace{3mm}
+  
+\begin{itemize}
+  \item is an approach to programming in which computer codes are interspersed with explanations in natural language.
+\end{itemize}
+
+\vspace{10mm}
+
+{\Large Literate \textit{statistical} programming...}
+
+\vspace{3mm}
+  
+\begin{itemize}
+  \item is the application of the literate programming idea to statistical codes.
+\end{itemize}
+
+\end{frame}
+
+%--
+\begin{frame}[fragile]
+  \frametitle{Science archive}
+  
+{\Large For the public virtues of reproducible research to be realized requires \textit{access} to...}
+
+\vspace{5mm}
+  
+\begin{itemize}
+  \item Data
+  \item Computer codes
+  \item Explanation
+\end{itemize}
+
+\vspace{3mm}
+
+These can be bundled together and archived in a public repositor such as the Dryad Digital Repository\footnote{http://datadryad.org/}
+  
+\end{frame}
+%SECTION: THE R SOFTWARE
+\section{The R Software}
+\subsection{R in Windows}
+
+
+%----Using R as a calculator----
+\begin{frame}[fragile]
+  \frametitle{Arithmetic}
+  
+Key commands to issue from the command line:
+\begin{itemize}
+  \item assigment using \code{<-}, e.g., \code{a<-5}
+  \item arithmetical operations +, -, *, /  e.g., \code{a+10}
+  \item ``combine'' values using \code{c}, e.g., \code{data <- c(2, 6, 16, 18)}
+\end{itemize}
+
+\begin{Schunk}
+\begin{Soutput}
+[1] 20
+\end{Soutput}
+\end{Schunk}
+
+\begin{exercise}
+  You know that $R_0$ for a simple $SIR$ epidemic is given by $R_0=\beta / \gamma$. Calculate $R_0$ for an epidemic where $\beta=1.2$ and $\gamma=0.6$.
+\end{exercise}
+
+\end{frame}
+
+
+
+\end{document}

@@ -1,0 +1,23 @@
+<<eval=FALSE>>=
+pdf(file='uniform-variates.pdf')
+plot(runif(100), xlab='', ylab='', main='100 uniform variates', col=ose1)
+graphics.off()
+@
+
+  
+
+\begin{center}
+\begin{columns}
+  \column{2.6in}
+    \begin{enumerate}
+      \item A piece of statistical software (compare: S, SAS, Stata)
+      \item A high-level programming language (compare: Matlab, Octave, S)
+      \item A programming ``environment'' (compare: Matlab)
+    \end{enumerate}
+  \column{2.6in}
+    \begin{center}
+    \includegraphics[width=2.0in]{uniform-variates.pdf}
+    \end{center}
+\end{columns}
+\end{center}
+\end{frame}
