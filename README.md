@@ -6,6 +6,7 @@ The modules covered along with a brief description is listed below:
 ## Day 1
   1.  What is R
   2.  Data Types
+    - This module will introduce students to the different R data types, how they are related and when they should be used.  
   3.  Writing your first script
   4.  Architecture of a script
 ## Day 2
@@ -16,7 +17,7 @@ The modules covered along with a brief description is listed below:
   9.  Simulating Data
   
 ## Module specific learning outcomes
-At the end of these lessons, students will be able to...
+At the end of these lessons, students will be able to (SWBAT)...
   1.  What is R
   2.  Data Types
       - list the different data types of R
