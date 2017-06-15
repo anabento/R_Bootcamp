@@ -1,0 +1,39 @@
+---
+title: "M2 Data Types"
+author: "Kaul"
+date: "June 15, 2017"
+output: html_document
+---
+
+```{r settings}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Base R data frames
+
+```{r Vectors}
+
+```
+
+
+```{r Matrices}
+
+```
+
+```{r Factors}
+
+```
+
+```{r Lists}
+
+```
+
+```{r Dataframes}
+
+```
+
+#Going further
+
+Tidyverse kibble, tibble, etc.
+
+http://www.statmethods.net/input/datatypes.html
