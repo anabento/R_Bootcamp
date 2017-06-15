@@ -18,7 +18,8 @@ The course will consist of a series of modules that build upon eachother. The  m
 **_Break_**
 
   4.  Architecture of a script
-
+  
+  _maybe add module on troubleshooting_
 ## Day 2
   5.  Writing a script; part 2
 
@@ -34,8 +35,9 @@ The course will consist of a series of modules that build upon eachother. The  m
 **_Break_**
   
   9.  Simulating Data
-  10. Putting it all together 
   
+_need to end with some sort of recap_
+
 ## Module specific learning outcomes
 At the end of these lessons, students will be able to (SWBAT)...
   1.  What is R and RStudio
