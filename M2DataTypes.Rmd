@@ -5,35 +5,137 @@ date: "June 15, 2017"
 output: html_document
 ---
 
+This module should include 
+logic statements
+syntax
+data structure
+assigning objects
+troubleshooting
+reading in data
+
 ```{r settings}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
-#Base R data frames
+# 2. Data 
 
+## `R` Objects 
+
+Everything in `R` is an object ... 
+
+  what does this mean
+  what does it look like
+
+```{r make an object}
+myname <- "Reni" #this line assigns "Reni" to an object 'myname'
+myname #print the content of 'myname' object by running it in the console
+```
+
+## Data Types
+
+One of the first concepts we'll need to understand how `R` organizes information. This is *very important* because nearly every task requires manipulating data. `R` has 5 atomic classes (what does this mean):
+
+  * logical (`TRUE`, `FALSE`)
+  * character ("blue", "purple")
+  * integer (1,2,3) *each number must be followed by `L`
+  * numeric (1,1.5,2)
+  * complex (i)
+
+*What is the class of `myname`?*
+
+  Based on the decsription above, we can guess that is should be a character. We can use a few base `R` functions to get information about objects. Some helpful functions include:
+
+  * typeof() 
+  * length()
+  * attributes()
+  
+**Practice** Verify `myname` class type and determine the length. You may need to pull up the documentation page for the functions. 
+
+```{r character class}
+#What is the class
+?typeof() #look up documentation for typeof()
+type(myname) #edit this line of code to run without an error
+
+#How long is the object
+?length()
+length(mycode)
+```
+
+This object has a length of one. Let's make an numeric class object with a length greater than 1
+
+```{r numeric class}
+y <- 1:10 #colon indicates '1 to 10' 
+typeof(y)
+length(y)
+attributes(y)
+```
+
+##Data Structure
+
+These 5 classes or modes can then be combind to create many different types of *data structure*. Common data structures include:
+  * vector
+  * matrix 
+  * list 
+  * factors 
+  * data frame
+  
+These data structures can consist of either a single class or a mixture of data types. Let's look at examples of each type. 
+
+**Vectors** are the most common data structure. Vectors (the `R` data ) are vectors of elements can be character, logical, numeric or integer class.  
 ```{r Vectors}
 
 ```
 
-
+**Matices** are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
 ```{r Matrices}
 
 ```
+
+Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)
+```{r Matrices 2}
+
+```
+
+**Lists** are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.
+
+*Lists of lists of lists can confusing*
+
+```{r Lists}
+#make a list
+
+
+#check the class of an entry
+```
+
+
+**Factors** are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. Factors can only contain pre-defined values and are really a way at add labels to integers. 
+
+order categories: `low`,`med`, `high`
+unorder categories: `male`, `female`
 
 ```{r Factors}
 
 ```
 
-```{r Lists}
+**Data frames** are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
+
+```{r Data frames}
 
 ```
 
-```{r Dataframes}
+## Useful functions
 
-```
+    head() - see first 6 rows
+    tail() - see last 6 rows
+    dim() - see dimensions
+    nrow() - number of rows
+    ncol() - number of columns
+    str() - structure of each column
+    names() - will list the names attribute for a data frame (or any object really), which gives the column names.
 
-#Going further
+## Going further
 
 Tidyverse kibble, tibble, etc.
 
 http://www.statmethods.net/input/datatypes.html
+
