@@ -1,13 +1,69 @@
 ---
-title: "M3ManipulatingData"
+title: "M3 Manipulating Data"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
 # 3. Manipulating Data
 
+This module will cover...
+
+
+
 
 This module should be completed as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions by reading manual pages, googling, etc. 
+
+
+## Loading data
+
+Before we jump into calculating summary statistics and simple data vizualization, we need to import or load data into `R`. The data that we'll use for this exercise was emailed to you this morning. Save the `.csv` file to your working directory.
+
+The `.csv` contains responses from the Cohort survey we sent out earlier in the week. Let's take a quick look at the file outside of R. What are the different columns and rows? What type of data structure would this be in `R`? 
+
+**Insert screenshot**
+
+A common way to read data frames into R uses `read.csv`. *8set up realistic part of example* Work with your partner to answer the following questions:
+   
+   *  Exploring Data Structure
+      * How many people responded to the survey?
+      * What are the titles for the different columns?
+      * etc.
+   *  Exploring Data with Summary Statistics  
+      * What is the farthest distance to a student's favorite location? 
+      * wr
+      * r
+  * Exploring Data with Basic Vizualizations
+      * plot x
+      * plot y
+      * ....
+   
+
+```{r read in csv}
+
+
+```
+
+
+
+```{r exploring data structure}
+
+```
+
+
+
+
+```{r summary statistics}
+
+
+```
+
+
+
+```{r basic vizualizations}
+
+
+```
+
