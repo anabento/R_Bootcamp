@@ -21,19 +21,25 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 ## `R` Objects 
 
-Everything in `R` is an object ... 
+Everything in `R` is an object. But what does this mean to someone who doesn't have a computer science background? 
 
-  what does this mean
-  what does it look like
+`R` doesn't let users directly access the computer's memory, instead users access many different specialized data structures. You can think of this design as a filing cabinet. One drawer contains textbooks, another pictures, another data tables, and so on. In this analogy, each drawer is a different object class. 
+
+If we look in the textbook drawer, each book or object has a similar structure (front cover, title page, table of contents, etc.). Just like each book has a unique title, `R` objects have user assigned names. 
+
+Objects in `R` are often assigned a name by using an arrow made from a the less than sign and dash. 
 
 ```{r make an object}
 myname <- "Reni" #this line assigns "Reni" to an object 'myname'
 myname #print the content of 'myname' object by running it in the console
 ```
 
+The information in the object is retrived by calling the object's name. 
+
+
 ## Data Types
 
-One of the first concepts we'll need to understand how `R` organizes information. This is *very important* because nearly every task requires manipulating data. `R` has 5 atomic classes (what does this mean):
+One of the first concepts we'll need to understand how `R` organizes information. This is **_very important_** because nearly every task requires manipulating data. `R` has 5 basic ('*atomic*') classes :
 
   * logical (`TRUE`, `FALSE`)
   * character ("blue", "purple")
@@ -41,7 +47,7 @@ One of the first concepts we'll need to understand how `R` organizes information
   * numeric (1,1.5,2)
   * complex (i)
 
-*What is the class of `myname`?*
+**_Concept Check_**: What is the class of `myname`?
 
   Based on the decsription above, we can guess that is should be a character. We can use a few base `R` functions to get information about objects. Some helpful functions include:
 
@@ -54,25 +60,30 @@ One of the first concepts we'll need to understand how `R` organizes information
 ```{r character class}
 #What is the class
 ?typeof() #look up documentation for typeof()
-type(myname) #edit this line of code to run without an error
+typeof(myname) #return the object type of "myname"
 
 #How long is the object
 ?length()
-length(mycode)
+length(myname)
 ```
 
-This object has a length of one. Let's make an numeric class object with a length greater than 1
+This object has a length of one. Why?
+
+Let's make an numeric class object with a length greater than 1
 
 ```{r numeric class}
-y <- 1:10 #colon indicates '1 to 10' 
+y <- c(1:10) #colon indicates '1 to 10' 
 typeof(y)
 length(y)
 attributes(y)
 ```
 
+**_Concept Check_**: How could we make `myname` longer than 1?
+
 ##Data Structure
 
 These 5 classes or modes can then be combind to create many different types of *data structure*. Common data structures include:
+
   * vector
   * matrix 
   * list 

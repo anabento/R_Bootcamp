@@ -11,7 +11,12 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 This module will cover...
 
-
+data structure
+assigning objects
+plot function in base R
+read in data
+logic statements
+calculate simple stats in base R
 
 
 This module should be completed as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions by reading manual pages, googling, etc. 
@@ -23,23 +28,26 @@ Before we jump into calculating summary statistics and simple data vizualization
 
 The `.csv` contains responses from the Cohort survey we sent out earlier in the week. Let's take a quick look at the file outside of R. What are the different columns and rows? What type of data structure would this be in `R`? 
 
-**Insert screenshot**
+**Insert screenshot of csv**
 
-A common way to read data frames into R uses `read.csv`. *8set up realistic part of example* Work with your partner to answer the following questions:
+A common way to read data frames into R uses `read.csv`. *set up realistic part of example* Work with your partner to complete the `manipulating_data.R` script. This script follows a realiztic work flow used to explore new data. Data exploration might include answering the following:
    
-   *  Exploring Data Structure
+   1.  Exploring Data Structure
       * How many people responded to the survey?
       * What are the titles for the different columns?
       * etc.
-   *  Exploring Data with Summary Statistics  
-      * What is the farthest distance to a student's favorite location? 
-      * wr
-      * r
-  * Exploring Data with Basic Vizualizations
-      * plot x
-      * plot y
-      * ....
+   2.  Exploring Data with Summary Statistics  
+      * What is the max, min and mean distance to the students favplace? 
+      * What is the max, min and mean for all the columns?  
+      * Other descriptive statistics built into `R` include: mean, sd, var, min, max, median, range, and quantile
+    
+  3. Exploring Data with Basic Vizualizations
+      * scatter plot: Does birth order correlate with number of siblings? 
+      * histogram: What is the distribution of the no. of siblings in the cohort?
+      * boxplot: How does the distribution of no. of siblings, birth order and birth date relate?
    
+
+## Solutions to `manipulating_data.R` 
 
 ```{r read in csv}
 
