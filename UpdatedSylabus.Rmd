@@ -1,0 +1,66 @@
+---
+title: "R bootcamp syllabus"
+author: "Ana Bento and Reni Kaul"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+#Friday 
+
+#8am-10am: Introduction
+## What is R
+
+## Data
+
+###Vectors
+###Matrices
+###Factors
+###Dataframes
+###Lists
+
+
+#10am-10:15am: Coffee break
+
+
+#10:15am-12:15pm: Functions 
+
+#Writing your first function
+
+#12:15-1:15pm - Lunch
+
+#1:15- 3:00pm - Data Manipulation
+
+#3:00-3:15pm - Coffee break
+
+#3:15-5:00pm - Summary statistics
+
+
+#5:00pm: End of day 1
+
+\newpage
+
+#Saturday
+#8am-9am: Recap
+
+#9:00-10:30am: Data
+## Automate Data Manipulation
+
+
+#10:30-10:45am: Coffee break
+
+## Data Visualization
+
+#12:15-1:15pm - Lunch
+
+#1:15-3:00pm: Simulations
+
+## Simulationg data in R
+
+##Exercise incorporating all skills
+
+
+
+
+
+
+

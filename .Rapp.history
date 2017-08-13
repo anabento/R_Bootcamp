@@ -1,0 +1,9 @@
+boolean_vector <- c("TRUE", "FALSE", "TRUE")
+boolean_vector
+boolean_vector <- c(TRUE, "FALSE", "TRUE")
+boolean_vector
+a<-seq(1,5,2)
+a
+character_vector <- c("a", "b", "c")#
+numeric_vector <- c(1, 10, 49)
+sum(character_vector, numeric_vector)
