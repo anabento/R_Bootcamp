@@ -94,10 +94,13 @@ These data structures can consist of either a single class or a mixture of data 
 
 **Vectors** are the most common data structure. Vectors (the `R` data ) are vectors of elements can be character, logical, numeric or integer class.  
 ```{r Vectors}
+numeric_vector <- c(1, 10, 49)
+character_vector <- c("a", "b", "c")
+boolean_vector <- c("TRUE", "FALSE", "TRUE")
 
 ```
 
-**Matices** are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
+**Matrices** are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
 ```{r Matrices}
 
 ```

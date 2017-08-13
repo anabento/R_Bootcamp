@@ -181,7 +181,10 @@ attributes(y)</code></pre>
 </ul>
 <p>These data structures can consist of either a single class or a mixture of data types. Let’s look at examples of each type.</p>
 <p><strong>Vectors</strong> are the most common data structure. Vectors (the <code>R</code> data ) are vectors of elements can be character, logical, numeric or integer class.</p>
-<p><strong>Matices</strong> are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise.</p>
+<pre class="r"><code>numeric_vector &lt;- c(1, 10, 49)
+character_vector &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+boolean_vector &lt;- c(&quot;TRUE&quot;, &quot;FALSE&quot;, &quot;TRUE&quot;)</code></pre>
+<p><strong>Matrices</strong> are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise.</p>
 <p>Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)</p>
 <p><strong>Lists</strong> are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.</p>
 <p><em>Lists of lists of lists can confusing</em></p>
