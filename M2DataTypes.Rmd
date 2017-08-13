@@ -1,7 +1,7 @@
 ---
 title: "M2 Data Types"
-author: "Kaul"
-date: "June 15, 2017"
+author: ""
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
@@ -30,7 +30,7 @@ If we look in the textbook drawer, each book or object has a similar structure (
 Objects in `R` are often assigned a name by using an arrow made from a the less than sign and dash. 
 
 ```{r make an object}
-myname <- "Reni" #this line assigns "Reni" to an object 'myname'
+myname <- "Odum" #this line assigns "Odum" to an object 'myname'
 myname #print the content of 'myname' object by running it in the console
 ```
 

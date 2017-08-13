@@ -1,4 +1,4 @@
-#This script was created by Reni Kaul 7/22/17 for the IDEAS Data Clinic. This code should be completed with a partner, and will walk students through common data exploration tasks. Some lines are complete, while others are missing pieces or will have an error that needs fixing. 
+#This code should be completed with a partner, and will walk students through common data exploration tasks. Some lines are complete, while others are missing pieces or will have an error that needs fixing. 
 #The data is stored in XXX.csv. 
 
 #Before we can explore the data, we must load it into R. 
