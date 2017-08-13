@@ -7,11 +7,14 @@ output: pdf_document
 
 #Friday 
 
-#8am-10am: Introduction
-## What is R
+#8am-9am: M1 -- What is R lecture 
 
-## Data
 
+#9am-9:05am: Break
+
+#9:10-12:00pm: M2+M3 -- Data Types and Manipulation 
+
+##M2
 ###Vectors
 ###Matrices
 ###Factors
@@ -19,44 +22,55 @@ output: pdf_document
 ###Lists
 
 
-#10am-10:15am: Coffee break
+##M3 -- Data Manipulation
+
+###Exercises- Reni
 
 
-#10:15am-12:15pm: Functions 
+#12:00-1:15pm:  Lunch
 
-#Writing your first function
+#1:15-3:00p:  M4 -- Writing your first script
 
-#12:15-1:15pm - Lunch
+##Lecture on functions-- brief ppt
+###hmtl document with  functions, summary stats and fixing errors- loops apply functions function that has a summary stats
 
-#1:15- 3:00pm - Data Manipulation
-
-#3:00-3:15pm - Coffee break
-
-#3:15-5:00pm - Summary statistics
-
-
-#5:00pm: End of day 1
-
+#3:00-3:05: Break
 \newpage
+#3:15pm- 4:30pm: The script
+
+###creating your first script
+###commenting 
+###exchanging
+
 
 #Saturday
-#8am-9am: Recap
 
-#9:00-10:30am: Data
-## Automate Data Manipulation
+#8am-9am: Recap script  + scramble exercise
+open your script on their own anf then exercise
 
+#9:15am: Break
 
-#10:30-10:45am: Coffee break
+#9:25am:12:15pm: M6 Data visualiztion M6  
 
-## Data Visualization
+###basic, gg plottly
 
-#12:15-1:15pm - Lunch
+###exercise collaborative coding 
 
-#1:15-3:00pm: Simulations
+#12:15-1:15pm: Lunch (pizza provided)
 
-## Simulationg data in R
+#1:15-3:00pm: M7-- Simulations
 
-##Exercise incorporating all skills
+##Simulationg data in R
+
+###Exercise incorporating all skills
+
+#3:00pm: Break
+
+#3:15-5:00pm
+
+###Continuation
+
+###Wrap up
 
 
 
