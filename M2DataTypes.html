@@ -9,6 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="A Bento &amp; R Kaul" />
 
 <meta name="date" content="2017-08-13" />
 
@@ -117,6 +118,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">M2 Data Types</h1>
+<h4 class="author"><em>A Bento &amp; R Kaul</em></h4>
 <h4 class="date"><em>2017-08-13</em></h4>
 
 </div>
@@ -180,8 +182,11 @@ attributes(y)</code></pre>
 <li>data frame</li>
 </ul>
 <p>These data structures can consist of either a single class or a mixture of data types. Let’s look at examples of each type.</p>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
 <p><code>Vectors</code> are the most common data structure. Vectors (the <code>R</code> data ) are vectors of elements can be character, logical, numeric or integer class.</p>
-<pre class="r"><code>character_vector &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+<pre class="r"><code>#concatenating objects into a vector using &quot;c&quot;
+character_vector &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
 numeric_vector &lt;- c(1, 10, 49)
 boolean_vector &lt;- c(&quot;TRUE&quot;, &quot;FALSE&quot;, &quot;TRUE&quot;)</code></pre>
 <p>You can creating <code>Vectors</code> using handy functions</p>
@@ -192,19 +197,34 @@ vec3&lt;-seq(1, 15, by = 2)</code></pre>
 <pre class="r"><code>vec4&lt;-vec1+vec2+vec3
 
 vec5&lt;-sum(vec1,vec2,vec3)</code></pre>
+</div>
+<div id="matrices" class="section level3">
+<h3>Matrices</h3>
 <p><code>Matrices</code> are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise.</p>
 <pre class="r"><code>rnames &lt;- c(&quot;R1&quot;, &quot;R2&quot;)
 cnames &lt;- c(&quot;C1&quot;, &quot;C2&quot;)
 m&lt;-matrix(data = NA, nrow = 2, ncol = 2, byrow=TRUE,
   dimnames=list(rnames, cnames))</code></pre>
-<p>Add more rows and columns to the <strong>matrix</strong> and fill it with 1s and change the names of rows and columns</p>
+<p><strong>Practice</strong> Add more rows and columns to the <strong>matrix</strong> and fill it with 1s and change the names of rows and columns</p>
 <pre class="r"><code>m&lt;-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cnames))</code></pre>
 <p>Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)</p>
 <pre class="r"><code>vec6&lt;-rbind(vec1,vec2)
 vec7&lt;-cbind(vec3,vec4)</code></pre>
 <p>Subsetting from a matrix</p>
-<pre class="r"><code>vec6&lt;-rbind(vec1,vec2)
-vec7&lt;-cbind(vec3,vec4)</code></pre>
+<pre class="r"><code>m1&lt;-rbind(vec1,vec2)
+
+# All elements in first row
+m1[1,]
+
+#All elements in first row
+
+m1[,1]
+
+
+m2&lt;-cbind(vec3,vec4)</code></pre>
+</div>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
 <p><code>Lists</code> are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.</p>
 <p><em>Lists of lists of lists can confusing</em></p>
 <pre class="r"><code>#make a list
@@ -214,11 +234,33 @@ primes &lt;- list(
     6:7, 8:11, 12:13,
     14:17, 18:19, 20:23)
 #check the class of an entry</code></pre>
+</div>
+<div id="factors" class="section level3">
+<h3>Factors</h3>
 <p><code>Factors</code> are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. Factors can only contain pre-defined values and are really a way at add labels to integers.</p>
-<p>order categories: <code>low</code>,<code>med</code>, <code>high</code> unorder categories: <code>male</code>, <code>female</code></p>
-<pre class="r"><code>a&lt;-c()</code></pre>
+<p>order categories: <code>low</code>,<code>med</code>, <code>high</code> unorder categories: <code>blue</code>, <code>red</code></p>
+<pre class="r"><code>dat&lt;-c('low','med', 'high')
+
+# check if it is a factor
+print(is.factor(dat))
+
+#Making the vector a into a factor
+
+factor_dat &lt;- factor(dat)
+
+#check again
+
+
+#Changing the order
+new_order_dat &lt;- factor(factor_dat,levels = c(&quot;med&quot;,&quot;high&quot;,&quot;low&quot;))</code></pre>
+<pre class="r"><code>hues &lt;- c(rep(&quot;blue&quot;,20), rep(&quot;red&quot;, 30)) 
+# makes hues a factor
+
+#summarize hues
+summary(hues)</code></pre>
 <p><code>Data frames</code> are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.</p>
 <pre class="r"><code>b&lt;-c()</code></pre>
+</div>
 </div>
 <div id="useful-functions" class="section level2">
 <h2>Useful functions</h2>

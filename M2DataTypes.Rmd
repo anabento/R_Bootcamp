@@ -1,6 +1,6 @@
 ---
 title: "M2 Data Types"
-author: ""
+author: "A Bento & R Kaul"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -92,8 +92,11 @@ These 5 classes or modes can then be combind to create many different types of *
   
 These data structures can consist of either a single class or a mixture of data types. Let's look at examples of each type. 
 
+###Vectors
+
 ```Vectors``` are the most common data structure. Vectors (the `R` data ) are vectors of elements can be character, logical, numeric or integer class.  
 ```{r Vectors}
+#concatenating objects into a vector using "c"
 character_vector <- c("a", "b", "c")
 numeric_vector <- c(1, 10, 49)
 boolean_vector <- c("TRUE", "FALSE", "TRUE")
@@ -114,6 +117,8 @@ vec5<-sum(vec1,vec2,vec3)
 
 ```
 
+###Matrices
+
 ```Matrices``` are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
 ```{r Matrices}
 rnames <- c("R1", "R2")
@@ -121,7 +126,8 @@ cnames <- c("C1", "C2")
 m<-matrix(data = NA, nrow = 2, ncol = 2, byrow=TRUE,
   dimnames=list(rnames, cnames))
 ```
-Add more rows and columns to the **matrix** and fill it with 1s and change the names of rows and columns
+
+**Practice** Add more rows and columns to the **matrix** and fill it with 1s and change the names of rows and columns
 ```{r Matrices1}
 m<-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cnames))
 ```
@@ -133,11 +139,20 @@ vec7<-cbind(vec3,vec4)
 
 Subsetting from a matrix
 ```{r Matrices 3}
-vec6<-rbind(vec1,vec2)
-vec7<-cbind(vec3,vec4)
+m1<-rbind(vec1,vec2)
+
+# All elements in first row
+m1[1,]
+
+#All elements in first row
+
+m1[,1]
+
+
+m2<-cbind(vec3,vec4)
 ```
 
-
+###Lists
 ```Lists``` are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.
 
 *Lists of lists of lists can confusing*
@@ -153,14 +168,36 @@ primes <- list(
 
 ```
 
-
+###Factors
 ```Factors``` are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. Factors can only contain pre-defined values and are really a way at add labels to integers. 
 
 order categories: `low`,`med`, `high`
-unorder categories: `male`, `female`
+unorder categories: `blue`, `red`
 
-```{r Factors}
-a<-c()
+```{r Factors1}
+dat<-c('low','med', 'high')
+
+# check if it is a factor
+print(is.factor(dat))
+
+#Making the vector a into a factor
+
+factor_dat <- factor(dat)
+
+#check again
+
+
+#Changing the order
+new_order_dat <- factor(factor_dat,levels = c("med","high","low"))
+```
+
+```{r Factors2}
+
+hues <- c(rep("blue",20), rep("red", 30)) 
+# makes hues a factor
+
+#summarize hues
+summary(hues)
 ```
 
 ```Data frames``` are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
