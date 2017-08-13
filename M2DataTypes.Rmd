@@ -92,49 +92,81 @@ These 5 classes or modes can then be combind to create many different types of *
   
 These data structures can consist of either a single class or a mixture of data types. Let's look at examples of each type. 
 
-**Vectors** are the most common data structure. Vectors (the `R` data ) are vectors of elements can be character, logical, numeric or integer class.  
+```Vectors``` are the most common data structure. Vectors (the `R` data ) are vectors of elements can be character, logical, numeric or integer class.  
 ```{r Vectors}
-numeric_vector <- c(1, 10, 49)
 character_vector <- c("a", "b", "c")
+numeric_vector <- c(1, 10, 49)
 boolean_vector <- c("TRUE", "FALSE", "TRUE")
+```
+
+You can creating ```Vectors``` using handy functions
+```{r Vectors1}
+vec1 <-  rep(1:4, 2)
+vec2 <- rep(1:4, each = 2) 
+vec3<-seq(1, 15, by = 2)
+```
+
+You can transform and use operators to create other ```Vectors```. Check the different between these two vectors
+```{r Vectors2}
+vec4<-vec1+vec2+vec3
+
+vec5<-sum(vec1,vec2,vec3)
 
 ```
 
-**Matrices** are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
+```Matrices``` are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
 ```{r Matrices}
-
+rnames <- c("R1", "R2")
+cnames <- c("C1", "C2")
+m<-matrix(data = NA, nrow = 2, ncol = 2, byrow=TRUE,
+  dimnames=list(rnames, cnames))
 ```
-
+Add more rows and columns to the **matrix** and fill it with 1s and change the names of rows and columns
+```{r Matrices1}
+m<-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cnames))
+```
 Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)
 ```{r Matrices 2}
-
+vec6<-rbind(vec1,vec2)
+vec7<-cbind(vec3,vec4)
 ```
 
-**Lists** are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.
+Subsetting from a matrix
+```{r Matrices 3}
+vec6<-rbind(vec1,vec2)
+vec7<-cbind(vec3,vec4)
+```
+
+
+```Lists``` are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.
 
 *Lists of lists of lists can confusing*
 
 ```{r Lists}
 #make a list
-
-
+w <- list(name="Odum", mynumbers=vec1, mymatrix=m, age=5.3)
+primes <- list(
+    2, 3, 4:5,
+    6:7, 8:11, 12:13,
+    14:17, 18:19, 20:23)
 #check the class of an entry
+
 ```
 
 
-**Factors** are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. Factors can only contain pre-defined values and are really a way at add labels to integers. 
+```Factors``` are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. Factors can only contain pre-defined values and are really a way at add labels to integers. 
 
 order categories: `low`,`med`, `high`
 unorder categories: `male`, `female`
 
 ```{r Factors}
-
+a<-c()
 ```
 
-**Data frames** are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
+```Data frames``` are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
 
 ```{r Data frames}
-
+b<-c()
 ```
 
 ## Useful functions
