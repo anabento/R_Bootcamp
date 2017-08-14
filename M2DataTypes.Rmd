@@ -1,5 +1,5 @@
 ---
-title: "M2 Data Types"
+title: <span style="color:cadetblue">M2:Data Types</span>
 author: "A Bento & R Kaul"
 date: "`r Sys.Date()`"
 output: html_document
@@ -17,9 +17,8 @@ reading in data
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
-# 2. Data 
-
-## `R` Objects 
+#<span style="color:cadetblue">2. Data </span>
+##<span style="color:cadetblue"> `R` Objects </span>
 
 Everything in `R` is an object. But what does this mean to someone who doesn't have a computer science background? 
 
@@ -27,7 +26,7 @@ Everything in `R` is an object. But what does this mean to someone who doesn't h
 
 If we look in the textbook drawer, each book or object has a similar structure (front cover, title page, table of contents, etc.). Just like each book has a unique title, `R` objects have user assigned names. 
 
-Objects in `R` are often assigned a name by using an arrow made from a the less than sign and dash. 
+Objects in `R` are often assigned a name by using an **arrow** made from a the **less than** sign and **dash** <-
 
 ```{r make an object}
 myname <- "Odum" #this line assigns "Odum" to an object 'myname'
@@ -37,7 +36,7 @@ myname #print the content of 'myname' object by running it in the console
 The information in the object is retrived by calling the object's name. 
 
 
-## Data Types
+## <span style="color:cadetblue">Data Types</span>
 
 One of the first concepts we'll need to understand how `R` organizes information. This is **_very important_** because nearly every task requires manipulating data. `R` has 5 basic ('*atomic*') classes :
 
@@ -47,7 +46,7 @@ One of the first concepts we'll need to understand how `R` organizes information
   * numeric (1,1.5,2)
   * complex (i)
 
-**_Concept Check_**: What is the class of `myname`?
+ <span style="color:orangered">**_Concept Check_**:</span> What is the class of `myname`?
 
   Based on the decsription above, we can guess that is should be a character. We can use a few base `R` functions to get information about objects. Some helpful functions include:
 
@@ -55,7 +54,7 @@ One of the first concepts we'll need to understand how `R` organizes information
   * length()
   * attributes()
   
-**Practice** Verify `myname` class type and determine the length. You may need to pull up the documentation page for the functions. 
+ <span style="color:orangered">**Practice**:</span> Verify `myname` class type and determine the length. You may need to pull up the documentation page for the functions. 
 
 ```{r character class}
 #What is the class
@@ -78,9 +77,9 @@ length(y)
 attributes(y)
 ```
 
-**_Concept Check_**: How could we make `myname` longer than 1?
+ <span style="color:orangered">**_Concept Check_**:</span>  How could we make `myname` longer than 1?
 
-##Data Structure
+## <span style="color:cadetblue">Data Structure</span>
 
 These 5 classes or modes can then be combind to create many different types of *data structure*. Common data structures include:
 
@@ -92,7 +91,7 @@ These 5 classes or modes can then be combind to create many different types of *
   
 These data structures can consist of either a single class or a mixture of data types. Let's look at examples of each type. 
 
-###Vectors
+###<span style="color:cadetblue">Vectors</span>
 
 ```Vectors``` are the most common data structure. Vectors (the `R` data ) are vectors of elements can be character, logical, numeric or integer class.  
 ```{r Vectors}
@@ -117,7 +116,7 @@ vec5<-sum(vec1,vec2,vec3)
 
 ```
 
-###Matrices
+###<span style="color:cadetblue">Matrices</span>
 
 ```Matrices``` are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
 ```{r Matrices}
@@ -127,17 +126,18 @@ m<-matrix(data = NA, nrow = 2, ncol = 2, byrow=TRUE,
   dimnames=list(rnames, cnames))
 ```
 
-**Practice** Add more rows and columns to the **matrix** and fill it with 1s and change the names of rows and columns
+<span style="color:orangered">**Practice**:</span> Add more rows and columns to the **matrix** and fill it with 1s and change the names of rows and columns
 ```{r Matrices1}
 m<-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cnames))
 ```
+
 Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)
 ```{r Matrices 2}
 vec6<-rbind(vec1,vec2)
 vec7<-cbind(vec3,vec4)
 ```
 
-Subsetting from a matrix
+Subsetting from a ``` matrix```
 ```{r Matrices 3}
 m1<-rbind(vec1,vec2)
 
@@ -152,7 +152,7 @@ m1[,1]
 m2<-cbind(vec3,vec4)
 ```
 
-###Lists
+###<span style="color:cadetblue">Lists</span>
 ```Lists``` are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.
 
 *Lists of lists of lists can confusing*
@@ -168,7 +168,7 @@ primes <- list(
 
 ```
 
-###Factors
+###<span style="color:cadetblue">Factors</span>
 ```Factors``` are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. Factors can only contain pre-defined values and are really a way at add labels to integers. 
 
 order categories: `low`,`med`, `high`
@@ -191,22 +191,25 @@ factor_dat <- factor(dat)
 new_order_dat <- factor(factor_dat,levels = c("med","high","low"))
 ```
 
+<span style="color:orangered">**Practice**:</span>
 ```{r Factors2}
 
 hues <- c(rep("blue",20), rep("red", 30)) 
-# makes hues a factor
+# make hues a factor
 
 #summarize hues
 summary(hues)
 ```
 
+
+###<span style="color:cadetblue">Dataframes</span>
 ```Data frames``` are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
 
 ```{r Data frames}
 b<-c()
 ```
 
-## Useful functions
+##<span style="color:cadetblue"> Useful functions</span>
 
     head() - see first 6 rows
     tail() - see last 6 rows
@@ -216,7 +219,7 @@ b<-c()
     str() - structure of each column
     names() - will list the names attribute for a data frame (or any object really), which gives the column names.
 
-## Going further
+## <span style="color:cadetblue">Going further</span>
 
 Tidyverse kibble, tibble, etc.
 
