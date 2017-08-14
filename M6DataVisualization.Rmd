@@ -1,0 +1,47 @@
+---
+title: "M6 Data Vizualizations"
+author: "A Bento & R Kaul"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+
+
+# 6. Data Visualization
+
+This module will cover:
+
+  - Read in Data
+  - Manipulate Data structure 
+  - assigning an object
+  - Plot in base R
+  - Plot in ggplot
+
+We will also touch on choosing a visualization. 
+
+
+![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
+
+## Two approaches to the same problem: Base R vs ggplot
+
+### Base R
+
+### ggplot
+
+#### plotly: easy interative plots with ggplot
+
+## Graphic for communication
+
+There are plenty of guides on how to create the "best" visualization. 
+
+If you're plotting data to communicate (which is normally always), some things you should keep in mind:
+
+  - every addition plot feature is adding additional information
+  - color choice (connotation, color blind)
+  - how the audience expects to see data
+
+For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006)
