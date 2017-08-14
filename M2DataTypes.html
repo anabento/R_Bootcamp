@@ -208,20 +208,20 @@ m&lt;-matrix(data = NA, nrow = 2, ncol = 2, byrow=TRUE,
 <p><span style="color:orangered"><strong>Practice</strong>:</span> Add more rows and columns to the <strong>matrix</strong> and fill it with 1s and change the names of rows and columns</p>
 <pre class="r"><code>m&lt;-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cnames))</code></pre>
 <p>Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)</p>
-<pre class="r"><code>vec6&lt;-rbind(vec1,vec2)
-vec7&lt;-cbind(vec3,vec4)</code></pre>
-<p>Subsetting from a <code>matrix</code></p>
 <pre class="r"><code>m1&lt;-rbind(vec1,vec2)
-
-# All elements in first row
+m2&lt;-cbind(vec3,vec4)</code></pre>
+<p>Subsetting from a <code>matrix</code></p>
+<pre class="r"><code># All elements in first row of m1
 m1[1,]
 
-#All elements in first row
+#All elements in first column of m1
 
-m1[,1]
+m1[,1]</code></pre>
+<p><span style="color:orangered"><strong>Practice</strong>:</span> Subset from m2</p>
+<pre class="r"><code># All elements in second row
 
 
-m2&lt;-cbind(vec3,vec4)</code></pre>
+#All elements in third column</code></pre>
 </div>
 <div id="lists" class="section level3">
 <h3><span style="color:cadetblue">Lists</span></h3>
@@ -253,7 +253,7 @@ factor_dat &lt;- factor(dat)
 
 #Changing the order
 new_order_dat &lt;- factor(factor_dat,levels = c(&quot;med&quot;,&quot;high&quot;,&quot;low&quot;))</code></pre>
-<p><span style="color:orangered"><strong>Practice</strong>:</span></p>
+<p><span style="color:orangered"><strong>Practice</strong>:</span> Making a <code>vector</code> into a <code>factor</code></p>
 <pre class="r"><code>hues &lt;- c(rep(&quot;blue&quot;,20), rep(&quot;red&quot;, 30)) 
 # make hues a factor
 
@@ -271,6 +271,16 @@ summary(hues)</code></pre>
  df = data.frame(n, s, b)
  
 names(df) &lt;- c(&quot;ID&quot;,&quot;Code&quot;,&quot;Passed&quot;) # variable names</code></pre>
+<p>Like with the <code>matrix</code> we can subset a <code>data frame</code></p>
+<pre class="r"><code># subsetting a column
+df[,1]
+
+# subsetting a row
+df[1,] 
+
+# the $ for subsetting
+
+df$n</code></pre>
 </div>
 </div>
 <div id="useful-functions" class="section level2">
@@ -285,7 +295,7 @@ names() - will list the names attribute for a data frame (or any object really),
 </div>
 <div id="going-further" class="section level2">
 <h2><span style="color:cadetblue">Going further</span></h2>
-<p>Tidyverse kibble, tibble, etc.</p>
+<p>Tidyverse tibble, etc…</p>
 <p><a href="http://www.statmethods.net/input/datatypes.html" class="uri">http://www.statmethods.net/input/datatypes.html</a></p>
 </div>
 </div>

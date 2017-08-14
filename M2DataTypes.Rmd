@@ -133,23 +133,34 @@ m<-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cname
 
 Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)
 ```{r Matrices 2}
-vec6<-rbind(vec1,vec2)
-vec7<-cbind(vec3,vec4)
+m1<-rbind(vec1,vec2)
+m2<-cbind(vec3,vec4)
 ```
 
 Subsetting from a ``` matrix```
 ```{r Matrices 3}
-m1<-rbind(vec1,vec2)
 
-# All elements in first row
+# All elements in first row of m1
 m1[1,]
 
-#All elements in first row
+#All elements in first column of m1
 
 m1[,1]
 
+```
+<span style="color:orangered">**Practice**:</span> Subset from m2
+```{r Matrices 4}
 
-m2<-cbind(vec3,vec4)
+
+# All elements in second row
+
+
+#All elements in third column
+
+
+
+
+
 ```
 
 ###<span style="color:cadetblue">Lists</span>
@@ -191,7 +202,7 @@ factor_dat <- factor(dat)
 new_order_dat <- factor(factor_dat,levels = c("med","high","low"))
 ```
 
-<span style="color:orangered">**Practice**:</span>
+<span style="color:orangered">**Practice**:</span> Making a ```vector``` into a ```factor```
 ```{r Factors2}
 
 hues <- c(rep("blue",20), rep("red", 30)) 
@@ -216,6 +227,19 @@ summary(hues)
 names(df) <- c("ID","Code","Passed") # variable names
 ```
 
+Like with the ```matrix``` we can subset a ```data frame```
+```{r Data frames1}
+# subsetting a column
+df[,1]
+
+# subsetting a row
+df[1,] 
+
+# the $ for subsetting
+
+df$n
+```
+
 ##<span style="color:cadetblue"> Useful functions</span>
 
     head() - see first 6 rows
@@ -228,7 +252,7 @@ names(df) <- c("ID","Code","Passed") # variable names
 
 ## <span style="color:cadetblue">Going further</span>
 
-Tidyverse kibble, tibble, etc.
+Tidyverse tibble, etc...
 
 http://www.statmethods.net/input/datatypes.html
 

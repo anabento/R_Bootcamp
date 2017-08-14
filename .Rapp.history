@@ -7,3 +7,182 @@ a
 character_vector <- c("a", "b", "c")#
 numeric_vector <- c(1, 10, 49)
 sum(character_vector, numeric_vector)
+rep(1:4, 2)
+length(rep(1:4, 2))
+length(rep(1:4, each = 2) )
+length(seq(1, 15, by = 2))
+m<-matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,#
+       dimnames = NULL)
+m
+m<-matrix(data = NA, nrow = 2, ncol = 1, byrow = FALSE,#
+       dimnames = NULL)
+m
+m<-matrix(data = 1, nrow = 2, ncol = 2, byrow = FALSE,#
+       dimnames = NULL)
+m
+vec5<-sqrt(vec4)
+vec1 <-  rep(1:4, 2)#
+vec2 <- rep(1:4, each = 2) #
+vec3<-seq(1, 15, by = 2)
+vec4<-sum(vec1,vec2,vec3)
+vec5<-sqrt(vec4)
+vec5
+vec4
+vec4<-vec1+vec2+vec3
+vec5
+vec5<-sqrt(vec4)
+vec5
+rbind(vec1,vec2)
+cbond(vec2,vec3)
+cbind(vec2,vec3)
+colnames(m)<-c("monday", "Tuesday")
+m
+rownames(m)<-c("monday", "Tuesday")
+m
+mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,#
+               dimnames = list(c("row1", "row2"),#
+                               c("C.1", "C.2", "C.3")))
+mdat
+m<-matrix(data = NA, nrow = 2, ncol = 1, byrow=TRUE,#
+  dimnames=list(rnames, cnames))
+m
+rnames <- c("R1", "R2")#
+cnames <- c("C1", "C2")
+m
+m<-matrix(data = NA, nrow = 2, ncol = 1, byrow=TRUE,#
+  dimnames=list(rnames, cnames))
+m<-matrix(data = NA, nrow = 2, ncol = 2, byrow=TRUE,#
+  dimnames=list(rnames, cnames))
+m
+w <- list(name="Fred", mynumbers=a, mymatrix=y, age=5.3)
+y<-matrix(1:20, nrow=5,ncol=4)
+w <- list(name="Fred", mynumbers=a, mymatrix=y, age=5.3)
+w
+w <- list(name="Odum", mynumbers=vec1, mymatrix=m, age=5.3)
+w
+ls(w)
+class(w)
+class(w[1])
+class(w[2])
+?typeof(w)
+typeof(w)
+attributes(w)
+ls(w)
+typeof(w)
+b<-list(vec1,vec2)
+b
+warpbreaks[1:10,]#
+as.matrix(warpbreaks[1:10,])
+prime_seqs <- list(#
+    2, 3, 4:5,#
+    6:7, 8:11, 12:13,#
+    14:17, 18:19, 20:23#
+  )
+prime_seq
+prime_seqs
+(prime_matrix <- matrix(prime_seqs, nrow = 3))
+dat<-c('low','med', 'high')
+is.factor(dat)
+print(is.factor(data))
+factor_dat <- factor(dat)
+factor_dat
+new_order_dat <- factor(factor_dat,levels = c("med","hig","low"))
+new_order_dat
+new_order_dat <- factor(factor_dat,levels = c("med","high","low"))
+new_order_dat
+gender <- c(rep("male",20), rep("female", 30)) #
+gender <- factor(gender)
+summary(gender)
+hues <- c(rep("blue",20), rep("red", 30)) #
+hues <- factor(hues) #
+summary(hues)
+vec6<-rbind(vec1,vec2)
+vec6[1,]
+vec6
+vec6[,1]
+d <- c(1,2,3,4)#
+e <- c("red", "white", "red", NA)#
+f <- c(TRUE,TRUE,TRUE,FALSE)#
+mydata <- data.frame(d,e,f)#
+names(mydata) <- c("ID","Color","Passed") # variable names
+mydata
+n = c(2, 3, 5) #
+ s = c("aa", "bb", "cc") #
+ b = c(TRUE, FALSE, TRUE) #
+ df = data.frame(n, s, b)
+df
+df[1]
+df["n"]
+df[,"n"]
+install.packages("tidyverse")#
+#
+# Alternatively, install just tibble:#
+install.packages("tibble")
+library(tibble)#
+as_tibble(iris)
+a<-tibble(x = 1:5, y = 1, z = x ^ 2 + y)
+a
+df[,1]
+df[1,]
+df
+df$n
+library(ggplot2)#
+library(gganimate)#
+library(ggforce)#
+library(tweenr)#
+#
+# Making up data#
+t <- data.frame(x=0, y=0, colour = 'forestgreen', size=1, alpha = 1, #
+                stringsAsFactors = FALSE)#
+t <- t[rep(1, 12),]#
+t$alpha[2:12] <- 0#
+t2 <- t#
+t2$y <- 1#
+t2$colour <- 'firebrick'#
+t3 <- t2#
+t3$x <- 1#
+t3$colour <- 'steelblue'#
+t4 <- t3#
+t4$y <- 0#
+t4$colour <- 'goldenrod'#
+t5 <- t4#
+c <- ggforce::radial_trans(c(1,1), c(1, 12))$transform(rep(1, 12), 1:12)#
+t5$x <- (c$x + 1) / 2#
+t5$y <- (c$y + 1) / 2#
+t5$alpha <- 1#
+t5$size <- 0.5#
+t6 <- t5#
+t6 <- rbind(t5[12,], t5[1:11, ])#
+t6$colour <- 'firebrick'#
+t7 <- rbind(t6[12,], t6[1:11, ])#
+t7$colour <- 'steelblue'#
+t8 <- t7#
+t8$x <- 0.5#
+t8$y <- 0.5#
+t8$size <- 2#
+t9 <- t#
+ts <- list(t, t2, t3, t4, t5, t6, t7, t8, t9)#
+#
+tweenlogo <- data.frame(x=0.5, y=0.5, label = 'tweenr', stringsAsFactors = F)#
+tweenlogo <- tweenlogo[rep(1, 60),]#
+tweenlogo$.frame <- 316:375#
+#
+# Using tweenr#
+tf <- tween_states(ts, tweenlength = 2, statelength = 1, #
+                   ease = c('cubic-in-out', 'elastic-out', 'bounce-out', #
+                            'cubic-out', 'sine-in-out', 'sine-in-out', #
+                            'circular-in', 'back-out'), #
+                   nframes = 375)#
+#
+# Animate with gganimate#
+p <- ggplot(data=tf, aes(x=x, y=y)) + #
+    geom_text(aes(label = label, frame = .frame), data=tweenlogo, size = 13) + #
+    geom_point(aes(frame = .frame, size=size, alpha = alpha, colour = colour)) + #
+    scale_colour_identity() + #
+    scale_alpha(range = c(0, 1), guide = 'none') +#
+    scale_size(range = c(4, 60), guide = 'none') + #
+    expand_limits(x=c(-0.36, 1.36), y=c(-0.36, 1.36)) + #
+    theme_bw()#
+animation::ani.options(interval = 1/15)#
+gganimate(p, "dancing ball.gif", title_frame = F, ani.width = 400, #
+           ani.height = 400)
