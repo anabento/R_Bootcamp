@@ -133,6 +133,6 @@ l.mean[['a']]
 ```
 
 
-## <span style="color:cadetblue">Going further</span>
 
-rapply, tapply, 
+## <span style="color:cadetblue">Going further</span>
+rapply, tapply

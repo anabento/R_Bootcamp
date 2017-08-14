@@ -1,5 +1,5 @@
 ---
-title: "M3 Manipulating Data"
+title: "Manipulating Data"
 output: html_document
 ---
 
@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
-# 3. Manipulating Data
+#<span style="color:cadetblue">Manipulating Data</span>
 
 ***
 
