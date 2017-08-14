@@ -260,10 +260,17 @@ new_order_dat &lt;- factor(factor_dat,levels = c(&quot;med&quot;,&quot;high&quot
 #summarize hues
 summary(hues)</code></pre>
 </div>
-<div id="dataframes" class="section level3">
-<h3><span style="color:cadetblue">Dataframes</span></h3>
+<div id="data-frames" class="section level3">
+<h3><span style="color:cadetblue">Data frames</span></h3>
 <p><code>Data frames</code> are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.</p>
-<pre class="r"><code>b&lt;-c()</code></pre>
+<pre class="r"><code># creating vectors
+ n = c(2, 3, 5) 
+ s = c(&quot;aa&quot;, &quot;bb&quot;, &quot;cc&quot;) 
+ b = c(TRUE, FALSE, TRUE) 
+ # creating the data frame
+ df = data.frame(n, s, b)
+ 
+names(df) &lt;- c(&quot;ID&quot;,&quot;Code&quot;,&quot;Passed&quot;) # variable names</code></pre>
 </div>
 </div>
 <div id="useful-functions" class="section level2">

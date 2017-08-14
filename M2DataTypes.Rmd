@@ -202,11 +202,18 @@ summary(hues)
 ```
 
 
-###<span style="color:cadetblue">Dataframes</span>
+###<span style="color:cadetblue">Data frames</span>
 ```Data frames``` are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
 
 ```{r Data frames}
-b<-c()
+# creating vectors
+ n = c(2, 3, 5) 
+ s = c("aa", "bb", "cc") 
+ b = c(TRUE, FALSE, TRUE) 
+ # creating the data frame
+ df = data.frame(n, s, b)
+ 
+names(df) <- c("ID","Code","Passed") # variable names
 ```
 
 ##<span style="color:cadetblue"> Useful functions</span>
