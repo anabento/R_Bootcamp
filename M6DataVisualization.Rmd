@@ -26,6 +26,12 @@ We will also touch on choosing a visualization.
 
 ![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
 
+
+here is some text. 
+
+![Multiple plot types in single pane](M6_mfig.png)
+
+
 ## Two approaches to the same problem: Base R vs ggplot
 
 ### Base R
@@ -38,7 +44,7 @@ We will also touch on choosing a visualization.
 
 There are plenty of guides on how to create the "best" visualization. 
 
-If you're plotting data to communicate (which is normally always), some things you should keep in mind:
+If you're plotting data to communicate (which is normally the case), some things you should keep in mind:
 
   - every addition plot feature is adding additional information
   - color choice (connotation, color blind)
