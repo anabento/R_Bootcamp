@@ -1,5 +1,5 @@
 ---
-title: <span style="color:cadetblue">M2:Data Types</span>
+title: <span style="color:cadetblue">Data Types</span>
 author: "A Bento & R Kaul"
 date: "`r Sys.Date()`"
 output: html_document
@@ -108,7 +108,7 @@ vec2 <- rep(1:4, each = 2)
 vec3<-seq(1, 15, by = 2)
 ```
 
-You can transform and use operators to create other ```Vectors```. Check the different between these two vectors
+You can transform and use operators to create other ```vectors```. Check the different between these two vectors
 ```{r Vectors2}
 vec4<-vec1+vec2+vec3
 
@@ -116,6 +116,15 @@ vec5<-sum(vec1,vec2,vec3)
 
 ```
 
+Accessing specific specific ```elements``` in the ```vector```
+```{r Vectors3}
+vec4[1] # first elements
+
+vec4[1:3] # first three elements
+
+vec4[c(1,2,4)] # first second and fourth elements
+
+```
 ###<span style="color:cadetblue">Matrices</span>
 
 ```Matrices``` are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
@@ -137,7 +146,7 @@ m1<-rbind(vec1,vec2)
 m2<-cbind(vec3,vec4)
 ```
 
-Subsetting from a ``` matrix```
+Subsetting from a ``` matrix```. Note that here we use two values for subsetting.
 ```{r Matrices 3}
 
 # All elements in first row of m1

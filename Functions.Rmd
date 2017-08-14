@@ -1,5 +1,5 @@
 ---
-title: "Functions"
+title:  <span style="color:cadetblue">Functions</span>
 author: "A Bento & R Kaul"
 date: "`r Sys.Date()`"
 output: html_document
@@ -8,3 +8,131 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
+
+##<span style="color:cadetblue">What is a function</span> 
+Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a sub program and called when needed. 
+```{r function}
+function (arglist)  {body}
+```
+
+##<span style="color:cadetblue">Example 1:</span> Simple function
+```{r function1}
+my.function1<-function(a,b,c){
+ tmp<-a+b
+ tmp2<-tmp/c
+ return(tmp2)
+}
+
+#Using this function we have:
+ out1<-my.function1(4,7,2)
+ out1
+```
+
+ <span style="color:orangered">**Practice**:</span> Choose other sets of numbers
+```{r function2} 
+out2<-my.function1(,,)
+out2
+```
+
+##<span style="color:cadetblue">Example 2:</span> Control statements
+
+```{r function3}
+ a<-5
+ if(a<1){
+ b<-5
+ c<-4
+ } else {
+ b<-10
+ }
+ b
+```
+
+
+##<span style="color:cadetblue">Example 3:</span> **for** loop
+
+```{r function4}
+a<-c()
+ for(i in 1:10){
+a[i]<-i^3
+ }
+ a
+```
+
+##<span style="color:cadetblue">Example 4:</span> Random number generation
+```{r function5} 
+
+random_numbers<-rnorm(3,mean=5,sd=3)
+random_numbers
+```
+ 
+##<span style="color:cadetblue">Example 5:</span> Descriptive stats 
+```{r function6}  
+dat<-rnorm(30,mean=5,sd=3) # creating a vector
+
+mean(dat) # taking the mean
+
+sum(dat) # sum the vector elements
+
+var(dat) # taking the variance
+
+length(dat) # length of vector
+
+
+sqrt(var(dat)/length(dat)) # standard error
+```
+
+<span style="color:orangered">**Practice**:</span> A function that computes descriptive stats
+```{r function10}
+standard.error <- function(x) {
+    sqrt(var(x)/length(x))
+}
+standard.error(dat)
+```
+
+
+
+##<span style="color:cadetblue">Example 6:</span> The apply  function
+```apply``` are functions to manipulate slices of data from matrices, arrays, lists and dataframes in a repetitive way 
+```{r function7}  
+X <- matrix(rnorm(30), nrow=5, ncol=6) # creating a matrix
+
+# Sum the values of each column with `apply()`
+apply(X, 2, sum)
+
+
+```
+
+
+##<span style="color:cadetblue">Example 7:</span> The lapply  function
+```lapply``` applies a given function to every element of a list and obtain a list as result
+```{r function8}  
+# create a list with 2 elements
+l <- list(a = 1:10, b = 11:20)
+
+# the mean of the values in each element
+lapply(l, mean)
+
+# the sum of the values in each element
+lapply(l, sum)
+
+```
+
+##<span style="color:cadetblue">Example 7:</span> The sapply  function
+```sapply``` will return either a vector, with elements [[‘a’]] and [[‘b’]], or a matrix with column names “a” and “b”
+```{r function9}  
+# create a list with 2 elements
+l <- list(a = 1:10, b = 11:20)
+# mean of values using sapply
+l.mean <- sapply(l, mean)
+# what type of object was returned?
+class(l.mean)
+
+# it's a numeric vector, so we can get element "a" like this
+l.mean[['a']]
+
+```
+
+
+## <span style="color:cadetblue">Going further</span>
+
+rapply, tapply, 

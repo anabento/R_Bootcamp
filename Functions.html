@@ -11,7 +11,7 @@
 
 <meta name="author" content="A Bento &amp; R Kaul" />
 
-<meta name="date" content="2017-08-13" />
+<meta name="date" content="2017-08-14" />
 
 <title>Functions</title>
 
@@ -117,14 +117,114 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Functions</h1>
+<h1 class="title toc-ignore"><span style="color:cadetblue">Functions</span></h1>
 <h4 class="author"><em>A Bento &amp; R Kaul</em></h4>
-<h4 class="date"><em>2017-08-13</em></h4>
+<h4 class="date"><em>2017-08-14</em></h4>
 
 </div>
 
 
+<div id="what-is-a-function" class="section level2">
+<h2><span style="color:cadetblue">What is a function</span></h2>
+<p>Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a sub program and called when needed.</p>
+<pre class="r"><code>function (arglist)  {body}</code></pre>
+</div>
+<div id="example-1-simple-function" class="section level2">
+<h2><span style="color:cadetblue">Example 1:</span> Simple function</h2>
+<pre class="r"><code>my.function1&lt;-function(a,b,c){
+ tmp&lt;-a+b
+ tmp2&lt;-tmp/c
+ return(tmp2)
+}
 
+#Using this function we have:
+ out1&lt;-my.function1(4,7,2)
+ out1</code></pre>
+<p><span style="color:orangered"><strong>Practice</strong>:</span> Choose other sets of numbers</p>
+<pre class="r"><code>out2&lt;-my.function1(,,)
+out2</code></pre>
+</div>
+<div id="example-2-control-statements" class="section level2">
+<h2><span style="color:cadetblue">Example 2:</span> Control statements</h2>
+<pre class="r"><code> a&lt;-5
+ if(a&lt;1){
+ b&lt;-5
+ c&lt;-4
+ } else {
+ b&lt;-10
+ }
+ b</code></pre>
+</div>
+<div id="example-3-for-loop" class="section level2">
+<h2><span style="color:cadetblue">Example 3:</span> <strong>for</strong> loop</h2>
+<pre class="r"><code>a&lt;-c()
+ for(i in 1:10){
+a[i]&lt;-i^3
+ }
+ a</code></pre>
+</div>
+<div id="example-4-random-number-generation" class="section level2">
+<h2><span style="color:cadetblue">Example 4:</span> Random number generation</h2>
+<pre class="r"><code>random_numbers&lt;-rnorm(3,mean=5,sd=3)
+random_numbers</code></pre>
+</div>
+<div id="example-5-descriptive-stats" class="section level2">
+<h2><span style="color:cadetblue">Example 5:</span> Descriptive stats</h2>
+<pre class="r"><code>dat&lt;-rnorm(30,mean=5,sd=3) # creating a vector
+
+mean(dat) # taking the mean
+
+sum(dat) # sum the vector elements
+
+var(dat) # taking the variance
+
+length(dat) # length of vector
+
+
+sqrt(var(dat)/length(dat)) # standard error</code></pre>
+<p><span style="color:orangered"><strong>Practice</strong>:</span> A function that computes descriptive stats</p>
+<pre class="r"><code>standard.error &lt;- function(x) {
+    sqrt(var(x)/length(x))
+}
+standard.error(dat)</code></pre>
+</div>
+<div id="example-6-the-apply-function" class="section level2">
+<h2><span style="color:cadetblue">Example 6:</span> The apply function</h2>
+<p><code>apply</code> are functions to manipulate slices of data from matrices, arrays, lists and dataframes in a repetitive way</p>
+<pre class="r"><code>X &lt;- matrix(rnorm(30), nrow=5, ncol=6) # creating a matrix
+
+# Sum the values of each column with `apply()`
+apply(X, 2, sum)</code></pre>
+</div>
+<div id="example-7-the-lapply-function" class="section level2">
+<h2><span style="color:cadetblue">Example 7:</span> The lapply function</h2>
+<p><code>lapply</code> applies a given function to every element of a list and obtain a list as result</p>
+<pre class="r"><code># create a list with 2 elements
+l &lt;- list(a = 1:10, b = 11:20)
+
+# the mean of the values in each element
+lapply(l, mean)
+
+# the sum of the values in each element
+lapply(l, sum)</code></pre>
+</div>
+<div id="example-7-the-sapply-function" class="section level2">
+<h2><span style="color:cadetblue">Example 7:</span> The sapply function</h2>
+<p><code>sapply</code> will return either a vector, with elements [[‘a’]] and [[‘b’]], or a matrix with column names “a” and “b”</p>
+<pre class="r"><code># create a list with 2 elements
+l &lt;- list(a = 1:10, b = 11:20)
+# mean of values using sapply
+l.mean &lt;- sapply(l, mean)
+# what type of object was returned?
+class(l.mean)
+
+# it's a numeric vector, so we can get element &quot;a&quot; like this
+l.mean[['a']]</code></pre>
+</div>
+<div id="going-further" class="section level2">
+<h2><span style="color:cadetblue">Going further</span></h2>
+<p>rapply, tapply,</p>
+</div>
 
 
 
