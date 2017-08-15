@@ -13,28 +13,35 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 # 6. Data Visualization
 
-This module will cover:
+This module will cover: 
+
+  - plotting in base R
+  - plotting in ggplot
+  
+which will require the following skills already covered:
 
   - Read in Data
   - Manipulate Data structure 
   - assigning an object
-  - Plot in base R
-  - Plot in ggplot
 
-We will also touch on choosing a visualization. 
+We will also touch on choosing an appropriate visualization, interactive graphics, and maps. 
 
+## Introduction
 
-![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
-
-
-here is some text. 
-
-![Multiple plot types in single pane](M6_mfig.png)
+Data visualization in `R` can be quick and dirty (ie. data exploration for yourself) or highly polished (ie. communicating to others). We have already touched on quick data exploration in the third module yesterday. Today we will cover content to produce a more polished looking plot. 
 
 
-## Two approaches to the same problem: Base R vs ggplot
+## Two approaches to the same problem: Base `R` vs ggplot
+
+Plotting in base `R` can allow the user to create highly customized plots. This customization comes at a cost- time.  
 
 ### Base R
+
+#### Adding layers of data
+
+#### Legends
+
+#### Multipanel plots
 
 ### ggplot
 
@@ -44,6 +51,11 @@ here is some text.
 
 There are plenty of guides on how to create the "best" visualization. 
 
+
+![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
+
+![Multiple plot types in single pane](M6_mfig.png)
+
 If you're plotting data to communicate (which is normally the case), some things you should keep in mind:
 
   - every addition plot feature is adding additional information
@@ -51,3 +63,6 @@ If you're plotting data to communicate (which is normally the case), some things
   - how the audience expects to see data
 
 For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006)
+
+## Spatial data
+
