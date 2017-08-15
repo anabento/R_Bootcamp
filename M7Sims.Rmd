@@ -22,6 +22,11 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
  \[n(t+1) = n(t) + r_d n(t) \left(1-\frac{n(t)}{K}\right)\]
  
 
+###<span style="color:orangered">How do we solve this in R</span>
+
+```
+Lets open Script3.R
+```
  
 ###<span style="color:cadetblue">The logistic model continuous</span>
 \[\frac{dn(t)}{dt} = r_c n(t) \left(1-\frac{n(t)}{K}\right).\]
@@ -65,3 +70,18 @@ Lets open Script3.R
 
 **Epidemiological processes** (e.g., infection of susceptible individuals, recovery of infected individuals). We will represent these with equations.
 
+The classical $SIR$ compartmental model tracks the proportions of the population in each of three classes
+(susceptible, denoted by $S(t)$ , infectious $I(t)$ and recovered $R(t)$). Here the variables of interest are
+susceptible, infectious and recovered individuals. As the epidemic progresses, these quantities can change over
+time.
+
+![SIR model](sir.png)
+Finish this!!!
+
+
+
+###<span style="color:orangered">How do we solve this in R</span>
+
+```
+Lets open Script4.R
+```
