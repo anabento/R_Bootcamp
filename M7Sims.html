@@ -123,8 +123,35 @@ $(document).ready(function () {
 <div id="simulating-data" class="section level1">
 <h1><span style="color:cadetblue">Simulating Data</span></h1>
 <hr />
-<p>This module will cover…</p>
-<p>data structure assigning objects plot function in base R read in data logic statements calculate simple stats in base R</p>
+<div id="mathematical-models" class="section level2">
+<h2><span style="color:cadetblue">Mathematical models</span></h2>
+<p><strong>Mathematical</strong> or dynamical models are abstract models that uses mathematical language to describe the behavior of a system.</p>
+<div id="the-logistic-model-discrete" class="section level3">
+<h3><span style="color:cadetblue">The logistic model discrete</span></h3>
+<p><span class="math display">\[n(t+1) = n(t) + r_d n(t) \left(1-\frac{n(t)}{K}\right)\]</span></p>
+</div>
+<div id="the-logistic-model-continuous" class="section level3">
+<h3><span style="color:cadetblue">The logistic model continuous</span></h3>
+<p><span class="math display">\[\frac{dn(t)}{dt} = r_c n(t) \left(1-\frac{n(t)}{K}\right).\]</span></p>
+<p>We will need to numerically integrate the growth rate equation rom time <span class="math inline">\(t=0\)</span> to time <span class="math inline">\(t=T\)</span>.</p>
+<p>In continuous models, today we will explore a specific type of model: <strong>ordinary differential equations</strong>. These describe the <em>rate</em> at which variables changes over time.</p>
+<p><span class="math display">\[\frac{dN}{dt} = &quot;function&quot; N(t)\]</span></p>
+<p>Where <span class="math inline">\(N(t)\)</span> is the value of a (continuous) variable at time.</p>
+<p>Here time is the <strong>independent variable</strong> and <strong>population size</strong> (<span class="math inline">\(N(t)\)</span>) is the dependent variable. If we plot as a function of time, then the slope of the curve would be <span class="math inline">\(\frac{dN}{dt}\)</span>. If the variable is increasing over time, the slope is positive; if it is decreasing, then it is negative.</p>
+<p>The <strong>LSODA</strong> adaptive step size solver in R is a powerful algorithm because it can automatically adjust its step size according to how rapidly the solution is changing.</p>
+<pre><code>require(deSolve) ## the packge we will uuse for this simulation
+
+#The LSODA function takes in four (non-optional) arguments
+
+out &lt;- lsoda(nstart, times, func, params)</code></pre>
+</div>
+<div id="how-do-we-solve-this-in-r" class="section level3">
+<h3><span style="color:orangered">How do we solve this in R</span></h3>
+<pre><code>Lets open Script3.R</code></pre>
+<p><strong>Epidemiological processes</strong> (e.g., infection of susceptible individuals, recovery of infected individuals). We will represent these with equations.</p>
+<p>We will formulate a few simple mathematical models of epidemics and solve these models in R.</p>
+</div>
+</div>
 </div>
 
 

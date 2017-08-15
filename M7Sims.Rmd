@@ -13,11 +13,57 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 ***
 
-This module will cover...
+##<span style="color:cadetblue">Mathematical models</span>
 
-data structure
-assigning objects
-plot function in base R
-read in data
-logic statements
-calculate simple stats in base R
+**Mathematical** or dynamical models are abstract models that uses mathematical language to describe the behavior of a system.
+
+###<span style="color:cadetblue">The logistic model discrete</span>
+
+ \[n(t+1) = n(t) + r_d n(t) \left(1-\frac{n(t)}{K}\right)\]
+ 
+
+ 
+###<span style="color:cadetblue">The logistic model continuous</span>
+\[\frac{dn(t)}{dt} = r_c n(t) \left(1-\frac{n(t)}{K}\right).\]
+ 
+We will need to numerically integrate the growth rate equation rom time \(t=0\) to time \(t=T\).
+
+In continuous models, today we will explore a specific type of model:  **ordinary differential equations**. These describe the *rate* at which variables changes over time.
+
+$$\frac{dN}{dt} = "function" N(t)$$
+
+Where $N(t)$ is the value of a (continuous) variable at time. 
+
+Here time is the **independent variable** and **population size** ($N(t)$) is the dependent variable. If we plot as a function
+of time, then the slope of the curve would be $\frac{dN}{dt}$. If the variable is increasing over time, the slope is positive;
+if it is decreasing, then it is negative. 
+
+The **LSODA** adaptive step size solver in R is a powerful algorithm because it can automatically adjust its step size according to how rapidly the solution is changing.
+
+
+```
+require(deSolve) ## the packge we will uuse for this simulation
+
+#The LSODA function takes in four (non-optional) arguments
+
+out <- lsoda(nstart, times, func, params)
+```
+
+
+
+
+###<span style="color:orangered">How do we solve this in R</span>
+
+```
+Lets open Script3.R
+```
+
+
+
+
+
+
+**Epidemiological processes** (e.g.,
+infection of susceptible individuals, recovery of infected individuals). We will represent these with equations.
+
+We will formulate  a few simple mathematical models of epidemics and solve these models in R.
