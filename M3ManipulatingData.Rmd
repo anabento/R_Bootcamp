@@ -1,5 +1,7 @@
 ---
-title: "Manipulating Data"
+title: ""
+author: ""
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
@@ -24,11 +26,11 @@ calculate simple stats in base R
 This module should be completed as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions by reading manual pages, googling, etc. 
 
 
-## Loading data
+###<span style="color:cadetblue">Loading data</span>
 
-Before we jump into calculating summary statistics and simple data vizualization, we need to import or load data into `R`. The data that we'll use for this exercise was emailed to you this morning. Save the `.csv` file to your working directory.
+Before we jump into calculating summary statistics and simple data vizualization, we need to import or load data into `R`. The data that we'll use for this exercise was emailed to you. Save the `.csv` file to your working directory.
 
-The `.csv` contains responses from the Cohort survey we sent out earlier in the week. Let's take a quick look at the file outside of R. What are the different columns and rows? What type of data structure would this be in `R`? 
+What are the different columns and rows? What type of data structure would this be in `R`? 
 
 **Insert screenshot of csv**
 
@@ -50,7 +52,7 @@ A common way to read data frames into R uses `read.csv`. *set up realistic part 
    
 ***
 
-## Solutions to `manipulating_data.R` 
+###<span style="color:orangered"> Solutions</span> to  `manipulating_data.R`
 
 ```{r read in csv}
 #load survey results into an object called cohort
@@ -58,7 +60,7 @@ cohort <- read.csv("CohortData.csv") #the file needs to be located in the workin
 ```
 
 
-###1. Exploring Data Structure
+###<span style="color:cadetblue">1. Exploring Data Structure</span>
 
 
 ```{r exploring data structure}
@@ -79,7 +81,7 @@ dim(cohort) #dimensions (rows, col)
 nrow(cohort) #returns number of rows of a vector, array or data frame
 ```
 
-###2. Exploring Data with Summary Statistics
+###<span style="color:cadetblue">2. Exploring Data with Summary Statistics</span>
 
 
 ```{r summary statistics}
@@ -103,7 +105,7 @@ summary(cohort) #returns min,max, median, and quartiles by column
 ```
 
 
-###3. Exploring Data with Basic Visualizations
+###<span style="color:cadetblue">3. Exploring Data with Basic Visualizations</span>
 
 
 ```{r basic vizualizations}

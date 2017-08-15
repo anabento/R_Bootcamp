@@ -1,10 +1,12 @@
 ---
-title: <span style="color:cadetblue">Data Types</span>
-author: "A Bento & R Kaul"
+title: ""
+author: ""
 date: "`r Sys.Date()`"
 output: html_document
 ---
+#<span style="color:cadetblue">Data Types</span>
 
+***
 This module should include 
 logic statements
 syntax
@@ -17,7 +19,7 @@ reading in data
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
-#<span style="color:cadetblue">2. Data </span>
+
 ##<span style="color:cadetblue"> `R` Objects </span>
 
 Everything in `R` is an object. But what does this mean to someone who doesn't have a computer science background? 
@@ -123,6 +125,24 @@ vec4[1] # first elements
 vec4[1:3] # first three elements
 
 vec4[c(1,2,4)] # first second and fourth elements
+
+vec6 <- c(1:20) #creating a vector 
+x <- c(3, 5, 12) # creating another vector 
+
+vec6[x]# the elements of vec6 that coicinde with vector x
+
+vec6[-x] # What happened here?
+
+
+vec7 <- c(1:5,2,2,2,2,2) #creating a vector 
+
+vec7[vec7 > 4] # elements bigger than 4
+
+vec7[vec7 < 4] # elements less than 4
+
+which(vec7 < 4) # position
+
+which(vec7 == 2) # position
 
 ```
 ###<span style="color:cadetblue">Matrices</span>

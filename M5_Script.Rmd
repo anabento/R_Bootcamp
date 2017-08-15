@@ -1,0 +1,126 @@
+---
+title:  <span style="color:cadetblue">Writing a script</span>
+author: "A Bento & R Kaul"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#<span style="color:cadetblue">The importance of a script</span>
+>1. Permanent 
+>2. Repeatable
+>3. Annotated 
+>4. Shareable
+
+We will do this exercise together...
+
+##<span style="color:cadetblue">Step 1</span>
+
+```
+File --> New File --> R Script or Top left green and white plus sign drop down then select R Script
+```
+
+##<span style="color:cadetblue">Step 2</span>
+
+``` 
+The # symbols declares that anything after it is a comment
+
+You should start with some information at the top, for example:
+#############################
+## Author:                ###
+## Date:                  ###
+## Purpose:               ###
+#############################
+```
+
+##<span style="color:cadetblue">Step 3</span>
+
+Leave an empty "blank line" - These are important  to create chunks of code and annotation
+
+##<span style="color:cadetblue">Step 4</span>
+
+``` 
+Next we recomend you always start a script by clearing R's brain
+rm(list=ls())
+```
+
+<span style="color:orangered">**_Check_**:</span> Notice the colours, this is syntax highlighting. Separates:
+ 
+>1. comments
+>2. R functions
+>3. numbers 
+>4. other things
+
+
+You will notice Rstudio **closes brackets** for you automatically
+
+
+##<span style="color:cadetblue">Step 5</span>
+
+Leave another empty "blank line"
+
+##<span style="color:cadetblue">Step 6</span>
+
+Now you are ready to start writing your first script!
+
+```{r loop}
+ for(i in 1:10){ # for loop run from 1 to 10
+print("Darwin rules!") # write a sentence 10 times
+print(i*i) # also print each number multiplied by itself 
+}
+```
+
+```{r plot}
+
+# A simple function that needs functions from the ape library to run
+# ape is a library of functions for analysis of evolutionary relationships:
+Tree <- function(x){
+   #this function creates a plot of a random evolutionary tree
+   #of size x
+   require(ape)
+   tree <- rcoal(x)
+   plot(tree)
+ }
+Tree(30)
+```
+
+
+<span style="color:orangered">**Practice**:</span> Uncomment and fill in a simple function with a nested if statement will print alternative outcomes
+
+```{r function}
+
+#Isit <- function(x){
+# if (x == ??)
+ #print("???!")
+ #else print("???")
+#}
+
+
+#Isit(?)
+
+#Isit(?)
+
+```
+
+##<span style="color:cadetblue">Step 7</span>
+
+Once you are done writing your script and you are happy with the commenting. **Save** it in your **working directory** of choice. Give it a meaningful name.
+
+
+##<span style="color:cadetblue">Step 8</span>
+
+Open your script and run it!
+```
+setwd("your path") # sets your working directory. You can also do this mannually
+source("Script1.R") # source the script of your choice
+```
+<span style="color:orangered">**_Or_**</span> you can double click on your R script open it in R studio and run specific parts of it
+``` 
+Mac: cmd+return 
+Windows: ctrl+enter
+or pressing Run 
+```
+
