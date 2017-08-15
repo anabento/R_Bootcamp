@@ -12,7 +12,7 @@ At the end of these lessons, students will be able to (SWBAT)...
       - list the different data types of R
       - describe the difference between a data frame and matrix
       - give examples of when to use different data types
-  3.  Manipulating Data  
+  3.  Exploring Data  
         - Importing and exporting daa
         - Calculating summary statistics
   4.  Writing your first script
