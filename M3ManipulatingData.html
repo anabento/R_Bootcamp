@@ -126,10 +126,10 @@ $(document).ready(function () {
 <p>This module will cover…</p>
 <p>data structure assigning objects plot function in base R read in data logic statements calculate simple stats in base R</p>
 <p>This module should be completed as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions by reading manual pages, googling, etc.</p>
-<div id="loading-data" class="section level2">
-<h2>Loading data</h2>
-<p>Before we jump into calculating summary statistics and simple data vizualization, we need to import or load data into <code>R</code>. The data that we’ll use for this exercise was emailed to you this morning. Save the <code>.csv</code> file to your working directory.</p>
-<p>The <code>.csv</code> contains responses from the Cohort survey we sent out earlier in the week. Let’s take a quick look at the file outside of R. What are the different columns and rows? What type of data structure would this be in <code>R</code>?</p>
+<div id="loading-data" class="section level3">
+<h3><span style="color:cadetblue">Loading data</span></h3>
+<p>Before we jump into calculating summary statistics and simple data vizualization, we need to import or load data into <code>R</code>. The data that we’ll use for this exercise was emailed to you. Save the <code>.csv</code> file to your working directory.</p>
+<p>What are the different columns and rows? What type of data structure would this be in <code>R</code>?</p>
 <p><strong>Insert screenshot of csv</strong></p>
 <p>A common way to read data frames into R uses <code>read.csv</code>. <em>set up realistic part of example</em> Work with your partner to complete the <code>manipulating_data.R</code> script. This script follows a realiztic work flow used to explore new data. Data exploration might include answering the following:</p>
 <ol style="list-style-type: decimal">
@@ -155,12 +155,13 @@ $(document).ready(function () {
 </ol>
 <hr />
 </div>
-<div id="solutions-to-manipulating_data.r" class="section level2">
-<h2>Solutions to <code>manipulating_data.R</code></h2>
+<div id="solutions-to-manipulating_data.r" class="section level3">
+<h3><span style="color:orangered"> Solutions</span> to <code>manipulating_data.R</code></h3>
 <pre class="r"><code>#load survey results into an object called cohort
 cohort &lt;- read.csv(&quot;CohortData.csv&quot;) #the file needs to be located in the working directory  </code></pre>
+</div>
 <div id="exploring-data-structure" class="section level3">
-<h3>1. Exploring Data Structure</h3>
+<h3><span style="color:cadetblue">1. Exploring Data Structure</span></h3>
 <pre class="r"><code>#What is the structure of the data?
 str(cohort) #object names are case sensitive 
 
@@ -178,7 +179,7 @@ dim(cohort) #dimensions (rows, col)
 nrow(cohort) #returns number of rows of a vector, array or data frame</code></pre>
 </div>
 <div id="exploring-data-with-summary-statistics" class="section level3">
-<h3>2. Exploring Data with Summary Statistics</h3>
+<h3><span style="color:cadetblue">2. Exploring Data with Summary Statistics</span></h3>
 <pre class="r"><code>#What is the max, min and mean distance to the students favplace? 
 mean(cohort$favplace) #return the mean distance
 min(cohort$place) #return the min distance
@@ -195,7 +196,7 @@ apply(cohort[,1:4], 2, mean)
 summary(cohort) #returns min,max, median, and quartiles by column</code></pre>
 </div>
 <div id="exploring-data-with-basic-visualizations" class="section level3">
-<h3>3. Exploring Data with Basic Visualizations</h3>
+<h3><span style="color:cadetblue">3. Exploring Data with Basic Visualizations</span></h3>
 <pre class="r"><code>#What is the distribution of the no. of siblings in the cohort?
 hist(cohort$sibling) #must call the col with the data of interest
   
@@ -207,7 +208,6 @@ boxplot(cohort)
 
 #How does the distribution of no. of siblings, birth order and birth date relate?
 boxplot(cohort[,1:3]) #the subset using [rows, col] </code></pre>
-</div>
 </div>
 </div>
 
