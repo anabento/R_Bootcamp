@@ -23,7 +23,7 @@ A typical function has the follwoing architecture
 function (arglist)  {body}
 ```
 
-##<span style="color:cadetblue">Example 1:</span> Simple function
+##<span style="color:cadetblue">Example 1a:</span> Simple function
 ```{r function1}
 my.function1<-function(a,b,c){
  tmp<-a+b
@@ -42,7 +42,32 @@ out2<-my.function1(,,)
 out2
 ```
 
-##<span style="color:cadetblue">Example 2:</span> Control statements
+##<span style="color:cadetblue">Example 1b:</span> Rounding  function
+```{r function13}
+Roundme <- function(x){
+   #this function uses the floor function to 
+   #do what the round function does
+   x <- x+0.5
+   floor(x)
+ }
+```
+
+
+
+##<span style="color:cadetblue">Example 2a:</span> Control statements **if**
+
+```{r function11}
+ x <- 8
+
+if (x < 9) print("x is less than nine")
+ 
+x <- 10
+
+if (x < 9) print("x is less than nine")
+
+```
+
+##<span style="color:cadetblue">Example 2b:</span> Control statements **if else**
 
 ```{r function3}
  a<-5
@@ -55,8 +80,18 @@ out2
  b
 ```
 
+##<span style="color:cadetblue">Example 2c:</span> Control statements **while**
+```{r function10}
+x <- 2
+while(x < 10){
+ print(x)
+ x <- x+1
+}
 
-##<span style="color:cadetblue">Example 3:</span> **for** loop
+print("The end")
+```
+
+##<span style="color:cadetblue">Example 3a:</span> **for** loop
 
 ```{r function4}
 a<-c() # creating an empty vector
@@ -65,6 +100,8 @@ a[i]<-i^3  # this is the operation
  }
  a # seeing what the vector a becomes
 ```
+
+
 
 ##<span style="color:cadetblue">Example 4:</span> Random number generation
 
@@ -79,6 +116,16 @@ random_numbers
 ```{r function6}  
 dat<-rnorm(30,mean=5,sd=3) # creating a vector
 
+dat # check it
+
+sort (dat) #sort vector
+
+unique (dat) #unique values
+
+max(dat) #max
+
+min(dat) #min
+
 mean(dat) # taking the mean
 
 sum(dat) # sum the vector elements
@@ -92,7 +139,7 @@ sqrt(var(dat)/length(dat)) # standard error
 ```
 
 <span style="color:orangered">**Practice**:</span> A function that computes descriptive stats
-```{r function10}
+```{r function12}
 standard.error <- function(x) {
     sqrt(var(x)/length(x))
 }

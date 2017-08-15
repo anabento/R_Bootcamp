@@ -133,8 +133,8 @@ $(document).ready(function () {
 <p>A typical function has the follwoing architecture</p>
 <pre class="r"><code>function (arglist)  {body}</code></pre>
 </div>
-<div id="example-1-simple-function" class="section level2">
-<h2><span style="color:cadetblue">Example 1:</span> Simple function</h2>
+<div id="example-1a-simple-function" class="section level2">
+<h2><span style="color:cadetblue">Example 1a:</span> Simple function</h2>
 <pre class="r"><code>my.function1&lt;-function(a,b,c){
  tmp&lt;-a+b
  tmp2&lt;-tmp/c
@@ -148,8 +148,27 @@ $(document).ready(function () {
 <pre class="r"><code>out2&lt;-my.function1(,,)
 out2</code></pre>
 </div>
-<div id="example-2-control-statements" class="section level2">
-<h2><span style="color:cadetblue">Example 2:</span> Control statements</h2>
+<div id="example-1b-rounding-function" class="section level2">
+<h2><span style="color:cadetblue">Example 1b:</span> Rounding function</h2>
+<pre class="r"><code>Roundme &lt;- function(x){
+   #this function uses the floor function to 
+   #do what the round function does
+   x &lt;- x+0.5
+   floor(x)
+ }</code></pre>
+</div>
+<div id="example-2a-control-statements-if" class="section level2">
+<h2><span style="color:cadetblue">Example 2a:</span> Control statements <strong>if</strong></h2>
+<pre class="r"><code> x &lt;- 8
+
+if (x &lt; 9) print(&quot;x is less than nine&quot;)
+ 
+x &lt;- 10
+
+if (x &lt; 9) print(&quot;x is less than nine&quot;)</code></pre>
+</div>
+<div id="example-2b-control-statements-if-else" class="section level2">
+<h2><span style="color:cadetblue">Example 2b:</span> Control statements <strong>if else</strong></h2>
 <pre class="r"><code> a&lt;-5
  if(a&lt;1){
  b&lt;-5
@@ -159,8 +178,18 @@ out2</code></pre>
  }
  b</code></pre>
 </div>
-<div id="example-3-for-loop" class="section level2">
-<h2><span style="color:cadetblue">Example 3:</span> <strong>for</strong> loop</h2>
+<div id="example-2c-control-statements-while" class="section level2">
+<h2><span style="color:cadetblue">Example 2c:</span> Control statements <strong>while</strong></h2>
+<pre class="r"><code>x &lt;- 2
+while(x &lt; 10){
+ print(x)
+ x &lt;- x+1
+}
+
+print(&quot;The end&quot;)</code></pre>
+</div>
+<div id="example-3a-for-loop" class="section level2">
+<h2><span style="color:cadetblue">Example 3a:</span> <strong>for</strong> loop</h2>
 <pre class="r"><code>a&lt;-c() # creating an empty vector
  for(i in 1:10){ # i becomes 1 through 10 iteratively 
 a[i]&lt;-i^3  # this is the operation
@@ -176,6 +205,16 @@ random_numbers</code></pre>
 <div id="example-5-descriptive-stats" class="section level2">
 <h2><span style="color:cadetblue">Example 5:</span> Descriptive stats</h2>
 <pre class="r"><code>dat&lt;-rnorm(30,mean=5,sd=3) # creating a vector
+
+dat # check it
+
+sort (dat) #sort vector
+
+unique (dat) #unique values
+
+max(dat) #max
+
+min(dat) #min
 
 mean(dat) # taking the mean
 

@@ -1,0 +1,23 @@
+---
+title: ""
+author: ""
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+#<span style="color:cadetblue">Simulating Data</span>
+
+***
+
+This module will cover...
+
+data structure
+assigning objects
+plot function in base R
+read in data
+logic statements
+calculate simple stats in base R
