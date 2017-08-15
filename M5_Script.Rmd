@@ -47,6 +47,17 @@ Next we recomend you always start a script by clearing R's brain
 rm(list=ls())
 ```
 
+<span style="color:orangered">**_Check_**:</span> Notice the colours, this is syntax highlighting. Separates:
+ 
+>1. comments
+>2. R functions
+>3. numbers 
+>4. other things
+
+
+You will notice Rstudio **closes brackets** for you automatically
+
+
 ##<span style="color:cadetblue">Step 5</span>
 
 Leave another empty "blank line"
@@ -57,20 +68,42 @@ Now you are ready to start writing your first script!
 
 ```{r loop}
  for(i in 1:10){ # for loop run from 1 to 10
-print("Hello world!") # write Hello world 10 times
+print("Darwin rules!") # write a sentence 10 times
 print(i*i) # also print each number multiplied by itself 
 }
 ```
 
-<span style="color:orangered">**_Check_**:</span> Notice the colours, this is syntax highlighting. Separates:
- 
->1. comments
->2. R functions
->3. numbers 
->4. other things
+```{r plot}
+
+# A simple function that needs functions from the ape library to run
+# ape is a library of functions for analysis of evolutionary relationships:
+Tree <- function(x){
+   #this function creates a plot of a random evolutionary tree
+   #of size x
+   require(ape)
+   tree <- rcoal(x)
+   plot(tree)
+ }
+Tree(30)
+```
 
 
-You will notice Rstudio **closes brackets** for you automatically
+<span style="color:orangered">**Practice**:</span> Uncomment and fill in a simple function with a nested if statement will print alternative outcomes
+
+```{r function}
+
+#Isit <- function(x){
+# if (x == ??)
+ #print("???!")
+ #else print("???")
+#}
+
+
+#Isit(?)
+
+#Isit(?)
+
+```
 
 ##<span style="color:cadetblue">Step 7</span>
 
