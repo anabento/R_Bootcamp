@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE, warning = FALSE, message = FALSE)
 ```
 
 
@@ -30,22 +30,89 @@ We will also touch on choosing an appropriate visualization, interactive graphic
 
 Data visualization in `R` can be quick and dirty (ie. data exploration for yourself) or highly polished (ie. communicating to others). We have already touched on quick data exploration in the third module yesterday. Today we will cover content to produce a more polished looking plot. 
 
-
 ## Two approaches to the same problem: Base `R` vs ggplot
 
-Plotting in base `R` can allow the user to create highly customized plots. This customization comes at a cost- time.  
+Plotting in base `R` can allow the user to create highly customized plots. This customization comes at the cost of time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammer of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. I will walk through an example using base `R` and then recreate the figure using `ggplot2`. 
 
 ### Base R
 
+A simple scatter plot can take much more work than you expect based on the visualization. Let's create a plot of the total population by county area for 5 midwest states. This data is part of the `ggplot2` package. 
+
+```{r base R}
+library(ggplot2) #load the package with the data
+data("midwest", package = "ggplot2") #load the data, midwest is now in the working environment. 
+plot(y=log10(midwest$poptotal), x=midwest$area, #call the x and y values 
+     col=as.factor(midwest$state), #point colors should be based on state 
+     pch=19, cex=.75,#point shape and size
+     ylim=c(3,7), xlim=c(0,.1), #set the axis limites
+     xlab="Area", ylab=expression('Log'[10]*'(Total population)'),#label the axis
+     main ="Area vs population"#add a title
+     )
+
+```
+
+#### Legends, axis and additional text
+
+Legends are not automatically created when using base `R`. You have to add them manually. There are a few different methods to do this, but the function `legend` works in most cases. 
+
+```{r legend}
+legend("topright", col=c(1:5), pch=19,legend=levels(as.factor(midwest$state)))
+```
+
 #### Adding layers of data
 
-#### Legends
+
+```{r}
+
+```
 
 #### Multipanel plots
 
 ### ggplot
 
+Below is an example from Selva Prabhakaran's Tutorial. Prabhakaran has also compiled a list of 50 different visualizations along with the code [here](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot). 
+
+```{r ggplot, eval=TRUE}
+
+# install.packages("ggplot2")
+# load package and data
+options(scipen=999)  # turn-off scientific notation like 1e+48
+library(ggplot2)
+theme_set(theme_bw())  # pre-set the bw theme.
+# midwest <- read.csv("http://goo.gl/G1K41K")  # bkup data source
+
+# Scatterplot
+gg <- ggplot(midwest, aes(x=area, y=log10(poptotal))) + 
+  geom_point(aes(col=state)) + 
+#  geom_smooth(method="loess", se=F) + 
+  xlim(c(0, 0.1)) + 
+  #ylim(c(0, 500000)) + 
+  labs(subtitle="Area Vs Population", 
+       y="Population", 
+       x="Area", 
+       title="Scatterplot", 
+       caption = "Source: midwest")
+#, size=popdensity
+plot(gg)
+```
+
 #### plotly: easy interative plots with ggplot
+
+The `plotly` package is an add on to `ggplot2` for quick interactive plots. The package is still relatively new and is under current development. The legends or other features are often poorly displayed but the interactive feature maybe useful for data exploration during an inperson meeting. 
+
+Below is an example from the `plotly` [website](https://plot.ly/r/line-and-scatter/). You'll notice the syntax is similar to `ggplots` but the functions have changed a bit. 
+
+```{r plotly example, eval=TRUE}
+library(plotly)
+
+p <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length,
+        marker = list(size = 10, color = 'rgba(255, 182, 193, .9)', line = list(color = 'rgba(152, 0, 0, .8)', width = 2))) %>%
+  layout(title = 'Styled Scatter', yaxis = list(zeroline = FALSE), xaxis = list(zeroline = FALSE))
+
+p #plot the interactive graphic
+```
+## Animated plots
+
 
 ## Graphic for communication
 
