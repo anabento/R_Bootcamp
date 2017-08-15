@@ -60,10 +60,8 @@ Lets open Script3.R
 
 
 
+###<span style="color:cadetblue">SIR model</span>
 
 
+**Epidemiological processes** (e.g., infection of susceptible individuals, recovery of infected individuals). We will represent these with equations.
 
-**Epidemiological processes** (e.g.,
-infection of susceptible individuals, recovery of infected individuals). We will represent these with equations.
-
-We will formulate  a few simple mathematical models of epidemics and solve these models in R.

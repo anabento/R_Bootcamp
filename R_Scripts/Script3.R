@@ -105,19 +105,10 @@ n0 = 1
 ## times: the vector of time points for recording the output (note that this doesn't affect the accuracy at all)
 ## func: the function specifying the derivatives
 ## parms: the parameters required by the function specified by 'func'
-n = ode(y=n0, times=times, func=cont.logistic, parms=p)
-n
-##    time      1
-## 1     0  1.000
-## 2     1  1.638
-## 3     2  2.672
-## 4     3  4.331
-## 5     4  6.945
-## 6     5 10.957
-## 7     6 16.866
-## 8     7 25.065
-## 9     8 35.546
-## 10    9 47.624
-## 11   10 59.986
+n <- as.data.frame(ode(y=n0, times=times, func=cont.logistic, parms=p)) ## can replace ode with lsoda
+
+names(n)<-c("time", "N")
+
+
 ## You can see that what is returned by the function 'ode' is a matrix with two columns: the first column gives the time points, and the second column gives the population size. You can easily plot this:
 plot(x=n[,1], y=n[,2], type='l', xlab='Time', ylab='Population size', main='Continuous time logistic model')
