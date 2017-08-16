@@ -52,7 +52,7 @@ A common way to read data frames into R uses `read.csv`. *set up realistic part 
    
 ***
 
-###<span style="color:orangered"> Solutions</span> to  `manipulating_data.R`
+###<span style="color:orangered"> Solutions</span> in  `manipulating_data.R`
 
 ```{r read in csv}
 #load survey results into an object called cohort
