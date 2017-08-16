@@ -7,15 +7,14 @@ output: html_document
 #<span style="color:cadetblue">Data Types</span>
 
 ***
-This module should include 
-logic statements
-syntax
-data structure
-assigning objects
-troubleshooting
-reading in data
 
-```{r settings}
+This module will cover: 
+
+  - assigning objects
+  - data structure and syntax
+  - troubleshooting through Rstudio
+  
+```{r settings, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
 
@@ -55,6 +54,7 @@ One of the first concepts we'll need to understand how `R` organizes information
   * typeof() 
   * length()
   * attributes()
+  * str()
   
  <span style="color:orangered">**Practice**:</span> Verify `myname` class type and determine the length. You may need to pull up the documentation page for the functions. 
 
@@ -110,7 +110,8 @@ vec2 <- rep(1:4, each = 2)
 vec3<-seq(1, 15, by = 2)
 ```
 
-You can transform and use operators to create other ```vectors```. Check the different between these two vectors
+You can transform and use operators to create other ```vectors```. Explore the difference between `vec4` and `vec5`. How was the addition done in both cases? 
+
 ```{r Vectors2}
 vec4<-vec1+vec2+vec3
 
@@ -118,9 +119,9 @@ vec5<-sum(vec1,vec2,vec3)
 
 ```
 
-Accessing specific specific ```elements``` in the ```vector```
+There are many different ways to manipulate `vectors`. These methods will come in handy when exploring and plotting data. Accessing specific ```elements``` in the ```vector``` can be done based on the value of the `element` or the `element` location in the string. 
 
-<span style="color:orangered">**Practice**:</span> Some will be need commenting
+<span style="color:orangered">**Practice**:</span> Determine how the command is accesses the vector. Complete the comment where needed. 
 ```{r Vectors3}
 vec4[1] # first elements
 
@@ -165,7 +166,7 @@ m<-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cname
 Another way to build a matrix is to combine vectors by rows (rbind) or columns (cbind)
 ```{r Matrices 2}
 m1<-rbind(vec1,vec2)
-m2<-cbind(vec3,vec4)
+m2<-cbind(vec2,vec3,vec4)
 ```
 
 Subsetting from a ``` matrix```. Note that here we use two values for subsetting.
@@ -179,17 +180,17 @@ m1[1,]
 m1[,1]
 
 ```
-<span style="color:orangered">**Practice**:</span> Subset from m2
+<span style="color:orangered">**Practice**:</span> Write the command that is descibed in the comments. 
 ```{r Matrices 4}
 
 
-# All elements in second row
+# All elements in second row of m2
 
 
-#All elements in third column
+#All elements in third column of m2
 
 
-
+#The elements in the bottom 2 rows, and the second and third column of m2
 
 
 ```
@@ -197,7 +198,7 @@ m1[,1]
 ###<span style="color:cadetblue">Lists</span>
 ```Lists``` are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.
 
-*Lists of lists of lists can confusing*
+*Lists of lists of lists can be confusing*
 
 ```{r Lists}
 #make a list
@@ -206,11 +207,18 @@ primes <- list(
     2, 3, 4:5,
     6:7, 8:11, 12:13,
     14:17, 18:19, 20:23)
+```
+
+<span style="color:orangered">**Practice**:</span> Follow comments to interact with the list 
+```{r Lists 2}
 #check the class of an entry
 
-# subsetting 
+#determine the structure of w 
 
-w[[1]] ## what is this?
+#subsetting 
+
+w[[2]] ## what is this?
+w[[2]][1] #what is this? How is it different than last command? 
 
 ```
 
@@ -284,10 +292,11 @@ df$n
     ncol() - number of columns
     str() - structure of each column
     names() - will list the names attribute for a data frame (or any object really), which gives the column names.
+    
 
 ## <span style="color:cadetblue">Going further</span>
 
-Tidyverse tibble, etc...
+The `R` community lead by Garrett Grolemund and Hadley Wickham has developed work flows that are more efficient for common data science manipulations. Check out the [Tidyverse](https://www.tidyverse.org/) and [R for Data Science](http://r4ds.had.co.nz/).  
 
-http://www.statmethods.net/input/datatypes.html
+In general, if you're searching for a quick reference for `R` [statmethods](http://www.statmethods.net/index.html) is a good source. 
 
