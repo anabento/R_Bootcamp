@@ -12,7 +12,18 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 #<span style="color:cadetblue">Simulating Data</span>
 
 ***
+This module will cover: 
 
+  - Simulating data
+  
+  
+which will require the following skills already covered:
+
+  - data structure 
+  - assigning an object
+  - plotting
+  - Manipulate Data structure 
+  
 ##<span style="color:cadetblue">Mathematical models</span>
 
 **Mathematical** or dynamical models are abstract models that uses mathematical language to describe the behavior of a system
