@@ -22,8 +22,8 @@ This module will cover:
   
 which will require the following skills already covered:
 
-  - Read in Data
-  - Manipulate Data structure 
+  - reading in data
+  - manipulating data  
   - assigning an object
 
 We will also touch on choosing an appropriate visualization, interactive graphics, and maps. 

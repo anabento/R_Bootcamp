@@ -13,26 +13,32 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 ***
 
-This module will cover...
+This module will cover:
 
-data structure
-assigning objects
-plot function in base R
-read in data
-logic statements
-calculate simple stats in base R
+  - loading data 
+  - logic statements
+  - calculate simple stats in base `R`
+  - plot function in base `R`
 
+which will require the following skills already covered:
 
-This module should be completed as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions by reading manual pages, googling, etc. 
+  - manipulating data  
+  - assigning an object
+  
+
 
 
 ###<span style="color:cadetblue">Loading data</span>
 
-Before we jump into calculating summary statistics and simple data vizualization, we need to import or load data into `R`. The data that we'll use for this exercise was emailed to you. Save the `.csv` file to your working directory.
+Before we jump into calculating summary statistics and simple data vizualization, we need to import or load data into `R`. 
+
+
+![data science cycle](data-science.png)
 
 What are the different columns and rows? What type of data structure would this be in `R`? 
 
-**Insert screenshot of csv**
+library(nycflights13)
+head(flights) 
 
 A common way to read data frames into R uses `read.csv`. *set up realistic part of example* Work with your partner to complete the `manipulating_data.R` script. This script follows a realiztic work flow used to explore new data. Data exploration might include answering the following:
    
@@ -49,7 +55,9 @@ A common way to read data frames into R uses `read.csv`. *set up realistic part 
       * scatter plot: Does birth order correlate with number of siblings? 
       * histogram: What is the distribution of the no. of siblings in the cohort?
       * boxplot: How does the distribution of no. of siblings, birth order and birth date relate?
-   
+      
+This module should be completed as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions by reading manual pages, googling, etc. The team will switch roles throughout the exercise. 
+
 ***
 
 ###<span style="color:orangered"> Solutions</span> in  `manipulating_data.R`
