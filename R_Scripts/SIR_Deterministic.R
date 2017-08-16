@@ -74,7 +74,7 @@ library(ggplot2)
 
 library(gridExtra) # load package
 
-
+library(magrittr)
 
 p1<-ggplot(data=out.SIR,aes(x=time,y=I))+ ### 
   geom_line(colour="red")+ 
@@ -91,7 +91,7 @@ grid.arrange(p1, p2, p3, nrow=1)
 
 library(reshape) # load package
 
-mdata <- melt(out.SIR, id=c("time"))# this will reshape the data
+ mdata <- out.SIR %>% melt(id=c("time"))# this will reshape the data using pipping
 names(mdata)<-c("time", "Comp", "value")
 mycols<-c( "blue","red","green")
 

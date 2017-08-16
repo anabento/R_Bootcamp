@@ -138,14 +138,31 @@ length(dat) # length of vector
 sqrt(var(dat)/length(dat)) # standard error
 ```
 
-<span style="color:orangered">**Practice**:</span> A function that computes descriptive stats
+<span style="color:orangered">**Practice**:</span> Fill in this function to computes descriptive stats
+
 ```{r function12}
 standard.error <- function(x) {
-    sqrt(var(x)/length(x))
+  ????? 
 }
 standard.error(dat)
 ```
 
+<span style="color:orangered">**Practice**:</span> Uncomment and fill in a simple function with a nested if statement will print alternative outcomes
+
+```{r function14}
+
+#Isit <- function(x){
+# if (x == ??)
+ #print("???!")
+ #else print("???")
+#}
+
+
+#Isit(?)
+
+#Isit(?)
+
+```
 
 
 ##<span style="color:cadetblue">Example 6:</span> The apply  function

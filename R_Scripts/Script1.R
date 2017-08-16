@@ -30,6 +30,7 @@ Tree <- function(x){
 }
 Tree(30)
 
+
 ### chunk 3
 
 Isit <- function(x){

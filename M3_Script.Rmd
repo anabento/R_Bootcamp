@@ -1,10 +1,10 @@
 ---
 title:  <span style="color:cadetblue">Writing a script</span>
-author: "A Bento & R Kaul"
-date: "`r Sys.Date()`"
+author: ""
+date: ""
 output: html_document
 ---
-
+***
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 >3. Annotated 
 >4. Shareable
 
-We will do this exercise together...
+###<span style="color:orangered">We will do this exercise together...</span>
 
 ##<span style="color:cadetblue">Step 1</span>
 
@@ -42,20 +42,14 @@ Leave an empty "blank line" - These are important  to create chunks of code and 
 
 ##<span style="color:cadetblue">Step 4</span>
 
-``` 
-Next we recomend you always start a script by clearing R's brain CHNAGE THIS SENTENCE
-rm(list=ls())
-```
 
-<span style="color:orangered">**_Check_**:</span> Notice the colours, this is syntax highlighting. Separates:
- 
->1. comments
->2. R functions
->3. numbers 
->4. other things
+Next <span style="color:orangered">**if**</span> your script has code that is standalone and independent, we recomend you always start a script by clearing R's brain 
+``` rm(list=ls())``` 
 
 
-You will notice Rstudio **closes brackets** for you automatically
+<span style="color:orangered">**If**</span>  your script is a function or group of functions to be sourced skip this step
+
+Try typing the rm function instead of copy pasting it. You will notice Rstudio **closes brackets** for you automatically
 
 
 ##<span style="color:cadetblue">Step 5</span>
@@ -64,7 +58,11 @@ Leave another empty "blank line"
 
 ##<span style="color:cadetblue">Step 6</span>
 
-Now you are ready to start writing your first script!
+###Now you are ready to start writing your first script! Copy paste the code inside the ```[] ``` Then move to <span style="color:cadetblue">Step 7</span>
+
+We will go over how to construct these functions in the next module
+
+A loop
 
 ```{r loop}
  for(i in 1:10){ # for loop run from 1 to 10
@@ -72,6 +70,26 @@ print("Darwin rules!") # write a sentence 10 times
 print(i*i) # also print each number multiplied by itself 
 }
 ```
+
+
+A function
+
+```{r function}
+
+Isit <- function(x){
+ if (x == 10)
+ print("It's a ten!")
+ else print("Not a ten!")
+}
+
+
+Isit(10)
+
+Isit(1)
+
+```
+
+A function and a plot 
 
 ```{r plot}
 
@@ -88,22 +106,13 @@ Tree(30)
 ```
 
 
-<span style="color:orangered">**Practice**:</span> Uncomment and fill in a simple function with a nested if statement will print alternative outcomes
+<span style="color:orangered">**_Check_**:</span> Notice the colours in your script, this is syntax highlighting. Separates:
+ 
+>1. comments
+>2. R functions
+>3. numbers 
+>4. other things
 
-```{r function}
-
-#Isit <- function(x){
-# if (x == ??)
- #print("???!")
- #else print("???")
-#}
-
-
-#Isit(?)
-
-#Isit(?)
-
-```
 
 ##<span style="color:cadetblue">Step 7</span>
 
