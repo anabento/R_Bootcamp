@@ -30,73 +30,143 @@ We will also touch on choosing an appropriate visualization, interactive graphic
 
 Data visualization in `R` can be quick and dirty (ie. data exploration for yourself) or highly polished (ie. communicating to others). We have already touched on quick data exploration in the third module yesterday. Today we will cover content to produce a more polished looking plot. 
 
-## Two approaches to the same problem: Base `R` vs ggplot
+## Two approaches to the same problem: Base `R` vs `ggplot`
 
-Plotting in base `R` can allow the user to create highly customized plots. This customization comes at the cost of time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammer of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. I will walk through an example using base `R` and then recreate the figure using `ggplot2`. 
+Plotting in base `R` can allow the user to create highly customized plots. This customization takes time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammer of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. I will walk through an example using base `R` and then recreate the figure using `ggplot2`. For even more side-by-side examples, see Nathan Yau's blog post on [Flowing Data](https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/). 
 
-### Base R
+### Base `R`
 
-A simple scatter plot can take much more work than you expect based on the visualization. Let's create a plot of the total population by county area for 5 midwest states. This data is part of the `ggplot2` package. 
+A simple plot can take many more lines of code than you expect based on the visualization. When plotting in base `R` you'll use a handful of parameter settings in either `par()` or in the plotting related functions listed below. 
 
-```{r base R}
+#### Important parameters ###
+* **pch**: plotting symbol
+* **lty**: line type
+* **lwd**: line width
+* **col**: plotting color
+* **las**: orientation of axis labels 
+* **bg**: background color
+* **mar**: margin size
+* **oma**: outer margin size
+* **mfrow**: number of plots per row, column. Plots filled in row-wise.
+* **mfcol**: number of plots per row, column. Plots filled in column-wise.
+
+#### Important functions ###
+* **plot**: make scatterplot
+* **lines**: add lines to plot
+* **points**: add points to plot
+* **text**: add text
+* **title**: add title to axes or plot
+* **mtext**: add margin text
+* **axis**: add axis tick/labels
+
+Let's create a plot of the total population by county area for 5 midwest states (example taken from Selva Prabhakaran's [tutorial](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot_)). This data is part of the `ggplot2` package. I start with the basic scatterplot function `plot()` and then customize from there.  
+ 
+```{r base R, eval=TRUE}
 library(ggplot2) #load the package with the data
 data("midwest", package = "ggplot2") #load the data, midwest is now in the working environment. 
 plot(y=log10(midwest$poptotal), x=midwest$area, #call the x and y values 
      col=as.factor(midwest$state), #point colors should be based on state 
      pch=19, cex=.75,#point shape and size
      ylim=c(3,7), xlim=c(0,.1), #set the axis limites
+     las=1, #rotate the axis labels 
      xlab="Area", ylab=expression('Log'[10]*'(Total population)'),#label the axis
      main ="Area vs population"#add a title
      )
 
 ```
 
-#### Legends, axis and additional text
+#### Legends and more 
 
-Legends are not automatically created when using base `R`. You have to add them manually. There are a few different methods to do this, but the function `legend` works in most cases. 
+This is where the true power of plotting with base `R` customization shows. You can change the axis ticks and lables, add text anywhere, and even create multiple figures in a single visualization. The most common addition to any visualization will be the legend since they are not automatically created when plotting with base `R`. You have to add them manually. There are a few different methods to do this, but the function `legend()` works in most cases. To add the legend to the plot above, run the `legend()` function following the `plot()` function. 
 
 ```{r legend}
 legend("topright", col=c(1:5), pch=19,legend=levels(as.factor(midwest$state)))
 ```
 
-#### Adding layers of data
+The visualization would then look like this: 
 
+```{r legend added, eval=TRUE, echo=FALSE}
+plot(y=log10(midwest$poptotal), x=midwest$area, #call the x and y values 
+     col=as.factor(midwest$state), #point colors should be based on state 
+     pch=19, cex=.75,#point shape and size
+     ylim=c(3,7), xlim=c(0,.1), #set the axis limites
+     las=1, #rotate the axis labels 
+     xlab="Area", ylab=expression('Log'[10]*'(Total population)'),#label the axis
+     main ="Area vs population"#add a title
+     )
+legend("topright", col=c(1:5), pch=19,legend=levels(as.factor(midwest$state)))
+```
 
-```{r}
+#### A quick note on multipanel plots
+
+A grid of plots in base `R` can be created using parameter setting mfrow or cfrow. Base `R` also gives you the option to make inset or subplots like this example here where the boxplot is inside the histogram. 
+
+```{r inset plot, eval=TRUE}
+x <- rnorm(100,sd=0.5)  
+y <- rbinom(100, 1, 0.5)
+par(fig = c(0,1,0,1))
+
+hist(x)  
+
+par(fig = c(0.07,0.5, 0.5, 1), new = T)  
+boxplot(x ~ y)
 
 ```
 
-#### Multipanel plots
+The `layout()` function allows the user to create multipanel plots of different sizes, like this: 
+
+```{r layout plot, eval=TRUE}
+# One figure in row 1 and two figures in row 2
+# row 1 is 1/3 the height of row 2
+# column 2 is 1/4 the width of the column 1 
+attach(mtcars)
+layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE), 
+  	widths=c(3,1), heights=c(1,2))
+hist(wt)
+hist(mpg)
+hist(disp)
+
+```
+
+
+
+Here is an example of figure that Reni made using base `R` that has lots of information layered into a single visualization. 
+
+
+![Multiple plot types in single pane](M6_mfig.png)
+
+If you're interested in other customizations in base `R` check out DREW'S BOOK GRAB TITLE
 
 ### ggplot
 
-Below is an example from Selva Prabhakaran's Tutorial. Prabhakaran has also compiled a list of 50 different visualizations along with the code [here](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot). 
+ The same exact scatterplot of county area vs populations size can be made using `ggplot`. Check out the source of the example, which also has a compiled list of 50 different visualizations along with the code [here](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot). 
+
+For more detailed examples, check out the [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/index.html) by Winston Chang.
 
 ```{r ggplot, eval=TRUE}
 
 # install.packages("ggplot2")
 # load package and data
-options(scipen=999)  # turn-off scientific notation like 1e+48
 library(ggplot2)
 theme_set(theme_bw())  # pre-set the bw theme.
 # midwest <- read.csv("http://goo.gl/G1K41K")  # bkup data source
 
 # Scatterplot
-gg <- ggplot(midwest, aes(x=area, y=log10(poptotal))) + 
-  geom_point(aes(col=state)) + 
-#  geom_smooth(method="loess", se=F) + 
-  xlim(c(0, 0.1)) + 
-  #ylim(c(0, 500000)) + 
-  labs(subtitle="Area Vs Population", 
-       y="Population", 
-       x="Area", 
-       title="Scatterplot", 
-       caption = "Source: midwest")
+gg <- ggplot(midwest, 
+             aes(x=area, y=log10(poptotal))) + 
+            geom_point(aes(col=state)) + 
+            xlim(c(0, 0.1)) + 
+           #ylim(c(0, 500000)) + 
+          labs(subtitle="Area Vs Population", 
+          y="Population", 
+          x="Area", 
+          title="Scatterplot", 
+          caption = "Source: midwest")
 #, size=popdensity
 plot(gg)
 ```
 
-#### plotly: easy interative plots with ggplot
+#### plotly: easy interactive plots with ggplot
 
 The `plotly` package is an add on to `ggplot2` for quick interactive plots. The package is still relatively new and is under current development. The legends or other features are often poorly displayed but the interactive feature maybe useful for data exploration during an inperson meeting. 
 
@@ -111,9 +181,39 @@ p <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length,
 
 p #plot the interactive graphic
 ```
+
+```{r plotly 3D}
+plot_ly(z = volcano, type = "surface") #simple example of 3D surface plot
+```
+
+The `googleVis` package also has some great plots with tooltips built in.  
+
 ## Animated plots
 
+`plotly` also allows for quick animations like this
 
+```{r plotly animation}
+library(gapminder)
+p <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
+  geom_point(aes(size = pop, frame = year, ids = country)) +
+  scale_x_log10()+theme_bw()
+
+p <- ggplotly(p)
+p <- p %>% 
+  animation_opts(
+    1000, easing = "elastic", redraw = FALSE
+  )
+p
+
+
+p2 <- ggplot(gapminder_tween,
+              aes(x=x, y=y, frame = .frame)) +
+              geom_point(aes(size=population, color=continent),alpha=0.8) +
+              xlab("GDP per capita") +
+              ylab("Life expectancy at birth")
+
+gganimate(p2, filename="gapminder.mp4", title_frame = FALSE, interval = 0.05)
+```
 ## Graphic for communication
 
 There are plenty of guides on how to create the "best" visualization. 
@@ -121,7 +221,7 @@ There are plenty of guides on how to create the "best" visualization.
 
 ![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
 
-![Multiple plot types in single pane](M6_mfig.png)
+
 
 If you're plotting data to communicate (which is normally the case), some things you should keep in mind:
 
@@ -133,3 +233,16 @@ For more details see <i>Ten guidelines for effective data visualization in scien
 
 ## Spatial data
 
+Chloropeth
+
+```{r, eval=TRUE}
+library(googleVis)
+require(datasets)
+states <- data.frame(state.name, state.x77)
+GeoStates <- gvisGeoChart(states, "state.name", "Population",
+                          options=list(region="US", 
+                                       displayMode="regions", 
+                                       resolution="provinces",
+                                       width=600, height=400))
+print(GeoStates,'chart')
+```

@@ -3,6 +3,7 @@
 
 #Before we can explore the data, we must load it into R. 
 #load survey results into an object called cohort
+setwd("your path")
 cohort <- read.csv("CohortData.csv") 
 
 

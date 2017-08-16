@@ -76,9 +76,16 @@ susceptible, infectious and recovered individuals. As the epidemic progresses, t
 time.
 
 ![SIR model](sir.png)
-Finish this!!!
 
+Here, the boxes represent the $S$, $I$, $R$ classes. 
+From the flow diagram, we can write down how the state variables , and change according to the following
+system of differential equations:
 
+$$\frac{dS}{dt} = -\lambda(I,t)S$$
+
+$$\frac{dS}{dt} = \lambda(I,t)S-\gamma I$$
+
+$$\frac{dS}{dt} = \gamma I$$
 
 ###<span style="color:orangered">How do we solve this in R</span>
 

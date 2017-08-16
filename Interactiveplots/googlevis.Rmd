@@ -1,0 +1,445 @@
+---
+title: "Plotting extravaganza"
+author: "Ana Isabel Bento"
+date: "7/7/2017"
+header-includes:
+   - \usepackage{animate}
+output: html_document
+---
+
+##The ```googleVis``` package in R 
+
+```{r}
+#Install the package
+#install.packages("googlevis")
+#Load the package
+suppressMessages(library(googleVis))
+```
+
+## (The simplest) Scatter Chart
+```{r results='asis'}
+Scatter <- gvisScatterChart(women,
+                            options=list(
+                              legend="none",series="[{color:'pink', targetAxisIndex: 1}]",
+                              lineWidth=2, pointSize=0,
+                              title="Women", vAxis="{title:'weight (lbs)'}",
+                              hAxis="{title:'height (in)'}",
+                              width=300, height=300))
+print(Scatter,'chart')
+```
+
+
+
+```{r, echo=FALSE}
+suppressMessages(library(googleVis))
+cases<-read.csv("/Users/GB/Dropbox/Work_In_Progress/PERTUSSIS/Michigan2017/cases_holland.csv", sep=",")
+```
+
+##Line chart with two axis with customized lines
+
+```{r results='asis',fig.align='left'}
+Dashed <-  gvisLineChart(cases, xvar="Year", yvar=c("Cases","dTap","DTwP","Switch"),options=list(
+                           series="[{color:'red', targetAxisIndex: 0, 
+                           lineWidth: 3, lineDashStyle: [2, 2, 20, 2, 20, 2]},
+                           {color: 'aquamarine',targetAxisIndex: 1, 
+                          lineWidth: 3, lineDashStyle: [4, 1]}, {color: 'darkslategrey',targetAxisIndex: 1, 
+                          lineWidth: 3, lineDashStyle: [4, 1]},{color: 'cadetblue',targetAxisIndex: 1, 
+                          lineWidth: 3, lineDashStyle: [4, 1]}]",
+                          vAxes="[{title:'Pertussis cases Netherlands'}, {title:'Vaccine coverage %'}]", hAxes="[{title:'Year'}]", height=300))
+print(Dashed, 'chart')
+```
+
+##Timeline chart
+```{r results='asis'}
+datTL <- data.frame(Position=c("Primary","Boost","Primary","Primary","Primary","Boost","Primary", "Boost"),
+                    Name=c("DwTP (3,4,5 mo)","DwTP (4 yrs)","DTwP-IPV (3,4,5, 11 mo)","DTwP-IPV-Hib (3,4,5, 11 mo)","DTwP-IPV-Hib (2,3,4, 11 mo)", "DTaP (4 yrs)", "DTaP-IPV-Hib  (2,3,4, 11 mo)", "Tdap (4 yrs)"
+                           ),
+                    start=as.Date(x=c("1953-01-01","1953-01-01","1962-01-01","1993-01-01", "1999-01-01","2001-01-01","2005-01-01","2006-01-01"
+                                          )),
+                    end=as.Date(x=c("1961-12-31","1961-12-31","1992-01-01", "1998-12-31","2005-12-31","2004-12-31","2018-02-28","2018-02-28"
+                                     )))
+
+Timeline <- gvisTimeline(data=datTL, 
+                         rowlabel="Name",
+                         barlabel="Position",
+                         start="start", 
+                         end="end",
+                         options=list(timeline="{groupByRowLabel:false}",
+                                      backgroundColor='azure', 
+                                      height=500,width=1200,
+                                      colors="['cadetblue']"))
+print(Timeline,'chart')
+```
+
+
+## Stepped area chart with background colours (for Toby)
+```{r results='asis',echo=FALSE}
+ptA<-read.csv("/Users/GB/Dropbox/Work_In_Progress/PERTUSSIS/Michigan2017/ptA.csv", sep=",")
+```
+
+```{r results='asis'}
+SteppedArea <- gvisSteppedAreaChart(ptA, xvar="Year", 
+                                    yvar=c("ptxA1", "ptxA2","ptxA4","ptxA5"),
+                                    options=list(isStacked=TRUE, height=400,vAxis="{gridlines:{color:'#D3D3D3', count:3}}",backgroundColor="#D3D3D3"))
+print(SteppedArea,'chart')
+```
+
+## Area chart 
+```{r results='asis'}
+Area <- gvisAreaChart(ptA, xvar="Year", 
+                                    yvar=c("ptxA1", "ptxA2","ptxA4","ptxA5"),options=list(vAxis="{gridlines:{color:'white', count:3}}"))
+
+print(Area,'chart')
+```
+
+## Bar chart: Stacked
+```{r results='asis'}
+Bar <- gvisBarChart(ptA, xvar="Year", 
+                                    yvar=c("ptxA1", "ptxA2","ptxA4","ptxA5"),options=list(isStacked=TRUE, height=700))
+print(Bar,'chart')
+```
+
+##Histogram
+```{r results='asis'}
+set.seed(123)
+datHist=data.frame(A=rpois(100, 20),
+                   B=rpois(100, 5),
+                   C=rpois(100, 50))
+
+Hist <- gvisHistogram(datHist, options=list(
+  legend="{ position: 'top', maxLines: 2 }",
+  colors="['#5C3292', '#1A8763', '#871B47']",
+  width=600, height=360))
+print(Hist,'chart')
+```
+
+
+##Editing on the go for those pesky questions at the end of a talk
+```{r results='asis'}
+df=data.frame(country=c("US", "GB", "PT"), 
+              val1=c(10,13,14), 
+              val2=c(23,12,32))
+Line4 <-  gvisLineChart(df, "country", c("val1","val2"),
+                        options=list(gvis.editor="Play with me!",lineWidth=5 , vAxis="{gridlines:{color:'white', count:3}}"))
+print(Line4,'chart')
+```
+
+
+
+##Map
+```{r results='asis'}
+require(datasets)
+states <- data.frame(state.name, state.x77)
+GeoStates <- gvisGeoChart(states, "state.name", "Population",
+                          options=list(region="US", 
+                                       displayMode="regions", 
+                                       resolution="provinces",
+                                       width=600, height=400))
+print(GeoStates,'chart')
+```
+
+
+##Resolution and annotations
+```{r results='asis'}
+Anno <- gvisAnnotationChart(Stock, 
+                            datevar="Date",
+                            numvar="Value", 
+                            idvar="Device",
+                            titlevar="Title", 
+                            annotationvar="Annotation",
+                            options=list(
+                              width=600, height=350,
+                              fill=10, displayExactValues=TRUE,
+                              colors="['#0000ff','#00ff00']")
+)
+print(Anno,'chart')
+```
+
+##Calendar
+
+```{r results='asis'}
+Cal <- gvisCalendar(Cairo, 
+                    datevar="Date", 
+                    numvar="Temp",
+                    options=list(
+                      title="Daily temperature ",
+                      height=320,
+                      calendar="{yearLabel: { fontName: 'Times-Roman',
+                               fontSize: 18, color: '#darkgrey', bold: true},
+                               cellSize: 10,
+                               cellColor: { stroke: 'red', strokeOpacity: 0.2 },
+                               focusedCellColor: {stroke:'red'}}")
+)
+print(Cal, "chart")
+
+```
+
+##Motion charts
+```{r results='asis'}
+Motion=gvisMotionChart(Fruits, 
+                       idvar="Fruit", 
+                       timevar="Year")
+print(Motion, "chart")
+```
+
+
+##The ```ggplotly``` package in R 
+
+##Surfaces
+```{r results='asis'}
+# Charge the plotly library
+suppressMessages(library(plotly))
+suppressMessages(library(ggplot2)) 
+
+# 3D plot 
+suppressMessages(p<-plot_ly(z = volcano, type = "surface"))
+
+p
+```
+
+##Scatter
+```{r results='asis'} 
+# Make data
+a=rnorm(100)
+b=sample( c(1:10) , 100 , replace=T)
+ 
+# Make the graph
+my_graph<-plot_ly(x=b , y=a , mode="markers" , size=abs(a)/2 , color=ifelse(a>0,"blue","red") ) %>% 
+ 
+#Change hover mode in the layout argument :
+layout( hovermode="closest" )
+ 
+# show the graph
+my_graph
+```
+
+##Boxplot
+```{r results='asis'} 
+p5 <- plot_ly(midwest, x = ~percollege, color = ~state, type = "box")
+p5
+
+```
+
+
+##Histograms
+```{r results='asis'} 
+graph=plot_ly(x = rnorm(500), opacity = 0.6, type = "histogram") %>%
+    add_trace(x = rnorm(500)+1) %>%
+    layout(barmode="overlay")
+graph
+```
+
+#Maps
+```{r results='asis'} 
+suppressMessages(library(maps))
+suppressMessages(library(dplyr))
+# map data
+county_df <- map_data("county")
+state_df <- map_data("state")
+
+county_df$subregion <- gsub(" ", "", county_df$subregion)
+
+#election data
+df <- read.csv("https://raw.githubusercontent.com/bcdunbar/datasets/master/votes.csv")
+df <- subset(df, select = c(Obama, Romney, area_name))
+
+df$area_name <- tolower(df$area_name) 
+df$area_name <- gsub(" county", "", df$area_name)
+df$area_name <- gsub(" ", "", df$area_name)
+df$area_name <- gsub("[.]", "", df$area_name)
+
+df$Obama <- df$Obama*100
+df$Romney <- df$Romney*100
+
+for (i in 1:length(df[,1])) {
+  if (df$Obama[i] > df$Romney[i]) {
+    df$Percent[i] = df$Obama[i]
+  } else {
+    df$Percent[i] = -df$Romney[i]
+  }
+}
+
+names(df) <- c("Obama", "Romney", "subregion", "Percent")
+
+# join data
+US <- inner_join(county_df, df, by = "subregion")
+US <- US[!duplicated(US$order), ]
+
+# colorramp
+blue <- colorRampPalette(c("navy","royalblue","lightskyblue"))(200)                      
+red <- colorRampPalette(c("mistyrose", "red2","darkred"))(200)
+
+#plot
+p <- ggplot(US, aes(long, lat, group = group)) +
+  geom_polygon(aes(fill = Percent),
+               colour = alpha("white", 1/2), size = 0.05)  +
+  geom_polygon(data = state_df, colour = "white", fill = NA) +
+  ggtitle("2012 US Election") +
+  scale_fill_gradientn(colours=c(blue,"white", red), limits = c(100, -100))  +
+  theme_void()
+
+p <- ggplotly(p)
+p
+```
+
+##The ```streamgraph``` package in R
+
+NOTE: These can be saved as static with legends
+
+###Example 1
+```{r results='asis'} 
+#devtools::install_github("hrbrmstr/streamgraph")
+suppressMessages(library(streamgraph))
+ 
+# Create data:
+year=rep(seq(1990,2016) , each=10)
+name=rep(letters[1:10] , 27)
+value=sample( seq(0,1,0.0001) , length(year))
+data=data.frame(year, name, value)
+ 
+# Graph 1: choose a RColorBrewer palette.
+streamgraph(data, key="name", value="value", date="year")%>%
+sg_fill_brewer("Blues")
+
+```
+
+
+###Example 2 with interactive legends
+```{r results='asis'}
+
+suppressMessages(library(dplyr))
+
+suppressMessages(library(viridis))
+
+stocks_url <- "http://infographics.economist.com/2015/tech_stocks/data/stocks.csv"
+stocks <- read.csv(stocks_url, stringsAsFactors=FALSE)
+
+stock_colors <- viridis_pal()(100)
+stocks %>% 
+  mutate(date=as.Date(quarter, format="%m/%d/%y")) %>% 
+  streamgraph(key="ticker", value="nominal", offset="expand",date="quarter") %>% 
+  sg_fill_manual(stock_colors) %>% 
+  sg_axis_x(tick_interval=10, tick_units="quarter") %>% 
+  sg_legend(TRUE, "Ticker: ")
+```
+
+### And now for something a "lil different"...
+
+##The ```gganimate``` package in R 
+
+### Netherlands birth rate
+```{r results='asis'}
+birth<-read.csv("/Users/GB/Dropbox/Work_In_Progress/PERTUSSIS/Phylo-Project/Manuscript-FILES/BEAST/Covars/BirthRate/birth.csv", sep='', header=TRUE)
+suppressMessages(library(ggplot2))
+suppressMessages(library(gganimate))
+pal <- c("#313695","#4575b4","#74add1","#abd9e9","#e0f3f8","#ffffbf","#fee090","#fdae61","#f46d43","#d73027","#a50026")
+vals <- seq(10,32, length = 11)
+#birth <- ggplot(birth, aes(x = Year, y = BirthRate, frame = Year, cumulative = TRUE)) +
+  #geom_line(colour="black") +
+  #geom_point(shape = 21, colour="black", aes(fill=BirthRate), size=5, stroke=1) +
+  #scale_x_continuous(limits=c(1880,2015)) +
+  #scale_y_continuous(limits=c(10,32)) +
+  #theme_minimal() +
+  #scale_fill_gradientn(colors = pal, values = vals, rescaler = function(x, ...) x, oob = identity, guide=FALSE) +
+  #xlab("") +
+  #ylab("Birth rate") +
+  #theme(text=element_text(size=16, family="Georgia")))
+#p<-gganimate(birth, "birth.mp4", ani.width = 750, ani.height = 500, interval = 0.1)
+```
+
+<video width="800" height="600" autoplay>
+<source src="birth.mp4" type="video/mp4">
+</video>
+
+
+
+###Recreating Gapminder
+```{r results='asis'}
+#p2 <- ggplot(gapminder_tween,
+              #aes(x=x, y=y, frame = .frame)) +
+   #geom_point(aes(size=population, color=continent),alpha=0.8) +
+   #xlab("GDP per capita") +
+   #ylab("Life expectancy at birth") 
+#gganimate(p2, filename="gapminder.mp4", title_frame = FALSE, interval = 0.05)
+```
+
+<video width="800" height="600" autoplay>
+<source src="gapminder.mp4" type="video/mp4">
+</video>
+
+####You can also save it as a gif
+
+
+```{r results='asis'}
+#gganimate(p2, filename="gapminder.gif", title_frame = FALSE, interval = 0.05)
+```
+![gif](output.gif)
+
+##Plotly version of Gapminder with dramatic pauses
+```{r results='asis'}
+suppressMessages(library(gapminder))
+p <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
+  geom_point(aes(size = pop, frame = year, ids = country)) +
+  scale_x_log10()+theme_bw()
+
+p <- ggplotly(p)
+p <- p %>% 
+  animation_opts(
+    1000, easing = "elastic", redraw = FALSE
+  )
+p
+
+```
+
+
+
+####Extras
+
+## Column chart
+```{r results='asis'}
+Column <- gvisColumnChart(ptA, xvar="Year", 
+                                    yvar=c("ptxA1", "ptxA2","ptxA4","ptxA5"))
+print(Column,'chart')
+```
+
+
+##Box and whiskers
+
+```{r results='asis'}
+Candle <- gvisCandlestickChart(OpenClose, 
+                               options=list(legend='none'))
+print(Candle,'chart')
+```
+
+##Bubble chart
+```{r results='asis'}
+Bubble <- gvisBubbleChart(Fruits, idvar="Fruit",
+                          xvar="Sales", yvar="Expenses",
+                          colorvar="Year", sizevar="Profit",
+                          options=list(
+                            hAxis='{minValue:75, maxValue:125}', height=800, width=1000))
+print(Bubble,'chart')
+```
+
+##Sankey chart
+```{r results='asis'}
+datSK <- data.frame(From=c(rep("A",3), rep("B", 3)),
+                To=c(rep(c("X", "Y", "Z"),2)),
+                Weight=c(5,7,6,2,9,4))
+colors_link <- c('pink', 'grey')
+colors_link_array <- paste0("[", paste0("'", colors_link,"'", collapse = ','), "]")
+
+colors_node <- c('yellow', 'lightblue', 'red', 'purple', 'green')
+colors_node_array <- paste0("[", paste0("'", colors_node,"'", collapse = ','), "]")
+opts <- paste0("{
+        link: { colorMode: 'source',
+                colors: ", colors_link_array ," },
+        node: { colors: ", colors_node_array ," }
+      }" )
+
+Sankey<-gvisSankey(datSK, from="From", to="To", weight="Weight",
+                     options=list(
+                       sankey=opts))
+print(Sankey,'chart')
+```
+
