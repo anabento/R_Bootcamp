@@ -43,7 +43,7 @@ Leave an empty "blank line" - These are important  to create chunks of code and 
 ##<span style="color:cadetblue">Step 4</span>
 
 ``` 
-Next we recomend you always start a script by clearing R's brain
+Next we recomend you always start a script by clearing R's brain CHNAGE THIS SENTENCE
 rm(list=ls())
 ```
 
