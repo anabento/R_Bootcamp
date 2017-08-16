@@ -1,16 +1,16 @@
 ---
 title:  <span style="color:cadetblue">Functions</span>
-author: "A Bento & R Kaul"
-date: "`r Sys.Date()`"
+author: ""
+date: ""
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
-
+***
 ##<span style="color:cadetblue">What is a function</span> 
-Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a sub program and called when needed. 
+Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a script and called when needed. 
 
 You can write your own functions, but `R` and its packages come with "pre-made" functions as well.
 
@@ -22,6 +22,8 @@ A typical function has the follwoing architecture
 ```{r function}
 function (arglist)  {body}
 ```
+
+###<span style="color:orangered">**Let's copy and paste them into the console**:</span> 
 
 ##<span style="color:cadetblue">Example 1a:</span> Simple function
 ```{r function1}
@@ -36,10 +38,16 @@ my.function1<-function(a,b,c){
  out1
 ```
 
- <span style="color:orangered">**Practice**:</span> Choose other sets of numbers
+###<span style="color:orangered">**Practice**:</span> Choose other sets of numbers
 ```{r function2} 
 out2<-my.function1(,,)
 out2
+```
+
+
+###<span style="color:orangered">**Practice**:</span> Create a function that will return the sum of 2 integers
+```{r function15} 
+
 ```
 
 ##<span style="color:cadetblue">Example 1b:</span> Rounding  function
@@ -53,11 +61,10 @@ Roundme <- function(x){
 ```
 
 
-
 ##<span style="color:cadetblue">Example 2a:</span> Control statements **if**
 
 ```{r function11}
- x <- 8
+x <- 8
 
 if (x < 9) print("x is less than nine")
  
@@ -78,6 +85,24 @@ if (x < 9) print("x is less than nine")
  b<-10
  }
  b
+```
+
+
+###<span style="color:orangered">**Practice**:</span> Uncomment and fill in a simple function with a nested if statement will print alternative outcomes
+
+```{r function14}
+
+#Isit <- function(x){
+# if (x == ??)
+ #print("???!")
+ #else print("???")
+#}
+
+
+#Isit(?)
+
+#Isit(?)
+
 ```
 
 ##<span style="color:cadetblue">Example 2c:</span> Control statements **while**
@@ -134,35 +159,15 @@ var(dat) # taking the variance
 
 length(dat) # length of vector
 
-
 sqrt(var(dat)/length(dat)) # standard error
 ```
 
-<span style="color:orangered">**Practice**:</span> Fill in this function to computes descriptive stats
+###<span style="color:orangered">**Practice**:</span> Write a function to compute standard error of dat
 
 ```{r function12}
-standard.error <- function(x) {
-  ????? 
-}
-standard.error(dat)
-```
-
-<span style="color:orangered">**Practice**:</span> Uncomment and fill in a simple function with a nested if statement will print alternative outcomes
-
-```{r function14}
-
-#Isit <- function(x){
-# if (x == ??)
- #print("???!")
- #else print("???")
-#}
-
-
-#Isit(?)
-
-#Isit(?)
 
 ```
+
 
 
 ##<span style="color:cadetblue">Example 6:</span> The apply  function
@@ -176,6 +181,7 @@ apply(X, 2, sum)
 
 ```
 
+###<span style="color:orangered">**Practice**:</span> How do you calculate the sum of each row using apply?
 
 ##<span style="color:cadetblue">Example 7:</span> The lapply  function
 ```lapply``` applies a given function to every element of a list and obtain a list as result
@@ -191,7 +197,7 @@ lapply(l, sum)
 
 ```
 
-##<span style="color:cadetblue">Example 7:</span> The sapply  function
+##<span style="color:cadetblue">Example 8:</span> The sapply  function
 ```sapply``` will return either a vector, with elements [[‘a’]] and [[‘b’]], or a matrix with column names “a” and “b”
 ```{r function9}  
 # create a list with 2 elements
@@ -209,4 +215,4 @@ l.mean[['a']]
 
 
 ## <span style="color:cadetblue">Going further</span>
-rapply, tapply
+rapply, tapply, parallel computing in R (https://www.r-bloggers.com/how-to-go-parallel-in-r-basics-tips/)

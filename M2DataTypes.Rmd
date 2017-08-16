@@ -119,28 +119,30 @@ vec5<-sum(vec1,vec2,vec3)
 ```
 
 Accessing specific specific ```elements``` in the ```vector```
+
+<span style="color:orangered">**Practice**:</span> Some will be need commenting
 ```{r Vectors3}
 vec4[1] # first elements
 
-vec4[1:3] # first three elements
+vec4[1:3] # # What happened here?
 
 vec4[c(1,2,4)] # first second and fourth elements
 
 vec6 <- c(1:20) #creating a vector 
+
 x <- c(3, 5, 12) # creating another vector 
 
 vec6[x]# the elements of vec6 that coicinde with vector x
 
 vec6[-x] # What happened here?
 
-
 vec7 <- c(1:5,2,2,2,2,2) #creating a vector 
 
 vec7[vec7 > 4] # elements bigger than 4
 
-vec7[vec7 < 4] # elements less than 4
+vec7[vec7 < 4] # # What happened here?
 
-which(vec7 < 4) # position
+which(vec7 < 4) # positions
 
 which(vec7 == 2) # position
 
@@ -205,6 +207,10 @@ primes <- list(
     6:7, 8:11, 12:13,
     14:17, 18:19, 20:23)
 #check the class of an entry
+
+# subsetting 
+
+w[[1]] ## what is this?
 
 ```
 
