@@ -102,14 +102,14 @@ legend("topright", col=c(1:5), pch=19,legend=levels(as.factor(midwest$state)))
 A grid of plots in base `R` can be created using parameter setting mfrow or cfrow. Base `R` also gives you the option to make inset or subplots like this example here where the boxplot is inside the histogram. 
 
 ```{r inset plot, eval=TRUE}
-x <- rnorm(100,sd=0.5)  
-y <- rbinom(100, 1, 0.5)
-par(fig = c(0,1,0,1))
+x <- rnorm(100,sd=0.5)  #generate random data to plot
+y <- rbinom(100, 1, 0.5) #generate random data to plot
+par(fig = c(0,1,0,1)) #set dimensions of histogram figure from bottom, left, top, and right
 
-hist(x)  
+hist(x)  #plot main figure
 
-par(fig = c(0.07,0.5, 0.5, 1), new = T)  
-boxplot(x ~ y)
+par(fig = c(0.07,0.35, 0.5, 1), new = T) #set dimensions of inset plot  
+boxplot(x ~ y) #plot inset
 
 ```
 
@@ -129,17 +129,17 @@ hist(disp)
 ```
 
 
-
 Here is an example of figure that Reni made using base `R` that has lots of information layered into a single visualization. 
 
+```{r, eval=TRUE, out.width = "600px", echo=FALSE, fig.align='center'}
+knitr::include_graphics("M6_mfig.png")
+```
 
-![Multiple plot types in single pane](M6_mfig.png)
-
-If you're interested in other customizations in base `R` check out DREW'S BOOK GRAB TITLE
+If you're interested in other customizations in base `R` check out Paul Murrell's [R Graphics](https://www.stat.auckland.ac.nz/~paul/RG2e/) book. 
 
 ### ggplot
 
- The same exact scatterplot of county area vs populations size can be made using `ggplot`. Check out the source of the example, which also has a compiled list of 50 different visualizations along with the code [here](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot). 
+ The same exact scatterplot of county area vs populations size can be made using `ggplot`. Here the legend is automatically created. Check out the source of the example, which also has a compiled list of 50 different visualizations along with the code [here](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot). 
 
 For more detailed examples, check out the [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/index.html) by Winston Chang.
 
@@ -152,18 +152,18 @@ theme_set(theme_bw())  # pre-set the bw theme.
 # midwest <- read.csv("http://goo.gl/G1K41K")  # bkup data source
 
 # Scatterplot
-gg <- ggplot(midwest, 
-             aes(x=area, y=log10(poptotal))) + 
-            geom_point(aes(col=state)) + 
-            xlim(c(0, 0.1)) + 
-           #ylim(c(0, 500000)) + 
-          labs(subtitle="Area Vs Population", 
-          y="Population", 
-          x="Area", 
-          title="Scatterplot", 
-          caption = "Source: midwest")
-#, size=popdensity
-plot(gg)
+gg <- ggplot(midwest, #data, every arguement after this is connected with a '+' instead of a ','
+             aes(x=area, y=log10(poptotal))) + #set the x and y col in data 
+            geom_point(aes(col=state)) + #put a point at the (x,y) value, color it by state col
+            xlim(c(0, 0.1)) + #set x axis limits
+            labs( #name the different parts of the plot 
+              subtitle="Area Vs Population", 
+              y="Population", 
+              x="Area", 
+              title="Scatterplot", 
+              caption = "Source: midwest") 
+
+plot(gg) #plot the object
 ```
 
 #### plotly: easy interactive plots with ggplot
@@ -182,7 +182,7 @@ p <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length,
 p #plot the interactive graphic
 ```
 
-```{r plotly 3D}
+```{r plotly 3D, eval=TRUE}
 plot_ly(z = volcano, type = "surface") #simple example of 3D surface plot
 ```
 
@@ -190,9 +190,9 @@ The `googleVis` package also has some great plots with tooltips built in.
 
 ## Animated plots
 
-`plotly` also allows for quick animations like this
+The `plotly` package also allows for quick animations like this. [Shiny](https://shiny.rstudio.com/) is an easy introductory tool to more novel data visualizations.
 
-```{r plotly animation}
+```{r plotly animation, eval=TRUE}
 library(gapminder)
 p <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
   geom_point(aes(size = pop, frame = year, ids = country)) +
@@ -204,23 +204,14 @@ p <- p %>%
     1000, easing = "elastic", redraw = FALSE
   )
 p
-
-
-p2 <- ggplot(gapminder_tween,
-              aes(x=x, y=y, frame = .frame)) +
-              geom_point(aes(size=population, color=continent),alpha=0.8) +
-              xlab("GDP per capita") +
-              ylab("Life expectancy at birth")
-
-gganimate(p2, filename="gapminder.mp4", title_frame = FALSE, interval = 0.05)
 ```
+
 ## Graphic for communication
 
-There are plenty of guides on how to create the "best" visualization. 
+There are plenty of guides on how to create the "best" visualization. This diagram is a good place to start when choosing your data visualizations. 
 
 
 ![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
-
 
 
 If you're plotting data to communicate (which is normally the case), some things you should keep in mind:
@@ -229,11 +220,42 @@ If you're plotting data to communicate (which is normally the case), some things
   - color choice (connotation, color blind)
   - how the audience expects to see data
 
-For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006)
+For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006). At some point during your graduate career, you'll likely hear about [Edward Tufte's](https://www.edwardtufte.com/tufte/) philosophy.   
+
 
 ## Spatial data
+ Just like other data vizualizations, mapping in `R` can be done a few different ways. Common packages include: 
 
-Chloropeth
+  -  `maps`
+  - `rMaps`
+  - `mapdata` 
+  - `ggmap`
+  - `choroplethr`
+  - `raster`
+  - `sp`
+  - `rgdal`
+
+The last 3 (`raster`, `sp`, and `rgdal`) are also useful for analyzing spatial data. 
+
+The `choroplethr` package is useful for plotting U.S. county level data like this:
+
+```{r texas, eval=TRUE}
+library(ggplot2)
+library(choroplethr)
+library(mapproj)
+
+data(df_county_demographics)
+df_county_demographics$value = df_county_demographics$percent_hispanic
+county_choropleth(df_county_demographics, 
+                  state_zoom = "texas",
+                  title      = "Texas County Percent Hispanicn2012 Estimates",
+                  num_colors = 9) + coord_map()
+
+
+```
+
+
+Newer packages like `googleVis` also have built-in interactive features. 
 
 ```{r, eval=TRUE}
 library(googleVis)
