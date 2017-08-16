@@ -186,3 +186,218 @@ p <- ggplot(data=tf, aes(x=x, y=y)) + #
 animation::ani.options(interval = 1/15)#
 gganimate(p, "dancing ball.gif", title_frame = F, ani.width = 400, #
            ani.height = 400)
+random_numbers<-rnorm(3,mean=5,sd=3)
+random_numbers
+random_numbers<-rnorm(30,mean=5,sd=3)
+mean(random_numners)
+mean(random_numbers)
+med(random_numbers)
+median(random_numbers)
+# Create a list of matrices#
+MyList <- list(A,B,C)#
+#
+# Extract the 2nd column from `MyList` with the selection operator `[` with `lapply()`#
+lapply(MyList,"[", , 2)#
+#
+# Extract the 1st row from `MyList`#
+lapply(MyList,"[", 1, )
+l <- list(a = 1:10, b = 11:20)#
+#
+# the mean of the values in each element#
+lapply(l, mean)#
+$a#
+#
+$b#
+#
+# the sum of the values in each element#
+lapply(l, sum)#
+$a#
+$b
+lapply(l, sum)#
+$a
+var(dat)
+dat<-rnorm(30,mean=5,sd=3) # creating a vector
+var(dat)
+sqrt(var(dat)/length(dat))
+standard.error <- function(x) {#
+    sqrt(var(x)/length(x))#
+}
+standard.error(dat)
+a<-c()#
+ for(i in 1:10){#
+a[i]<-i^3#
+ }#
+ a
+for(i in 1:100){#
+print("Hello world!")#
+print(i*i)#
+}
+for(i in 1:10){#
+print("Hello world!")#
+print(i*i)#
+}
+x <- c(1:20)#
+y <- c(3, 5, 12)#
+x[y]#
+x[-y]
+x <- c(1:5,2,2,2,2,2)#
+x[x > 4]#
+x[x < 4]#
+which(x < 4)#
+which(x == 2)
+vec7 <- c(1:5,2,2,2,2,2)#
+vec7[vec7 > 4]#
+vec7[vec7 < 4]#
+which(vec7 < 4)#
+which(vec7 == 2)
+vec7
+z#
+z*2#
+z+2#
+z*z
+z <- matrix(x, byrow=T, nrow=5)#
+z
+z#
+z*2#
+z+2#
+z*z
+z%*%z
+z%/%y
+RandTreePlotter <- function(x){#
+   #this function creates a plot of a random evolutionary tree#
+   #of size x#
+   require(ape)#
+   tree <- rcoal(x)#
+   plot(tree)#
+ }#
+RandTreePlotter(20)
+Tree <- function(x){#
+   #this function creates a plot of a random evolutionary tree#
+   #of size x#
+   require(ape)#
+   tree <- rcoal(x)#
+   plot(tree)#
+ }#
+Tree(20)
+y <- 1#
+while(y < 10){#
+ print(y)#
+ y <- y+1#
+}#
+print("Thank goodness that's done")
+x <- 8#
+if (x < 9) print("x is less than nine")#
+x <- 10#
+if (x < 9) print("x is less than nine")
+dat<-rnorm(30,mean=5,sd=3)
+sort(dat)
+Rounder <- function(x){#
+   #this function uses the floor function to #
+   #do what the round function does#
+   x <- x+0.5#
+   floor(x)#
+ }
+Rounder(2.2)
+n0 = 1#
+p = c(r = 0.5, K=100) ## c() is a function that simply concatenates the two entries, creating a vector with two entries#
+p[1]
+disc.logistic = function(n, p) { ## here are just saying that 'disc.logistic' is a function that takes two arguments#
+  r = unname(p['r']) ## set the growth rate (dropping the parameter name with 'unname')#
+  K = unname(p['K']) ## set the carrying capacity#
+  n1 = n + r * n * (1 - n / K) ## calculate the new population size#
+  return(n1) ## and return it #
+}#
+#
+## So, to calculate the population size at time t=1, #
+n1 = disc.logistic(n0, p) ## call the function with the population size at t=0 and the parameters#
+n1
+disc.logistic.2 = function(n, p, T) { ## T is the total number of time steps#
+  ## Create a new variable that is a vector of length T, so that N[1] is the initial population size (t=0), N[2] is the population size at time t=1, N[3] = pop'n size at t=2, ..., N[T] = pop'n size at t=T-1 and N[T+1] = pop'n size at t=T#
+  N = vector(length=T+1)#
+  N[1] = n ## set the initial value#
+  ## Create a loop that will increment time by one time unit, calculate the new population size, and save it in our vector#
+  for (t in 1:T) { #
+    N[t+1] = disc.logistic(N[t], p) ## we can call the function we wrote above to calculate the new population size#
+  }#
+  return(N) ## return the vector of population sizes#
+}#
+n = disc.logistic.2(n0, p, 10) ## calculate just the first 10 time steps#
+n
+plot(x=0:10, y=n, type='l', xlab='Time', ylab='Population size', main='Discrete time logistic model')
+n
+n <- as.data.frame(ode(y=n0, times=times, func=cont.logistic, parms=p))
+n = as.data.frame(ode(y=n0, times=times, func=cont.logistic, parms=p))
+n = ode(y=n0, times=times, func=cont.logistic, parms=p)
+library(deSolve) ## load the functions into the current R environment#
+#
+## first, we need to define the function that calculates the derivative#
+## 'ode' requires that the function have three arguments, in this order: #
+## t: the time points that you want to record the output#
+## n: the initial value of the variable(s)#
+## p: the parameters#
+cont.logistic = function(t, n, p) { #
+  r = unname(p['r'])#
+  K = unname(p['K'])#
+  ## calculate the rate of change#
+  dndt = r * n * (1 - n / K)#
+  ## return the rate of change as a list object (required by ode)#
+  list(c(dndt)) ## if you were calculating more than one derivative, you would have c(dn1dt,dn2dnt,etc.)#
+}#
+#
+## what times do you want to record the output?#
+times = seq(0, 10, by=1) ## creates a vector running from 0 to 10 in steps of 1#
+#
+## what are the parameter values?#
+p = c(r=0.5, K=100)#
+#
+## what is the initial population size?#
+n0 = 1#
+#
+## call the function 'ode' to do the numerical integration. ode requires four arguments (see ?ode to see other options)#
+## y: the initial value vector#
+## times: the vector of time points for recording the output (note that this doesn't affect the accuracy at all)#
+## func: the function specifying the derivatives#
+## parms: the parameters required by the function specified by 'func'#
+n <- as.data.frame(ode(y=n0, times=times, func=cont.logistic, parms=p))#
+out.SIR <- as.data.frame(lsoda(xstart.SIR,times.SIR,ClosedSIRModel,params.SIR))#
+n
+n
+names(n)<-c("time, "N")
+names(n)<-c("time", "N")
+n
+plot(x=n[,1], y=n[,2], type='l', xlab='Time', ylab='Population size', main='Continuous time logistic model')
+with(out.SIR,plot(S~time,type="b",col="black",ylim=c(0,1),ylab="S (black), I (red), R (purple)"), pch=16)#
+with(out.SIR,lines(I~time,type="o",col="red"), pch=16)#
+with(out.SIR,lines(R~time,type="o",col="purple"), pch=16)
+library(deSolve) ## load the functions into the current R environment#
+#
+## first, we need to define the function that calculates the derivative#
+## 'ode' requires that the function have three arguments, in this order: #
+## t: the time points that you want to record the output#
+## n: the initial value of the variable(s)#
+## p: the parameters#
+cont.logistic = function(t, n, p) { #
+  r = unname(p['r'])#
+  K = unname(p['K'])#
+  ## calculate the rate of change#
+  dndt = r * n * (1 - n / K)#
+  ## return the rate of change as a list object (required by ode)#
+  list(c(dndt)) ## if you were calculating more than one derivative, you would have c(dn1dt,dn2dnt,etc.)#
+}#
+#
+## what times do you want to record the output?#
+times = seq(0, 10, by=1) ## creates a vector running from 0 to 10 in steps of 1#
+#
+## what are the parameter values?#
+p = c(r=0.5, K=100)#
+#
+## what is the initial population size?#
+n0 = 1#
+#
+## call the function 'ode' to do the numerical integration. ode requires four arguments (see ?ode to see other options)#
+## y: the initial value vector#
+## times: the vector of time points for recording the output (note that this doesn't affect the accuracy at all)#
+## func: the function specifying the derivatives#
+## parms: the parameters required by the function specified by 'func'#
+n <- as.data.frame(lsoda(y=n0, times=times, func=cont.logistic, parms=p))
+n
