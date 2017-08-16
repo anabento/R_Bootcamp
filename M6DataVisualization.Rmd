@@ -181,9 +181,39 @@ p <- plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length,
 
 p #plot the interactive graphic
 ```
+
+```{r plotly 3D}
+plot_ly(z = volcano, type = "surface") #simple example of 3D surface plot
+```
+
+The `googleVis` package also has some great plots with tooltips built in.  
+
 ## Animated plots
 
+`plotly` also allows for quick animations like this
 
+```{r plotly animation}
+library(gapminder)
+p <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
+  geom_point(aes(size = pop, frame = year, ids = country)) +
+  scale_x_log10()+theme_bw()
+
+p <- ggplotly(p)
+p <- p %>% 
+  animation_opts(
+    1000, easing = "elastic", redraw = FALSE
+  )
+p
+
+
+p2 <- ggplot(gapminder_tween,
+              aes(x=x, y=y, frame = .frame)) +
+              geom_point(aes(size=population, color=continent),alpha=0.8) +
+              xlab("GDP per capita") +
+              ylab("Life expectancy at birth")
+
+gganimate(p2, filename="gapminder.mp4", title_frame = FALSE, interval = 0.05)
+```
 ## Graphic for communication
 
 There are plenty of guides on how to create the "best" visualization. 
@@ -203,3 +233,16 @@ For more details see <i>Ten guidelines for effective data visualization in scien
 
 ## Spatial data
 
+Chloropeth
+
+```{r, eval=TRUE}
+library(googleVis)
+require(datasets)
+states <- data.frame(state.name, state.x77)
+GeoStates <- gvisGeoChart(states, "state.name", "Population",
+                          options=list(region="US", 
+                                       displayMode="regions", 
+                                       resolution="provinces",
+                                       width=600, height=400))
+print(GeoStates,'chart')
+```
