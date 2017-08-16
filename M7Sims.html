@@ -125,33 +125,54 @@ $(document).ready(function () {
 <hr />
 <div id="mathematical-models" class="section level2">
 <h2><span style="color:cadetblue">Mathematical models</span></h2>
-<p><strong>Mathematical</strong> or dynamical models are abstract models that uses mathematical language to describe the behavior of a system.</p>
+<p><strong>Mathematical</strong> or dynamical models are abstract models that uses mathematical language to describe the behavior of a system</p>
+<div id="logistic-growth" class="section level3">
+<h3><span style="color:cadetblue">Logistic growth</span></h3>
+<p>A common model of population growth, originally due to Pierre-François Verhulst in 1838, where the rate of reproduction is propoportional to both the existing population and the amount of available resources, all else being equal</p>
+</div>
 <div id="the-logistic-model-discrete" class="section level3">
 <h3><span style="color:cadetblue">The logistic model discrete</span></h3>
 <p><span class="math display">\[n(t+1) = n(t) + r_d n(t) \left(1-\frac{n(t)}{K}\right)\]</span></p>
+<p>Where <span class="math inline">\(n(t+1)\)</span> is new population size, <span class="math inline">\(r\)</span> is the growth rate, <span class="math inline">\(K\)</span> is the carrying capacity</p>
 </div>
 <div id="how-do-we-solve-this-in-r" class="section level3">
 <h3><span style="color:orangered">How do we solve this in R</span></h3>
-<pre><code>Lets open Script3.R</code></pre>
+<pre class="r"><code>disc.logistic = function(n, p) { ## here are just saying that 'disc.logistic' is a function that takes two arguments
+  r = unname(p['r']) ## set the growth rate (dropping the parameter name with 'unname')
+  K = unname(p['K']) ## set the carrying capacity
+  n1 = n + r * n * (1 - n / K) ## calculate the new population size
+  return(n1) ## and return it 
+}</code></pre>
+<pre><code>Lets open Discrete_Model.R</code></pre>
 </div>
 <div id="the-logistic-model-continuous" class="section level3">
 <h3><span style="color:cadetblue">The logistic model continuous</span></h3>
-<p><span class="math display">\[\frac{dn(t)}{dt} = r_c n(t) \left(1-\frac{n(t)}{K}\right).\]</span></p>
-<p>We will need to numerically integrate the growth rate equation rom time <span class="math inline">\(t=0\)</span> to time <span class="math inline">\(t=T\)</span>.</p>
-<p>In continuous models, today we will explore a specific type of model: <strong>ordinary differential equations</strong>. These describe the <em>rate</em> at which variables changes over time.</p>
+<p>In continuous models, we will explore a specific type of model: <strong>ordinary differential equations</strong>. These describe the <em>rate</em> at which variables changes over time</p>
 <p><span class="math display">\[\frac{dN}{dt} = &quot;function&quot; N(t)\]</span></p>
 <p>Where <span class="math inline">\(N(t)\)</span> is the value of a (continuous) variable at time.</p>
-<p>Here time is the <strong>independent variable</strong> and <strong>population size</strong> (<span class="math inline">\(N(t)\)</span>) is the dependent variable. If we plot as a function of time, then the slope of the curve would be <span class="math inline">\(\frac{dN}{dt}\)</span>. If the variable is increasing over time, the slope is positive; if it is decreasing, then it is negative.</p>
+<p>Here <strong>time</strong> is the <strong>independent variable</strong> and <strong>population size</strong> (<span class="math inline">\(N(t)\)</span>) is the dependent variable.</p>
+<p>If we plot as a function of time, then the slope of the curve would be <span class="math inline">\(\frac{dN}{dt}\)</span>. If the variable is increasing over time, the slope is positive; if it is decreasing, then it is negative.</p>
+<p>We will need to numerically integrate the growth rate equation from time <span class="math inline">\(t=0\)</span> to time <span class="math inline">\(t=T\)</span></p>
 <p>The <strong>LSODA</strong> adaptive step size solver in R is a powerful algorithm because it can automatically adjust its step size according to how rapidly the solution is changing.</p>
 <pre><code>require(deSolve) ## the packge we will uuse for this simulation
 
 #The LSODA function takes in four (non-optional) arguments
 
 out &lt;- lsoda(nstart, times, func, params)</code></pre>
+<p>So the Logistic model in <span style="color:orangered">continuous time</span> looks like this:</p>
+<p><span class="math display">\[\frac{dn(t)}{dt} = r_c n(t) \left(1-\frac{n(t)}{K}\right).\]</span></p>
 </div>
 <div id="how-do-we-solve-this-in-r-1" class="section level3">
 <h3><span style="color:orangered">How do we solve this in R</span></h3>
-<pre><code>Lets open Script3.R</code></pre>
+<pre class="r"><code>cont.logistic = function(n, p) { ## here are just saying that 'm.logistic' is a function that takes two arguments
+  r = unname(p['r']) ## set the growth rate (dropping the parameter name with 'unname')
+  K = unname(p['K']) ## set the carrying capacity
+   ## calculate the rate of change
+  dndt = r * n * (1 - n / K)
+  ## return the rate of change as a list object (required by ode)
+  list(c(dndt)) ## if you were calculating more than one derivative, you would have c(dn1dt,dn2dnt,etc.)
+}</code></pre>
+<pre><code>Lets open Continuous_Model.R</code></pre>
 </div>
 <div id="sir-model" class="section level3">
 <h3><span style="color:cadetblue">SIR model</span></h3>
@@ -168,7 +189,40 @@ out &lt;- lsoda(nstart, times, func, params)</code></pre>
 </div>
 <div id="how-do-we-solve-this-in-r-2" class="section level3">
 <h3><span style="color:orangered">How do we solve this in R</span></h3>
-<pre><code>Lets open Script4.R</code></pre>
+<pre class="r"><code>SIRModel &lt;- function (t, x, params) {   
+  
+  # Computes the rate of change of the variables S, I and R over time
+  #
+  # Args:
+  #   t: vector of time points in the integration
+  #   x: vector of variables in the differential equation
+  #   params: vector of parameter values
+  #
+  # Returns:
+  #   The rate of change of the variables S, I and R.
+  
+  
+  S &lt;- x[1]                               #create local variable S, the first element of x
+  I &lt;- x[2]                               #create local variable I
+  R &lt;- x[3]                               #create local variable R
+  
+  
+  with(                                   #we can simplify code using &quot;with&quot;
+    as.list(params),                   #this argument to &quot;with&quot; lets us use the variable names
+    {                                  #the system of rate equations
+      
+      N &lt;- S + I + R
+      
+      dS &lt;- -beta*S*I*(1/N)      ### make sure susceptibles are removed here (i.e. -beta*S*I/N)
+      dI &lt;- beta*S*I*(1/N)-gamma*I
+      dR &lt;- gamma*I
+      dx &lt;- c(dS,dI,dR)                #combine results into a single vector dx
+      list(dx)                         #return result as a list,
+      #note order must be same as the state variables
+    }
+  )
+}</code></pre>
+<pre><code>Lets open SIR_Deterministic.R</code></pre>
 </div>
 </div>
 </div>

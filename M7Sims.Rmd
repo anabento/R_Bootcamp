@@ -15,33 +15,52 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 
 ##<span style="color:cadetblue">Mathematical models</span>
 
-**Mathematical** or dynamical models are abstract models that uses mathematical language to describe the behavior of a system.
+**Mathematical** or dynamical models are abstract models that uses mathematical language to describe the behavior of a system
+
+###<span style="color:cadetblue">Logistic growth</span>
+
+A common model of population growth, originally due to Pierre-François Verhulst in 1838, where the rate of reproduction is propoportional to both the existing population and the amount of available resources, all else being equal
 
 ###<span style="color:cadetblue">The logistic model discrete</span>
 
  \[n(t+1) = n(t) + r_d n(t) \left(1-\frac{n(t)}{K}\right)\]
  
+Where $n(t+1)$ is new population size, $r$ is the growth rate, $K$ is the carrying capacity
+
 
 ###<span style="color:orangered">How do we solve this in R</span>
 
+```{r function1}
+disc.logistic = function(n, p) { ## here are just saying that 'disc.logistic' is a function that takes two arguments
+  r = unname(p['r']) ## set the growth rate (dropping the parameter name with 'unname')
+  K = unname(p['K']) ## set the carrying capacity
+  n1 = n + r * n * (1 - n / K) ## calculate the new population size
+  return(n1) ## and return it 
+}
+
 ```
-Lets open Script3.R
+
+```
+Lets open Discrete_Model.R
 ```
  
 ###<span style="color:cadetblue">The logistic model continuous</span>
-\[\frac{dn(t)}{dt} = r_c n(t) \left(1-\frac{n(t)}{K}\right).\]
- 
-We will need to numerically integrate the growth rate equation rom time \(t=0\) to time \(t=T\).
 
-In continuous models, today we will explore a specific type of model:  **ordinary differential equations**. These describe the *rate* at which variables changes over time.
+
+In continuous models, we will explore a specific type of model:  **ordinary differential equations**. These describe the *rate* at which variables changes over time
 
 $$\frac{dN}{dt} = "function" N(t)$$
 
 Where $N(t)$ is the value of a (continuous) variable at time. 
 
-Here time is the **independent variable** and **population size** ($N(t)$) is the dependent variable. If we plot as a function
+Here **time** is the **independent variable** and **population size** ($N(t)$) is the dependent variable.
+
+If we plot as a function
 of time, then the slope of the curve would be $\frac{dN}{dt}$. If the variable is increasing over time, the slope is positive;
 if it is decreasing, then it is negative. 
+
+We will need to numerically integrate the growth rate equation from time \(t=0\) to time \(t=T\)
+
 
 The **LSODA** adaptive step size solver in R is a powerful algorithm because it can automatically adjust its step size according to how rapidly the solution is changing.
 
@@ -56,11 +75,28 @@ out <- lsoda(nstart, times, func, params)
 
 
 
+So the Logistic model in <span style="color:orangered">continuous time</span> looks like this:
+
+\[\frac{dn(t)}{dt} = r_c n(t) \left(1-\frac{n(t)}{K}\right).\]
 
 ###<span style="color:orangered">How do we solve this in R</span>
 
+ 
+```{r function2}
+cont.logistic = function(n, p) { ## here are just saying that 'm.logistic' is a function that takes two arguments
+  r = unname(p['r']) ## set the growth rate (dropping the parameter name with 'unname')
+  K = unname(p['K']) ## set the carrying capacity
+   ## calculate the rate of change
+  dndt = r * n * (1 - n / K)
+  ## return the rate of change as a list object (required by ode)
+  list(c(dndt)) ## if you were calculating more than one derivative, you would have c(dn1dt,dn2dnt,etc.)
+}
+
 ```
-Lets open Script3.R
+
+
+```
+Lets open Continuous_Model.R
 ```
 
 
@@ -89,6 +125,45 @@ $$\frac{dS}{dt} = \gamma I$$
 
 ###<span style="color:orangered">How do we solve this in R</span>
 
+
+
+```{r function3}
+SIRModel <- function (t, x, params) {   
+  
+  # Computes the rate of change of the variables S, I and R over time
+  #
+  # Args:
+  #   t: vector of time points in the integration
+  #   x: vector of variables in the differential equation
+  #   params: vector of parameter values
+  #
+  # Returns:
+  #   The rate of change of the variables S, I and R.
+  
+  
+  S <- x[1]                               #create local variable S, the first element of x
+  I <- x[2]                               #create local variable I
+  R <- x[3]                               #create local variable R
+  
+  
+  with(                                   #we can simplify code using "with"
+    as.list(params),                   #this argument to "with" lets us use the variable names
+    {                                  #the system of rate equations
+      
+      N <- S + I + R
+      
+      dS <- -beta*S*I*(1/N)      ### make sure susceptibles are removed here (i.e. -beta*S*I/N)
+      dI <- beta*S*I*(1/N)-gamma*I
+      dR <- gamma*I
+      dx <- c(dS,dI,dR)                #combine results into a single vector dx
+      list(dx)                         #return result as a list,
+      #note order must be same as the state variables
+    }
+  )
+}
+
 ```
-Lets open Script4.R
+
+```
+Lets open SIR_Deterministic.R
 ```

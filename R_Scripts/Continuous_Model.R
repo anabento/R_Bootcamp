@@ -31,7 +31,7 @@ cont.logistic = function(t, n, p) {
 times = seq(0, 10, by=1) ## creates a vector running from 0 to 10 in steps of 1
 
 ## what are the parameter values?
-p = c(r=0.5, K=100)
+p = c(r=0.8, K=20)
 
 ## what is the initial population size?
 n0 = 1
