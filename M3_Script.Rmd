@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 >3. Annotated 
 >4. Shareable
 
-###<span style="color:orangered">We will do this exercise together...</span>
+###<span style="color:orangered">Practice:</span> We will do this exercise together...
 
 ##<span style="color:cadetblue">Step 1</span>
 
@@ -116,12 +116,17 @@ Tree(30)
 
 ##<span style="color:cadetblue">Step 7</span>
 
-Once you are done writing your script and you are happy with the commenting. **Save** it in your **working directory** of choice. Give it a meaningful name.
+Once you are done writing your script and you are happy with the commenting. <span style="color:orangered">**Save**</span> it in your <span style="color:orangered">**working directory**</span> of your project. Give it a meaningful name.
 
 
 ##<span style="color:cadetblue">Step 8</span>
 
 Open your script and run it!
+
+```
+File --> Open file --> Search for your working directory then run all or parts of it
+```
+<span style="color:orangered">**_Or_**</span>
 ```
 setwd("your path") # sets your working directory. You can also do this mannually
 source("Script1.R") # source the script of your choice
@@ -131,5 +136,20 @@ source("Script1.R") # source the script of your choice
 Mac: cmd+return 
 Windows: ctrl+enter
 or pressing Run 
+```
+##<span style="color:cadetblue">Step 9</span>
+
+
+It's a good idea to create a README text file that describes your project and keep it in the project
+folder. 
+
+This file should describe the overall project and the files in the project folder
+
+###<span style="color:orangered">Practice:</span> Create a README text file
+
+```
+File --> New File --> Text file 
+
+Save it using the name README.txt" in the same directory of your project
 ```
 
