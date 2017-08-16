@@ -8,6 +8,18 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
+
+
+This module will cover: 
+
+  - What are functions
+  
+  
+which will require the following skills already covered:
+
+  - data structure 
+  - assigning an object
+
 ***
 ##<span style="color:cadetblue">What is a function</span> 
 Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a script and called when needed. 

@@ -1,17 +1,19 @@
 ---
-title: "M6 Data Vizualizations"
-author: "A Bento & R Kaul"
-date: "`r Sys.Date()`"
+title:  <span style="color:cadetblue">Data Vizualizations</span>
+author: ""
+date: ""
+header-includes:
+   - \usepackage{animate}
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
+
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE, warning = FALSE, message = FALSE)
+
 ```
 
-
-
-# 6. Data Visualization
+***
 
 This module will cover: 
 
@@ -26,15 +28,15 @@ which will require the following skills already covered:
 
 We will also touch on choosing an appropriate visualization, interactive graphics, and maps. 
 
-## Introduction
+## <span style="color:cadetblue">Introduction</span>
 
 Data visualization in `R` can be quick and dirty (ie. data exploration for yourself) or highly polished (ie. communicating to others). We have already touched on quick data exploration in the third module yesterday. Today we will cover content to produce a more polished looking plot. 
 
-## Two approaches to the same problem: Base `R` vs `ggplot`
+## <span style="color:orangered">Two approaches to the same problem: Base `R` vs `ggplot`</span>
 
 Plotting in base `R` can allow the user to create highly customized plots. This customization takes time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammer of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. I will walk through an example using base `R` and then recreate the figure using `ggplot2`. For even more side-by-side examples, see Nathan Yau's blog post on [Flowing Data](https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/). 
 
-### Base `R`
+### <span style="color:cadetblue">Base</span> `R`
 
 A simple plot can take many more lines of code than you expect based on the visualization. When plotting in base `R` you'll use a handful of parameter settings in either `par()` or in the plotting related functions listed below. 
 
@@ -75,7 +77,7 @@ plot(y=log10(midwest$poptotal), x=midwest$area, #call the x and y values
 
 ```
 
-#### Legends and more 
+#### <span style="color:cadetblue">Legends and more</span> 
 
 This is where the true power of plotting with base `R` customization shows. You can change the axis ticks and lables, add text anywhere, and even create multiple figures in a single visualization. The most common addition to any visualization will be the legend since they are not automatically created when plotting with base `R`. You have to add them manually. There are a few different methods to do this, but the function `legend()` works in most cases. To add the legend to the plot above, run the `legend()` function following the `plot()` function. 
 
@@ -97,7 +99,7 @@ plot(y=log10(midwest$poptotal), x=midwest$area, #call the x and y values
 legend("topright", col=c(1:5), pch=19,legend=levels(as.factor(midwest$state)))
 ```
 
-#### A quick note on multipanel plots
+#### <span style="color:cadetblue">A quick note on multipanel plots</span> 
 
 A grid of plots in base `R` can be created using parameter setting mfrow or cfrow. Base `R` also gives you the option to make inset or subplots like this example here where the boxplot is inside the histogram. 
 
@@ -137,7 +139,7 @@ knitr::include_graphics("M6_mfig.png")
 
 If you're interested in other customizations in base `R` check out Paul Murrell's [R Graphics](https://www.stat.auckland.ac.nz/~paul/RG2e/) book. 
 
-### ggplot
+###<span style="color:cadetblue">ggplot</span> 
 
  The same exact scatterplot of county area vs populations size can be made using `ggplot`. Here the legend is automatically created. Check out the source of the example, which also has a compiled list of 50 different visualizations along with the code [here](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot). 
 
@@ -166,7 +168,7 @@ gg <- ggplot(midwest, #data, every arguement after this is connected with a '+' 
 plot(gg) #plot the object
 ```
 
-#### plotly: easy interactive plots with ggplot
+#### <span style="color:cadetblue">plotly</span>: easy interactive plots with ggplot
 
 The `plotly` package is an add on to `ggplot2` for quick interactive plots. The package is still relatively new and is under current development. The legends or other features are often poorly displayed but the interactive feature maybe useful for data exploration during an inperson meeting. 
 
@@ -188,9 +190,12 @@ plot_ly(z = volcano, type = "surface") #simple example of 3D surface plot
 
 The `googleVis` package also has some great plots with tooltips built in.  
 
-## Animated plots
+## <span style="color:cadetblue">Animated plots</span>
 
 The `plotly` package also allows for quick animations like this. [Shiny](https://shiny.rstudio.com/) is an easy introductory tool to more novel data visualizations.
+
+
+
 
 ```{r plotly animation, eval=TRUE}
 library(gapminder)
@@ -206,7 +211,7 @@ p <- p %>%
 p
 ```
 
-## Graphic for communication
+## <span style="color:cadetblue">Graphic for communication</span>
 
 There are plenty of guides on how to create the "best" visualization. This diagram is a good place to start when choosing your data visualizations. 
 
@@ -223,7 +228,7 @@ If you're plotting data to communicate (which is normally the case), some things
 For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006). At some point during your graduate career, you'll likely hear about [Edward Tufte's](https://www.edwardtufte.com/tufte/) philosophy.   
 
 
-## Spatial data
+## <span style="color:cadetblue">Spatial data</span>
  Just like other data vizualizations, mapping in `R` can be done a few different ways. Common packages include: 
 
   -  `maps`
@@ -240,15 +245,17 @@ The last 3 (`raster`, `sp`, and `rgdal`) are also useful for analyzing spatial d
 The `choroplethr` package is useful for plotting U.S. county level data like this:
 
 ```{r texas, eval=TRUE}
+
 library(ggplot2)
 library(choroplethr)
+library(choroplethrMaps)
 library(mapproj)
 
 data(df_county_demographics)
 df_county_demographics$value = df_county_demographics$percent_hispanic
 county_choropleth(df_county_demographics, 
                   state_zoom = "texas",
-                  title      = "Texas County Percent Hispanicn2012 Estimates",
+                  title      = "Texas County Percent Hispanic 2012 Estimates",
                   num_colors = 9) + coord_map()
 
 
@@ -257,8 +264,8 @@ county_choropleth(df_county_demographics,
 
 Newer packages like `googleVis` also have built-in interactive features. 
 
-```{r, eval=TRUE}
-library(googleVis)
+```{r,results='asis', eval=TRUE}
+suppressMessages(library(googleVis))
 require(datasets)
 states <- data.frame(state.name, state.x77)
 GeoStates <- gvisGeoChart(states, "state.name", "Population",
