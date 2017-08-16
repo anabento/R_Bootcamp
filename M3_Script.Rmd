@@ -47,9 +47,9 @@ Next <span style="color:orangered">**if**</span> your script has code that is st
 ``` rm(list=ls())``` 
 
 
-<span style="color:orangered">**If**</span>  your script is a function or group of functions to be sourced skip this step
+<span style="color:orangered">**If**</span>  your script is a function or group of functions to be sourced by another script, skip this step!!
 
-Try typing the rm function instead of copy pasting it. You will notice Rstudio **closes brackets** for you automatically
+Try typing the ```rm```  function instead of copy pasting it. You will notice Rstudio **closes brackets** for you automatically
 
 
 ##<span style="color:cadetblue">Step 5</span>
@@ -72,7 +72,7 @@ print(i*i) # also print each number multiplied by itself
 ```
 
 
-A function
+<span style="color:orangered">Practice:</span> annotate the function
 
 ```{r function}
 
@@ -126,16 +126,19 @@ Open your script and run it!
 ```
 File --> Open file --> Search for your working directory then run all or parts of it
 ```
-<span style="color:orangered">**_Or_**</span>
-```
-setwd("your path") # sets your working directory. You can also do this mannually
-source("Script1.R") # source the script of your choice
-```
+
 <span style="color:orangered">**_Or_**</span> you can double click on your R script open it in R studio and run specific parts of it
 ``` 
 Mac: cmd+return 
 Windows: ctrl+enter
 or pressing Run 
+```
+
+
+<span style="color:orangered">**_Or_**</span>
+```
+setwd("your path") # sets your working directory. You can also do this mannually
+source("Script1.R") # source your script, rename accordingly
 ```
 ##<span style="color:cadetblue">Step 9</span>
 
