@@ -1,9 +1,11 @@
 ---
-title:  <span style="color:cadetblue">Writing a script</span>
+title:  ""
 author: ""
 date: ""
 output: html_document
 ---
+#<span style="color:cadetblue">Writing a script</span>
+
 ***
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

@@ -311,16 +311,16 @@ suppressMessages(library(dplyr))
 
 suppressMessages(library(viridis))
 
-stocks_url <- "http://infographics.economist.com/2015/tech_stocks/data/stocks.csv"
-stocks <- read.csv(stocks_url, stringsAsFactors=FALSE)
+#stocks_url <- "http://infographics.economist.com/2015/tech_stocks/data/stocks.csv"
+#stocks <- read.csv(stocks_url, stringsAsFactors=FALSE)
 
-stock_colors <- viridis_pal()(100)
-stocks %>% 
-  mutate(date=as.Date(quarter, format="%m/%d/%y")) %>% 
-  streamgraph(key="ticker", value="nominal", offset="expand",date="quarter") %>% 
-  sg_fill_manual(stock_colors) %>% 
-  sg_axis_x(tick_interval=10, tick_units="quarter") %>% 
-  sg_legend(TRUE, "Ticker: ")
+#stock_colors <- viridis_pal()(100)
+#stocks %>% 
+  #mutate(date=as.Date(quarter, format="%m/%d/%y")) %>% 
+  #streamgraph(key="ticker", value="nominal", offset="expand",date="quarter") %>% 
+  #sg_fill_manual(stock_colors) %>% 
+  #sg_axis_x(tick_interval=10, tick_units="quarter") %>% 
+  #sg_legend(TRUE, "Ticker: ")
 ```
 
 ### And now for something a "lil different"...
