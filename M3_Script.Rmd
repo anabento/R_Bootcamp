@@ -7,6 +7,11 @@ output: html_document
 #<span style="color:cadetblue">Writing a script</span>
 
 ***
+
+This module will cover: 
+
+  - script best practices
+  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```

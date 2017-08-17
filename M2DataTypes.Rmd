@@ -2,7 +2,12 @@
 title: ""
 author: ""
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+ html_document:
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
 ---
 #<span style="color:cadetblue">Data Types</span>
 
@@ -13,6 +18,7 @@ This module will cover:
   - assigning objects
   - data structure and syntax
   - troubleshooting through Rstudio
+  - data subsetting
   
 ```{r settings, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
