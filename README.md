@@ -15,11 +15,26 @@ At the end of these lessons, students will be able to (SWBAT)...
   3.  Writing your first script
       -Architecture of a script
   4.  Writing functions 
-      - loops, control statements
+      This module will cover: 
+
+        - What are functions
+
+      which will require the following skills already covered:
+
+        - data structure 
+        - assigning an object
   5.  Manipulating and exploring Data  
-      - Importing and exporting daa
-      - Calculating summary statistics
-      - Basic plotting
+      This module will cover:
+
+        - loading data 
+        - calculate simple stats in base `R`
+        - plot function in base `R`
+
+      which will require the following skills already covered:
+
+        - logic statements
+        - manipulating data  
+        - assigning an object
   6.  Writing functions recap
   7.  Data Visualization
       - plotting in base R
