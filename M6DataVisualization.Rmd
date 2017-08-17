@@ -138,9 +138,12 @@ Here is an example of figure that Reni made using base `R` that has lots of info
 ```{r, eval=TRUE, out.width = "600px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("M6_mfig.png")
 ```
+&nbsp;
+&nbsp;
 
 
 If you're interested in other customizations in base `R` check out Paul Murrell's [R Graphics](https://www.stat.auckland.ac.nz/~paul/RG2e/) book. 
+&nbsp;
 
 ###<span style="color:cadetblue">ggplot</span> 
 
@@ -223,24 +226,6 @@ p<-gganimate(birth, "birth.gif", ani.width = 750, ani.height = 500, interval = 0
 
 &nbsp;
 
-
-## <span style="color:cadetblue">Graphics for communication</span>
-
-There are plenty of guides on how to create the "best" visualization. This diagram is a good place to start when choosing your data visualizations. 
-
-
-![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
-
-
-If you're plotting data to communicate (which is normally the case), some things you should keep in mind:
-
-  - every addition plot feature is adding additional information
-  - color choice (connotation, color blind)
-  - how the audience expects to see data
-
-For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006). At some point during your graduate career, you'll likely hear about [Edward Tufte's](https://www.edwardtufte.com/tufte/) philosophy on maximizing function over aesthetics.   
-
-
 ## <span style="color:cadetblue">Spatial data</span>
  Just like other data visualizations, mapping in `R` can be done a few different ways. Common packages include: 
 
@@ -290,3 +275,29 @@ GeoStates <- gvisGeoChart(states, "state.name", "Population",
                                        width=600, height=400))
 print(GeoStates,'chart')
 ```
+
+&nbsp;
+&nbsp;
+
+
+## <span style="color:cadetblue">Graphics for communication</span>
+
+There are plenty of guides on how to create the "best" visualization. This diagram is a good place to start when choosing your data visualizations. 
+
+&nbsp;
+&nbsp;
+
+![Visualization Groups by Dr. Andrew Abela](M6_fig.png)
+
+&nbsp;
+
+
+If you're plotting data to communicate (which is normally the case), some things you should keep in mind:
+
+  - every addition plot feature is adding additional information
+  - color choice (connotation, color blind)
+  - how the audience expects to see data
+
+For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006). At some point during your graduate career, you'll likely hear about [Edward Tufte's](https://www.edwardtufte.com/tufte/) philosophy on maximizing function over aesthetics.   
+&nbsp;
+&nbsp;
