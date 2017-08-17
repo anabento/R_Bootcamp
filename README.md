@@ -9,20 +9,28 @@ At the end of these lessons, students will be able to (SWBAT)...
       - install a package
       - create a variable in R
   2.  Data Types
-      - list the different data types of R
-      - describe the difference between a data frame and matrix
-      - give examples of when to use different data types
+      This module will cover: 
+
+      - assigning objects
+      - data structure and syntax
+      - troubleshooting through Rstudio
+      - data subsetting
   3.  Writing your first script
-      -Architecture of a script
+      This module will cover: 
+
+      - script best practices 
   4.  Writing functions 
       This module will cover: 
 
-        - What are functions
+      - function syntax
+      - control statements
+      - logic statements
+  
+  
+which will require the following skills already covered:
 
-      which will require the following skills already covered:
-
-        - data structure 
-        - assigning an object
+      - data structure 
+      - assigning an object
   5.  Manipulating and exploring Data  
       This module will cover:
 
