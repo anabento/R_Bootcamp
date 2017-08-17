@@ -118,7 +118,9 @@ vec2 <- rep(1:4, each = 2)
 vec3<-seq(1, 15, by = 2)
 ```
 
-You can transform and use operators to create other ```vectors```. Explore the difference between `vec4` and `vec5`. How was the addition done in both cases? 
+You can transform and use operators to create other ```vectors```. 
+
+<span style="color:orangered">**_Practice_**:</span> Explore the difference between `vec4` and `vec5`. How was the addition done in both cases? 
 
 ```{r Vectors2}
 vec4<-vec1+vec2+vec3
