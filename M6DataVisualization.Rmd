@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE, warning = FALSE, message = FALSE)
 
 ```
 
-#<span style="color:cadetblue">Data Vizualizations</span>
+#<span style="color:cadetblue">Data Visualizations</span>
 
 ***
 
@@ -241,7 +241,7 @@ For more details see <i>Ten guidelines for effective data visualization in scien
 
 
 ## <span style="color:cadetblue">Spatial data</span>
- Just like other data vizualizations, mapping in `R` can be done a few different ways. Common packages include: 
+ Just like other data visualizations, mapping in `R` can be done a few different ways. Common packages include: 
 
   -  `maps`
   - `rMaps`
