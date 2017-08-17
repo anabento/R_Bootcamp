@@ -1,5 +1,5 @@
 ---
-title:  <span style="color:cadetblue">Data Vizualizations</span>
+title:  ""
 author: ""
 date: ""
 header-includes:
@@ -12,6 +12,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE, warning = FALSE, message = FALSE)
 
 ```
+
+#<span style="color:cadetblue">Data Vizualizations</span>
 
 ***
 
@@ -197,19 +199,29 @@ The `plotly` package also allows for quick animations like this. [Shiny](https:/
 
 
 
-```{r plotly animation, eval=TRUE}
-library(gapminder)
-p <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
-  geom_point(aes(size = pop, frame = year, ids = country)) +
-  scale_x_log10()+theme_bw()
+```{r plotly animation, eval=FALSE}
+suppressMessages(library(gganimate))
+birth<-read.csv("birth.csv", sep='', header=TRUE)
 
-p <- ggplotly(p)
-p <- p %>% 
-  animation_opts(
-    1000, easing = "elastic", redraw = FALSE
-  )
-p
+pal <- c("#313695","#4575b4","#74add1","#abd9e9","#e0f3f8","#ffffbf","#fee090","#fdae61","#f46d43","#d73027","#a50026")
+vals <- seq(10,32, length = 11)
+birth <- ggplot(birth, aes(x = Year, y = BirthRate, frame = Year, cumulative = TRUE)) +
+  geom_line(colour="black") +
+  geom_point(shape = 21, colour="black", aes(fill=BirthRate), size=5, stroke=1) +
+  scale_x_continuous(limits=c(1880,2015)) +
+  scale_y_continuous(limits=c(10,32)) +
+  theme_minimal() +
+  scale_fill_gradientn(colors = pal, values = vals, rescaler = function(x, ...) x, oob = identity, guide=FALSE) +
+  xlab("Year") +
+  ylab("Birth rate") 
+p<-gganimate(birth, "birth.gif", ani.width = 750, ani.height = 500, interval = 0.1)
 ```
+
+
+![Netherlands birth rate](birth.gif)
+
+&nbsp;
+
 
 ## <span style="color:cadetblue">Graphic for communication</span>
 
@@ -245,7 +257,9 @@ The last 3 (`raster`, `sp`, and `rgdal`) are also useful for analyzing spatial d
 The `choroplethr` package is useful for plotting U.S. county level data like this:
 
 ```{r texas, eval=TRUE}
-
+#install.packages("choroplethr")
+#install.packages("choroplethrMaps")
+#install.packages("mapproj")
 library(ggplot2)
 library(choroplethr)
 library(choroplethrMaps)

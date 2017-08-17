@@ -1,5 +1,5 @@
 ---
-title:  <span style="color:cadetblue">Functions</span>
+title: ""
 author: ""
 date: ""
 output: html_document
@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ```
-
+#<span style="color:cadetblue">Functions</span>
 
 This module will cover: 
 
@@ -25,6 +25,8 @@ which will require the following skills already covered:
 Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a script and called when needed
 
 ![](geeks.png)
+
+&nbsp;
 
 You can write your own functions, but `R` and its packages come with "pre-made" functions as well.
 

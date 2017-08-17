@@ -81,7 +81,7 @@ attributes(y)
 
  <span style="color:orangered">**_Concept Check_**:</span>  How could we make `myname` longer than 1?
 
-## <span style="color:cadetblue">Data Structure</span>
+##<span style="color:cadetblue">Data Structure</span>
 
 These 5 classes or modes can then be combind to create many different types of *data structure*. Common data structures include:
 
