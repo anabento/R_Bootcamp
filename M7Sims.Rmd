@@ -14,15 +14,18 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ***
 This module will cover: 
 
-  - Simulating data
+  - simulating data of discrete model
+  - simulating data of continuous model
   
   
 which will require the following skills already covered:
 
+  - function syntax
   - data structure 
   - assigning an object
-  - plotting
-  - Manipulate Data structure 
+  - plotting in base `R`
+  - plotting in ggplot
+  - manipulating data  
   
 ##<span style="color:cadetblue">Mathematical models</span>
 
