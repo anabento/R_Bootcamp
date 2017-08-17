@@ -1,0 +1,137 @@
+---
+title: ""
+author: ""
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+#<span style="color:cadetblue">Manipulating Data</span>
+
+***
+
+This module will cover:
+
+  - loading data 
+  - logic statements
+  - calculate simple stats in base `R`
+  - plot function in base `R`
+
+which will require the following skills already covered:
+
+  - manipulating data  
+  - assigning an object
+  
+
+
+
+###<span style="color:cadetblue">Loading data</span>
+
+Before we jump into calculating summary statistics and simple data visualization, we need to import or load data into `R`. 
+
+
+![data science cycle](data-science.png)
+
+What are the different columns and rows? What type of data structure would this be in `R`? 
+```{r}
+library(nycflights13)
+head(flights) 
+```
+A common way to read data frames into R is to `read.csv`. *set up realistic part of example* 
+
+Work with your partner to complete the `manipulating_data.R` script. This script follows a realistic work flow used to explore new data. Data exploration might include answering the following:
+   
+   1.  Exploring Data Structure
+      * How many people responded to the survey?
+      * What are the titles for the different columns?
+      * etc.
+   2.  Exploring Data with Summary Statistics  
+      * What is the max, min and mean distance to the students favourite place? 
+      * What is the max, min and mean for all the columns?  
+      * Other descriptive statistics built into `R` include: mean, sd, var, min, max, median, range, and quantile
+    
+  3. Exploring Data with Basic Visualizations
+      * scatter plot: Does birth order correlate with number of siblings? 
+      * histogram: What is the distribution of the no. of siblings in the cohort?
+      * boxplot: How does the distribution of no. of siblings, birth order and birth date relate?
+      
+This module should be completed as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions, by reading manual pages, googling, etc. The team will switch roles throughout the exercise. 
+
+***
+
+###<span style="color:orangered"> Solutions</span> in  `manipulating_data.R`
+
+```{r read in csv}
+#load survey results into an object called cohort
+cohort <- read.csv("CohortData.csv") #the file needs to be located in the working directory  
+```
+
+
+###<span style="color:cadetblue">1. Exploring Data Structure</span>
+
+
+```{r exploring data structure}
+#What is the structure of the data?
+str(cohort) #object names are case sensitive 
+
+#What are the names of the different columns?
+colnames(cohort) #searching ??colname or tabing out will lead to the command name "colnames"
+
+#How many people responsed to the survey?
+#a. modifying the arguement given to length
+length(cohort$sibling) #length only works on a ve
+
+#b. using the function dim()
+dim(cohort) #dimensions (rows, col) 
+
+#c. using the function nrow()
+nrow(cohort) #returns number of rows of a vector, array or data frame
+```
+
+###<span style="color:cadetblue">2. Exploring Data with Summary Statistics</span>
+
+
+```{r summary statistics}
+
+#What is the max, min and mean distance to the students favplace? 
+mean(cohort$favplace) #return the mean distance
+min(cohort$place) #return the min distance
+max(cohort$favplace) #return the max distance
+
+#Use the apply function to calculate the mean, min and max for all the interger columns 
+apply(cohort[,1:4], 2, max) #the third arguement is the function
+apply(cohort[,1:4], 2, min)
+apply(cohort[,1:4], 2, range) #range will return the min and max
+apply(cohort[,1:4], 2, mean)
+
+
+#Use the summary function to create summary statistics for all of the columns
+summary(cohort) #returns min,max, median, and quartiles by column
+
+
+```
+
+
+###<span style="color:cadetblue">3. Exploring Data with Basic Visualizations</span>
+
+
+```{r basic vizualizations}
+
+#What is the distribution of the no. of siblings in the cohort?
+hist(cohort$sibling) #must call the col with the data of interest
+  
+#Does birth order correlate with no. of siblings?
+plot(y=cohort$sibling, x=cohort$birth.order,ylim=c(0,10), col="black", pch=19, xlab="birth order", ylab="no. of siblings") #plot needs x and y values
+
+#How do the quartiles of the different variables relate to eachother?
+boxplot(cohort)
+
+#How does the distribution of no. of siblings, birth order and birth date relate?
+boxplot(cohort[,1:3]) #the subset using [rows, col] 
+
+
+```
+
