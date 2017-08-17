@@ -452,7 +452,7 @@ source("Script1.R") # source your script, rename accordingly
 ##<span style="color:cadetblue">Step 9</span>
 
 
-It's a good idea to create a README text file that describes your project and keep it in the project
+In this settingm it's a good idea to create a README text file that describes your project and keep it in the project
 folder. 
 
 This file should describe the overall project and the files in the project folder
@@ -464,6 +464,11 @@ File --> New File --> Text file
 
 Save it using the name README.txt" in the same directory of your project
 ```
+
+###<span style="color:cadetblue">Going further</span>
+
+[Rmarkdown](http://rmarkdown.rstudio.com) for using a productive notebook interface to weave together narrative text and code to produce elegantly formatted output
+
 
 #<span style="color:cadetblue">3. Functions</span>
 
@@ -773,7 +778,7 @@ Data exploration might include answering the following:
       * boxplot: What is the distribution of flight delay by airline?
       * etc. 
 
-<span style="color:orangered">**Practice**:</span>Get started by opening the **manipulating_data.R** script. 
+<span style="color:orangered">**Practice**:</span> Get started by opening the **manipulating_data.R** script. 
 
 &nbsp;
 
@@ -1095,11 +1100,11 @@ which will require the following skills already covered:
 
 **Mathematical** or dynamical models are abstract models that uses mathematical language to describe the behavior of a system
 
-###<span style="color:cadetblue">Logistic growth</span>
+##<span style="color:cadetblue">Logistic growth</span>
 
 A common model of population growth, originally proposed by to Pierre-François Verhulst in 1838, where the rate of reproduction is propoportional to both the existing population and the amount of available resources, all else being equal
 
-###<span style="color:cadetblue">The logistic model discrete</span>
+##<span style="color:cadetblue">The logistic model discrete</span>
 
  \[n(t+1) = n(t) + r_d n(t) \left(1-\frac{n(t)}{K}\right)\]
  
@@ -1118,11 +1123,12 @@ disc.logistic = function(n, p) { ## here are just saying that 'disc.logistic' is
 
 ```
 
-```
-Lets open Discrete_Model.R
-```
+
+###<span style="color:orangered">**Practice**:</span> Get started by opening the **Discrete_Model.R** script
+
+
  
-###<span style="color:cadetblue">The logistic model continuous</span>
+##<span style="color:cadetblue">The logistic model continuous</span>
 
 
 In continuous models, we will explore a specific type of model:  **ordinary differential equations**. These describe the *rate* at which variables changes over time
@@ -1172,14 +1178,10 @@ cont.logistic = function(n, p) { ## here are just saying that 'm.logistic' is a 
 
 ```
 
-
-```
-Lets open Continuous_Model.R
-```
+###<span style="color:orangered">**Practice**:</span> Get started by opening the **Continuous_Model.R** script
 
 
-
-###<span style="color:cadetblue">SIR model</span>
+##<span style="color:cadetblue">SIR model</span>
 
 
 **Epidemiological processes** (e.g., infection of susceptible individuals, recovery of infected individuals). We will represent these with equations.
@@ -1242,9 +1244,8 @@ SIRModel <- function (t, x, params) {
 
 ```
 
-```
-Lets open SIR_Deterministic.R
-```
+
+###<span style="color:orangered">**Practice**:</span> Get started by opening the **SIR_Deterministic.R** script
 
 &nbsp;
 &nbsp;
