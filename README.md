@@ -1,96 +1,52 @@
 # R_Bootcamp
 Workshop for Incoming IDEAS students
 
-## Module specific learning outcomes
-At the end of these lessons, students will be able to (SWBAT)...
+## Module specific skills covered
   1.  What is R and RStudio
       - list at least 3 reasons R/RStudio is a useful research tool 
       - describe CRAN's function
       - install a package
       - create a variable in R
   2.  Data Types
-      This module will cover: 
-
       - assigning objects
       - data structure and syntax
       - troubleshooting through Rstudio
       - data subsetting
   3.  Writing your first script
-      This module will cover: 
-
       - script best practices 
   4.  Writing functions 
-      This module will cover: 
-
       - function syntax
       - control statements
-      - logic statements
-  
-  
-which will require the following skills already covered:
-
-      - data structure 
-      - assigning an object
+      - logic statements 
+      
+      which will require the following skills already covered:       
+       - data structure 
+       - assigning an object
+        
   5.  Manipulating and exploring Data  
-      This module will cover:
-
-        - loading data 
-        - calculate simple stats in base `R`
-        - plot function in base `R`
+      - loading data 
+      - calculate simple stats in base `R`
+      - plot function in base `R`
 
       which will require the following skills already covered:
-
-        - logic statements
-        - manipulating data  
-        - assigning an object
-  6.  Writing functions recap
-  7.  Data Visualization
+       - logic statements
+       - manipulating data  
+       - assigning an object
+ 
+ 6.  Writing functions recap
+ 7.  Data Visualization
       - plotting in base R
       - plotting in ggplot
-  8.  Simulating Data
+ 8.  Simulating Data
+        - simulating data of discrete model
+        - simulating data of continuous model
+        
+      which will require the following skills already covered:
 
-Old stuff 9/13
----
-# Course outline
-The course will consist of a series of modules that build upon eachother. The  module schedule along with a brief description are listed below. 
-## Day 1
-  1.  What is R and RStudio
+        - function syntax
+        - data structure 
+        - assigning an object
+        - plotting in base `R`
+        - plotting in ggplot
+        - manipulating data  
 
-**_Break_**
-
-  2.  Data Types
-      -  This module will introduce students to the different R data types, how they are related and when they should be used.  
-
-**_Lunch_**
-
-  3.  Writing your first script
-      
-**_Break_**
-
-  4.  Architecture of a script
-  
-  _maybe add module on troubleshooting_
-## Day 2
-  5.  Writing a script; part 2
-
-**_Break_**
-
-  6.  Importing and exporting data
-  
-**_Lunch_**
-
-  7.  Calculating summary statistics
-  8.  Data Visualization
-  
-**_Break_**
-  
-  9.  Simulating Data
-  
-_need to end with some sort of recap_
-
-
-  
-## Learning outcomes not explicitly linked to module
-1. Using outside resources 
-      - find the manual page for a function and identify page components
-      - list resources for learning R 
