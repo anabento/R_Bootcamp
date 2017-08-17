@@ -14,16 +14,17 @@ At the end of these lessons, students will be able to (SWBAT)...
       - give examples of when to use different data types
   3.  Writing your first script
       -Architecture of a script
-  4.  Manipulating and exploring Data  
+  4.  Writing functions 
+      - loops, control statements
+  5.  Manipulating and exploring Data  
       - Importing and exporting daa
       - Calculating summary statistics
-  5a.  Writing functions 
-      - loops, control statements
-  5b.  Writing functions recap
-  6.  Data Visualization
+      - Basic plotting
+  6.  Writing functions recap
+  7.  Data Visualization
       - plotting in base R
       - plotting in ggplot
-  7.  Simulating Data
+  8.  Simulating Data
 
 Old stuff 9/13
 ---
