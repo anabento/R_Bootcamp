@@ -7,6 +7,7 @@
 #This code should be completed with a partner, and will walk students through common data exploration tasks. 
 #Some lines are complete, while others are missing pieces or will have an error that needs fixing. 
 #As you move through the script, the prompts will become more open ended.  
+#Most of the data manipulation is done in base R, but the dplyr package might be useful. 
 
 #Before we can explore the data, we must load it into R. 
 library(nycflights13)
@@ -62,15 +63,26 @@ mean(flights$dep_delay, na.rm = TRUE) #return the mean distance, what does na.rm
     CarrierDelay <- c(CarrierDelay, tmp.mean) #save mean
     }
 
-#Use the summary function to create summary statistics for all of the columns
-summary()
+#Use the dplyr::summarse function to create summary statistics for all of the columns
+summarise(weather, mean_temp=mean(temp), mean_dewp=mean(dewp)) #why are these returning NA? 
+  # the solution to this issue would be to either filter out NA, or use a function that can handle NA values
+  #Fix option 1: filter out NA
+    #there are many ways to remove NAs, here is one way
+    completeWeather <-weather[complete.cases(weather),] #remove any row that has an NA
+    sum1 <- summarise(completeWeather, mean_temp=mean(temp), mean_dewp=mean(dewp)) #what does this return 
+    
+  #Fix option 2: change the function
+  mean.na=function(x){
+    mean(x,na.rm = TRUE) #function calculates mean of x after removing NA
+  }
 
+  sum2 <- summarise(weather, mean_temp=mean.na(temp), mean_dewp=mean.na(dewp))
 
-
-
+  #Does sum1 and sum2 give you the same result? Why? 
+  sum1==sum2
 
 #3. Exploring Data with Basic Visualizations
-####
+#####
 
 #Plot average delay by carrier
 barplot(CarrierDelay, #y values to plot
