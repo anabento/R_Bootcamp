@@ -22,7 +22,7 @@ which will require the following skills already covered:
 
 ***
 ##<span style="color:cadetblue">What is a function</span> 
-Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a script and called when needed
+Functions incorporate sets of instructions that you want to use repeatedly or that, because of their complexity, are better self-contained in a script and called when needed.
 
 ![](geeks.png)
 
@@ -30,13 +30,13 @@ Functions incorporate sets of instructions that you want to use repeatedly or th
 
 You can write your own functions, but `R` and its packages come with "pre-made" functions as well.
 
-A useful function is ```rm(list=ls())```, which clears R’s brain.
+A useful function is ```rm(list=ls())```, which clears `R`’s brain.
 
 Others include seq(), log(), sin()...
 
 A typical function has the follwoing architecture
-```{r function}
-function (arglist)  {body}
+```{r function, eval=FALSE}
+func.name = function (arglist)  {body}
 ```
 
 ###<span style="color:orangered">**Let's copy and paste them into the console**:</span> 

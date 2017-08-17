@@ -9,7 +9,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 
-knitr::opts_chunk$set(echo = TRUE, eval=FALSE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE, warning = FALSE, message = FALSE, fig.align ="center")
 
 ```
 
@@ -133,11 +133,12 @@ hist(disp)
 ```
 
 
-Here is an example of figure that Reni made using base `R` that has lots of information layered into a single visualization. 
+Here is an example of figure that Reni made using base `R` that has lots of information layered into a single visualization.
 
 ```{r, eval=TRUE, out.width = "600px", echo=FALSE, fig.align='center'}
 knitr::include_graphics("M6_mfig.png")
 ```
+
 
 If you're interested in other customizations in base `R` check out Paul Murrell's [R Graphics](https://www.stat.auckland.ac.nz/~paul/RG2e/) book. 
 
@@ -223,7 +224,7 @@ p<-gganimate(birth, "birth.gif", ani.width = 750, ani.height = 500, interval = 0
 &nbsp;
 
 
-## <span style="color:cadetblue">Graphic for communication</span>
+## <span style="color:cadetblue">Graphics for communication</span>
 
 There are plenty of guides on how to create the "best" visualization. This diagram is a good place to start when choosing your data visualizations. 
 
@@ -237,7 +238,7 @@ If you're plotting data to communicate (which is normally the case), some things
   - color choice (connotation, color blind)
   - how the audience expects to see data
 
-For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006). At some point during your graduate career, you'll likely hear about [Edward Tufte's](https://www.edwardtufte.com/tufte/) philosophy.   
+For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006). At some point during your graduate career, you'll likely hear about [Edward Tufte's](https://www.edwardtufte.com/tufte/) philosophy on maximizing function over aesthetics.   
 
 
 ## <span style="color:cadetblue">Spatial data</span>
