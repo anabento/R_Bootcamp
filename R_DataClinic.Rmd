@@ -721,7 +721,8 @@ There are lots of tricks to loading data depending on the data types. For more i
 Data exploration is a key step in scientific inquiry. Effective exploration might include transforming the data by grouping replicate populatons, calculating summary statistics, etc. Data cleaning (ie. removing missing values) should be done **prior** to this step and done in `R`.  Data cleaning in `R` means you'll have a record of how the data was changed. 
 
 
-<!--- ![data science cycle](data-science.png) --->
+![data science cycle from [R for Data Science](http://r4ds.had.co.nz/)](M5_data-science.png)
+
 &nbsp;
 
 From the chart above, we can see that data visualization is also an important step to understanding your data. The rest of this module will be spent exploring a new data set using the skills we have already covered, and building on them to create plots of the data. 
