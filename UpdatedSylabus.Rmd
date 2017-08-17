@@ -1,74 +1,75 @@
 ---
-title: "R bootcamp syllabus"
+title: "IDEAS R Data Clinic syllabus"
 author: "Ana Bento and Reni Kaul"
-date: "`r Sys.Date()`"
+date: "Aug 18- 19 8am-5pm"
 output: pdf_document
 ---
 
 #Friday 
 
-#8am-9am: M1 -- What is R lecture 
+##8am-9am: What is R lecture 
 
 
-#9am-9:05am: Break
+##9am-9:10am: Break
 
-#9:10-12:00pm: M2+M3 -- Data Types and Manipulation 
+##9:10-11:00pm: Data types
 
-##M2
 ###Vectors
 ###Matrices
 ###Factors
 ###Dataframes
 ###Lists
+###Exercises
+
+##11:00-12:00pm: Writing, saving and sourcing a script
 
 
-##M3 -- Data Manipulation
+##12:00-1:15pm:  Lunch
 
-###Exercises- Reni
+##1:15-3:00p:  Functions
+
+###Functions
+###Loops
+###Control Statements
+###Exercises
+
+##3:00-3:15: Break
+
+##3:15pm- 5:00pm: Data manipulation
 
 
-#12:00-1:15pm:  Lunch
-
-#1:15-3:00p:  M4 -- Writing your first script
-
-##Lecture on functions-- brief ppt
-###hmtl document with  functions, summary stats and fixing errors- loops apply functions function that has a summary stats
-
-#3:00-3:05: Break
+###Exercises 
 \newpage
-#3:15pm- 4:30pm: The script
-
-###creating your first script
-###commenting 
-###exchanging
-
-
 #Saturday
 
-#8am-9am: Recap script  + scramble exercise
-open your script on their own anf then exercise
+##8:00-8:30am: Recap script and exchange 
 
-#9:15am: Break
+##8:30-9:15am: Scramble functions exercise
 
-#9:25am:12:15pm: M6 Data visualiztion M6  
+##9:15am: Break
 
-###basic, gg plottly
+##9:25am:12:15pm: Data visualization 
+
+###basic
+###gg 
+###plottly
+###animated plots
 
 ###exercise collaborative coding 
 
-#12:15-1:15pm: Lunch (pizza provided)
+##12:15-1:30pm: Lunch (pizza provided)
 
-#1:15-3:00pm: M7-- Simulations
+##1:30-3:00pm: M7-- Simulations
 
-##Simulationg data in R
+###Simulationg data in R
 
 ###Exercise incorporating all skills
 
-#3:00pm: Break
+##3:00pm: Break
 
-#3:15-5:00pm
+##3:15-5:00pm
 
-###Continuation
+###Simulationg data in R- Continuation
 
 ###Wrap up
 
