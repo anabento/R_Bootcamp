@@ -36,7 +36,7 @@ Data visualization in `R` can be quick and dirty (ie. data exploration for yours
 
 ## <span style="color:orangered">Two approaches to the same problem: Base `R` vs `ggplot`</span>
 
-Plotting in base `R` can allow the user to create highly customized plots. This customization takes time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammer of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. I will walk through an example using base `R` and then recreate the figure using `ggplot2`. For even more side-by-side examples, see Nathan Yau's blog post on [Flowing Data](https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/). 
+Plotting in base `R` can allow the user to create highly customized plots. This customization takes time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammar of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. We will walk through an example using base `R` and then recreate the figure using `ggplot2`. For even more side-by-side examples, see Nathan Yau's blog post on [Flowing Data](https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/). 
 
 ### <span style="color:cadetblue">Base</span> `R`
 
@@ -63,7 +63,7 @@ A simple plot can take many more lines of code than you expect based on the visu
 * **mtext**: add margin text
 * **axis**: add axis tick/labels
 
-Let's create a plot of the total population by county area for 5 midwest states (example taken from Selva Prabhakaran's [tutorial](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot_)). This data is part of the `ggplot2` package. I start with the basic scatterplot function `plot()` and then customize from there.  
+Let's create a plot of the total population by county area for 5 midwest states (example taken from Selva Prabhakaran's [tutorial](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Scatterplot_)). This data is part of the `ggplot2` package. We start with the basic scatterplot function `plot()` and then customize from there.  
  
 ```{r base R, eval=TRUE}
 library(ggplot2) #load the package with the data

@@ -1,6 +1,6 @@
 ---
-title: ""
-author: ""
+title: <span style="color:cadetblue">IDEAS R Data Clinic</span>
+author: "Ana Bento & Reni Kaul"
 date: "`r Sys.Date()`"
 output: 
  html_document:
@@ -11,7 +11,7 @@ output:
       smooth_scroll: false
 ---
 
-#<span style="color:cadetblue">Data Types</span>
+#<span style="color:cadetblue">1. Data types</span>
 
 ***
 
@@ -45,7 +45,7 @@ myname #print the content of 'myname' object by running it in the console
 The information in the object is retrived by calling the object's name. 
 
 
-## <span style="color:cadetblue">Data Types</span>
+## <span style="color:cadetblue">Data types</span>
 
 One of the first concepts we'll need to understand how `R` organizes information. This is <span style="color:orangered"> **_very important_**</span> because nearly every task requires manipulating data. `R` has 5 basic <span style="color:orangered"> ('*atomic*')</span> classes :
 
@@ -111,7 +111,7 @@ numeric_vector <- c(1, 10, 49)
 boolean_vector <- c("TRUE", "FALSE", "TRUE")
 ```
 
-You can creating ```Vectors``` using handy functions
+You can creating ```vectors``` using handy functions
 ```{r Vectors1}
 vec1 <-  rep(1:4, 2)
 vec2 <- rep(1:4, each = 2) 
@@ -129,7 +129,7 @@ vec5<-sum(vec1,vec2,vec3)
 
 There are many different ways to manipulate `vectors`. These methods will come in handy when exploring and plotting data. Accessing specific ```elements``` in the ```vector``` can be done based on the value of the `element` or the `element` location in the string. 
 
-<span style="color:orangered">**Practice**:</span> Determine how the command is accesses the vector. Complete the comment where needed. 
+<span style="color:orangered">**Practice**:</span> Determine how the command accesses the ```vector```. Complete the comment where needed. 
 ```{r Vectors3}
 vec4[1] # first elements
 
@@ -158,7 +158,7 @@ which(vec7 == 2) # position
 ```
 ###<span style="color:cadetblue">Matrices</span>
 
-```Matrices``` are a special type of vector. The data is organized into columns and rows giving the matrix dimensions. There are many ways to make a matrix, but the default is to fill column-wise. 
+```Matrices``` are a special type of vector. The data is organized into columns and rows giving the ```matrix``` dimensions. There are many ways to make a ```matrix```, but the default is to fill column-wise. 
 ```{r Matrices}
 rnames <- c("R1", "R2")
 cnames <- c("C1", "C2")
@@ -166,7 +166,7 @@ m<-matrix(data = NA, nrow = 2, ncol = 2, byrow=TRUE,
   dimnames=list(rnames, cnames))
 ```
 
-<span style="color:orangered">**Practice**:</span> Add more rows and columns to the **matrix** and fill it with 1s and change the names of rows and columns
+<span style="color:orangered">**Practice**:</span> Add more rows and columns to the ```matrix``` and fill it with 1s and change the names of rows and columns
 ```{r Matrices1}
 m<-matrix(data = , nrow = , ncol = , byrow = TRUE, dimnames = list(rnames, cnames))
 ```
@@ -204,9 +204,7 @@ m1[,1]
 ```
 
 ###<span style="color:cadetblue">Lists</span>
-```Lists``` are really containers for vectors and matrices. They can hold different data classes in each entry of the list including lists! This means you can make lists of lists, which is why lists are considered a recursive vector.
-
-*Lists of lists of lists can be confusing*
+```Lists``` are really containers for ```vectors``` and ```matrices```. They can hold different data classes in each entry of the ```list``` including ```lists```! This means you can make lists of ```lists```, which is why ```lists``` are considered a recursive ```vector```.
 
 ```{r Lists}
 #make a list
@@ -217,7 +215,7 @@ primes <- list(
     14:17, 18:19, 20:23)
 ```
 
-<span style="color:orangered">**Practice**:</span> Follow comments to interact with the list 
+<span style="color:orangered">**Practice**:</span> Follow comments to interact with the ```list``` 
 ```{r Lists 2}
 #check the class of an entry
 
@@ -231,7 +229,7 @@ w[[2]][1] #what is this? How is it different than last command?
 ```
 
 ###<span style="color:cadetblue">Factors</span>
-```Factors``` are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. Factors can only contain pre-defined values and are really a way at add labels to integers. 
+```Factors``` are used for ordered or unordered categorical data. This data type is important for modeling and plotting work. ```Factors``` can only contain pre-defined values and are really a way at add labels to integers. 
 
 order categories: `low`,`med`, `high`
 unorder categories: `blue`, `red`
@@ -265,7 +263,7 @@ summary(hues)
 
 
 ###<span style="color:cadetblue">Data frames</span>
-```Data frames``` are the most common way we organize ecological data. They have the freedom of lists and the organization of a matrix. Each column can be a different data class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
+```Data frames``` are the most common way we organize ecological data. They have the freedom of ```lists``` and the organization of a ```matrix```. Each column can be a different ```data``` class. This means for a single observation or row in a data frame categorical, numeric, factorial, etc. can be included.  
 
 ```{r Data frames}
 # creating vectors
@@ -291,7 +289,7 @@ df[1,]
 df$ID
 ```
 
-##<span style="color:cadetblue"> Useful functions</span>
+###<span style="color:cadetblue"> Useful functions</span>
 
     head() - see first 6 rows
     tail() - see last 6 rows
@@ -302,13 +300,13 @@ df$ID
     names() - will list the names attribute for a data frame (or any object really), which gives the column names.
     
 
-## <span style="color:cadetblue">Going further</span>
+###<span style="color:cadetblue">Going further</span>
 
 The `R` community lead by Garrett Grolemund and Hadley Wickham has developed work flows that are more efficient for common data science manipulations. Check out the [Tidyverse](https://www.tidyverse.org/) and [R for Data Science](http://r4ds.had.co.nz/).  
 
 In general, if you're searching for a quick reference for `R` [statmethods](http://www.statmethods.net/index.html) is a good source. 
 
-#<span style="color:cadetblue">Writing a script</span>
+#<span style="color:cadetblue">2. Writing a script</span>
 
 ***
 
@@ -320,7 +318,7 @@ This module will cover:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#<span style="color:cadetblue">The importance of a script</span>
+##<span style="color:cadetblue">The importance of a script</span>
 >1. Permanent 
 >2. Repeatable
 >3. Annotated 
@@ -354,13 +352,13 @@ Leave an empty "blank line" - These are important  to create chunks of code and 
 ##<span style="color:cadetblue">Step 4</span>
 
 
-Next <span style="color:orangered">**if**</span> your script has code that is standalone and independent, we recomend you always start a script by clearing R's brain 
+Next <span style="color:orangered">**if**</span> your script has code that is standalone and independent, we recomend you always start a script by clearing ```R```'s brain 
 ``` rm(list=ls())``` 
 
 
 <span style="color:orangered">**If**</span>  your script is a function or group of functions to be sourced by another script, skip this step!!
 
-Try typing the ```rm```  function instead of copy pasting it. You will notice Rstudio **closes brackets** for you automatically
+Try typing the ```rm```  function instead of copy pasting it. You will notice ```Rstudio``` **closes brackets** for you automatically
 
 
 ##<span style="color:cadetblue">Step 5</span>
@@ -369,11 +367,11 @@ Leave another empty "blank line"
 
 ##<span style="color:cadetblue">Step 6</span>
 
-###Now you are ready to start writing your first script! Copy paste the code inside the ```[] ``` Then move to <span style="color:cadetblue">Step 7</span>
+**Now you are ready to start writing your first script! Copy paste the code inside the ```[] ``` Then move to** <span style="color:cadetblue">Step 7</span>
 
 We will go over how to construct these functions in the next module
 
-A loop
+<span style="color:orangered">Practice:</span>Lets try to understnd what this loop does
 
 ```{r loop}
  for(i in 1:10){ # for loop run from 1 to 10
@@ -383,7 +381,7 @@ print(i*i) # also print each number multiplied by itself
 ```
 
 
-<span style="color:orangered">Practice:</span> annotate the function
+<span style="color:orangered">Practice:</span> Annotate the function
 
 ```{r function}
 
@@ -400,7 +398,7 @@ Isit(1)
 
 ```
 
-A function and a plot 
+<span style="color:orangered">Practice:</span> Annotate the rest of the function and plot 
 
 ```{r plot}
 
@@ -432,7 +430,7 @@ Once you are done writing your script and you are happy with the commenting. <sp
 
 ##<span style="color:cadetblue">Step 8</span>
 
-Open your script and run it!
+###<span style="color:orangered">Practice:</span> Open your script and run it!
 
 ```
 File --> Open file --> Search for your working directory then run all or parts of it
@@ -467,7 +465,7 @@ File --> New File --> Text file
 Save it using the name README.txt" in the same directory of your project
 ```
 
-#<span style="color:cadetblue">Functions</span>
+#<span style="color:cadetblue">3. Functions</span>
 
 This module will cover: 
 
@@ -500,7 +498,7 @@ A typical function has the follwoing architecture
 func.name = function (arglist)  {body}
 ```
 
-###<span style="color:orangered">**Let's copy and paste them into the console**:</span> 
+###<span style="color:orangered">**Practice:**</span> Let's copy and paste them into the console
 
 ##<span style="color:cadetblue">Example 1a:</span> Simple function
 ```{r function1}
@@ -593,7 +591,7 @@ while(x < 10){
 print("The end")
 ```
 
-##<span style="color:cadetblue">Example 3a:</span> **for** loop
+##<span style="color:cadetblue">Example 3:</span> **for** loop
 
 ```{r function4}
 a<-c() # creating an empty vector
@@ -648,7 +646,7 @@ sqrt(var(dat)/length(dat)) # standard error
 
 
 ##<span style="color:cadetblue">Example 6:</span> The apply  function
-```apply``` are functions to manipulate slices of data from matrices, arrays, lists and dataframes in a repetitive way 
+```apply``` are functions to manipulate slices of ```data``` from ```matrices```, ```arrays```, ```lists``` and ```data frames``` in a repetitive way 
 ```{r function7}  
 X <- matrix(rnorm(30), nrow=5, ncol=6) # creating a matrix
 
@@ -661,7 +659,7 @@ apply(X, 2, sum)
 ###<span style="color:orangered">**Practice**:</span> How do you calculate the sum of each row using apply?
 
 ##<span style="color:cadetblue">Example 7:</span> The lapply  function
-```lapply``` applies a given function to every element of a list and obtain a list as result
+```lapply``` applies a given function to every element of a ```list``` and obtain a ```list``` as result
 ```{r function8}  
 # create a list with 2 elements
 l <- list(a = 1:10, b = 11:20)
@@ -675,7 +673,7 @@ lapply(l, sum)
 ```
 
 ##<span style="color:cadetblue">Example 8:</span> The sapply  function
-```sapply``` will return either a vector, with elements [[‘a’]] and [[‘b’]], or a matrix with column names “a” and “b”
+```sapply``` will return either a ```vector```, with elements [[‘a’]] and [[‘b’]], or a ```matrix``` with column names “a” and “b”
 ```{r function9}  
 # create a list with 2 elements
 l <- list(a = 1:10, b = 11:20)
@@ -694,7 +692,7 @@ l.mean[['a']]
 ## <span style="color:cadetblue">Going further</span>
 rapply, tapply, parallel computing in R (https://www.r-bloggers.com/how-to-go-parallel-in-r-basics-tips/)
 
-#<span style="color:cadetblue">Manipulating and exploring data</span>
+#<span style="color:cadetblue">4. Manipulating & exploring data</span>
 
 ***
 
@@ -716,7 +714,7 @@ Before we jump into calculating summary statistics and simple data visualization
 
 <span style="color:orangered">**Practice**:</span> Write code to load a .csv file into `R`. How does `R` know where the file is located? 
 
-There are lots of tricks to loading data depending on the data types. For more information check out [datacamp's tutorial](https://www.datacamp.com/community/tutorials/r-data-import-tutorial#gs.4uaBTV8).   
+There are lots of tricks to loading data depending on the data types. For more information check out [Datacamp's tutorial](https://www.datacamp.com/community/tutorials/r-data-import-tutorial#gs.4uaBTV8).   
 
 ###<span style="color:cadetblue">Iterative process of data exploration</span>
 
@@ -732,7 +730,7 @@ From the chart above, we can see that data visualization is also an important st
 
 We'll explore the `flights` data in the data package called [`nycflights13`](https://cran.r-project.org/web/packages/nycflights13/index.html). The `flights` object contains airline on-time data for all flights leaving airports in the New York City, NY area in 2013. 
 
-You will most likely have to install this package by using the RStudio GUI or `install.packages()` command. 
+You will most likely have to install this package by using the RStudio GUI or `install.packages()` command, as we learned yesterday. 
 
 ```{r}
 install.packages("nycflights13") #install package
@@ -750,35 +748,35 @@ You can access them through the package using double colons following the packag
 
 You'll explore the data as a team of two, a driver and navigator. The driver will type the code, while the navigator checks for errors, and suggests answers. A good navigator will troubleshoot syntax questions by reading manual pages, googling, etc. Throughout the exercise you will be asked to switch roles with your teammate. 
 
-###<span style="color:cadetblue">Your problem</span>
+###<span style="color:orangered">Your challenge</span>
 
 Your data exploration should be working towards describing the broad trends in the data, along with answering specific questions. You should work with your partner to develop a common set of goals. If time allows, you'll present your findings to the clinic. 
 
 Data exploration might include answering the following:
    
-   1.  Exploring Data Structure
+   1.  Exploring data structure
       * What is the data structure? columns and rows? 
       * How many total flights, total flights per airport or airline carrier?
       * What are the different flight destinations?
       * etc.
       
-   2.  Exploring Data with Summary Statistics  
+   2.  Exploring data with summary statistics  
       * What is the max, min and mean in flight delays? How does this break down by airline, airport or both?  
       * What is the most common flight destination? Least common? 
       * What is the average number of flights per month?  
       * Other descriptive statistics built into `R` include: mean, sd, var, min, max, median, range, and quantile
     
-  3. Exploring Data with Basic Visualizations
+  3. Exploring data with basic visualizations
       * scatter plot: How does flight delay change with time? with weather? Do these relationships change with airport? 
       * histogram: What is the distribution of flights with time? to a destination? 
       * boxplot: What is the distribution of flight delay by airline?
       * etc. 
 
-Get started by opening the **manipulating_data.R** script. 
+<span style="color:orangered">**Practice**:</span>Get started by opening the **manipulating_data.R** script. 
 
 &nbsp;
 
-#<span style="color:cadetblue">Data Visualizations</span>
+#<span style="color:cadetblue">5. Data Visualization</span>
 
 ***
 
@@ -799,15 +797,15 @@ We will also touch on choosing an appropriate visualization, interactive graphic
 
 Data visualization in `R` can be quick and dirty (ie. data exploration for yourself) or highly polished (ie. communicating to others). We have already touched on quick data exploration in the third module yesterday. Today we will cover content to produce a more polished looking plot. 
 
-## <span style="color:orangered">Two approaches to the same problem: Base `R` vs `ggplot`</span>
+## <span style="color:cadetblue">Two approaches to the same problem: Base `R` vs `ggplot`</span>
 
-Plotting in base `R` can allow the user to create highly customized plots. This customization takes time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammer of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. I will walk through an example using base `R` and then recreate the figure using `ggplot2`. For even more side-by-side examples, see Nathan Yau's blog post on [Flowing Data](https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/). 
+Plotting in base `R` can allow the user to create highly customized plots. This customization takes time, and requires many decisions. An alternative is to use the package `ggplot2` developed by Hadley Wickham based on the [*Grammar of Graphics*](http://www.springer.com/us/book/9780387245447) written by Leland Wilkinson. `ggplot2` has its own unique syntax that is a bit different from base `R`. I will walk through an example using base `R` and then recreate the figure using `ggplot2`. For even more side-by-side examples, see Nathan Yau's blog post on [Flowing Data](https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/). 
 
 ### <span style="color:cadetblue">Base</span> `R`
 
 A simple plot can take many more lines of code than you expect based on the visualization. When plotting in base `R` you'll use a handful of parameter settings in either `par()` or in the plotting related functions listed below. 
 
-#### Important parameters ###
+#### <span style="color:cadetblue">Important parameters</span> ###
 * **pch**: plotting symbol
 * **lty**: line type
 * **lwd**: line width
@@ -819,7 +817,7 @@ A simple plot can take many more lines of code than you expect based on the visu
 * **mfrow**: number of plots per row, column. Plots filled in row-wise.
 * **mfcol**: number of plots per row, column. Plots filled in column-wise.
 
-#### Important functions ###
+#### <span style="color:cadetblue">Important functions</span> ###
 * **plot**: make scatterplot
 * **lines**: add lines to plot
 * **points**: add points to plot
@@ -930,7 +928,7 @@ gg <- ggplot(midwest, #data, every arguement after this is connected with a '+' 
             geom_point(aes(col=state)) + #put a point at the (x,y) value, color it by state col
             xlim(c(0, 0.1)) + #set x axis limits
             labs( #name the different parts of the plot 
-              subtitle="Area Vs Population", 
+              subtitle="Area vs Population", 
               y="Population", 
               x="Area", 
               title="Scatterplot", 
@@ -939,11 +937,19 @@ gg <- ggplot(midwest, #data, every arguement after this is connected with a '+' 
 plot(gg) #plot the object
 ```
 
+```ggplot``` also allows you to use ```facets```, where you have several panels composing one plot. We will not cover these in particular today. But here is a plot that Ana made using ```facets```.
+
+```{r, eval=TRUE, out.width = "600px", echo=FALSE, fig.align='center'}
+knitr::include_graphics("M6_bubbles.png")
+```
+&nbsp;
+&nbsp;
+
 #### <span style="color:cadetblue">plotly</span>: easy interactive plots with ggplot
 
 The `plotly` package is an add on to `ggplot2` for quick interactive plots. The package is still relatively new and is under current development. The legends or other features are often poorly displayed but the interactive feature maybe useful for data exploration during an inperson meeting. 
 
-Below is an example from the `plotly` [website](https://plot.ly/r/line-and-scatter/). You'll notice the syntax is similar to `ggplots` but the functions have changed a bit. 
+Below is an example from the `plotly` [website](https://plot.ly/r/line-and-scatter/). You'll notice the syntax is similar to `ggplot` but the functions have changed a bit. 
 
 ```{r plotly example, eval=TRUE}
 library(plotly)
@@ -1066,7 +1072,7 @@ If you're plotting data to communicate (which is normally the case), some things
 For more details see <i>Ten guidelines for effective data visualization in scientific publications</i> by [Kelleher and Wagener, 2011](https://doi.org/10.1016/j.envsoft.2010.12.006). At some point during your graduate career, you'll likely hear about [Edward Tufte's](https://www.edwardtufte.com/tufte/) philosophy on maximizing function over aesthetics.   
 &nbsp;
 
-#<span style="color:cadetblue">Simulating Data</span>
+#<span style="color:cadetblue">6. Simulating Data</span>
 
 ***
 This module will cover: 
