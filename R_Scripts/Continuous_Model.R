@@ -45,6 +45,5 @@ n <- as.data.frame(ode(y=n0, times=times, func=cont.logistic, parms=p)) ## can r
 
 names(n)<-c("time", "N")
 
-
-## You can see that what is returned by the function 'ode' is a matrix with two columns: the first column gives the time points, and the second column gives the population size. You can easily plot this:
-plot(x=n[,1], y=n[,2], type='l', xlab='Time', ylab='Population size', main='Continuous time logistic model')
+#Explore the simulation results by plotting the output of the function 'ode' which is a matrix with two columns: 
+#the first column gives the time points, and the second column gives the population size. You can easily plot this:

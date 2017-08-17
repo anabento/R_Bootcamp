@@ -30,13 +30,13 @@ which will require the following skills already covered:
 
 ###<span style="color:cadetblue">Logistic growth</span>
 
-A common model of population growth, originally due to Pierre-François Verhulst in 1838, where the rate of reproduction is propoportional to both the existing population and the amount of available resources, all else being equal
+A common model of population growth, originally proposed by to Pierre-François Verhulst in 1838, where the rate of reproduction is propoportional to both the existing population and the amount of available resources, all else being equal
 
 ###<span style="color:cadetblue">The logistic model discrete</span>
 
  \[n(t+1) = n(t) + r_d n(t) \left(1-\frac{n(t)}{K}\right)\]
  
-Where $n(t+1)$ is new population size, $r$ is the growth rate, $K$ is the carrying capacity
+Where $n(t+1)$ is new population size, $r$ is the growth rate, $K$ is the carrying capacity.
 
 
 ###<span style="color:orangered">How do we solve this in R</span>
@@ -120,7 +120,7 @@ Lets open Continuous_Model.R
 The classical $SIR$ compartmental model tracks the proportions of the population in each of three classes
 (susceptible, denoted by $S(t)$ , infectious $I(t)$ and recovered $R(t)$). Here the variables of interest are
 susceptible, infectious and recovered individuals. As the epidemic progresses, these quantities can change over
-time.
+time. The total population size does not change. 
 
 ![SIR model](sir.png)
 
@@ -130,9 +130,9 @@ system of differential equations:
 
 $$\frac{dS}{dt} = -\lambda(I,t)S$$
 
-$$\frac{dS}{dt} = \lambda(I,t)S-\gamma I$$
+$$\frac{dI}{dt} = \lambda(I,t)S-\gamma I$$
 
-$$\frac{dS}{dt} = \gamma I$$
+$$\frac{dR}{dt} = \gamma I$$
 
 ###<span style="color:orangered">How do we solve this in R</span>
 
