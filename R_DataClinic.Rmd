@@ -1,7 +1,7 @@
 ---
 title: <span style="color:cadetblue">IDEAS R Data Clinic</span>
 author: "Ana Bento & Reni Kaul"
-date: "`r Sys.Date()`"
+date: "August 18-19 2017"
 output: 
  html_document:
     toc: true
