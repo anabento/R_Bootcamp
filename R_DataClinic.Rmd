@@ -980,7 +980,7 @@ The `googleVis` package also has some great plots with tooltips built in.
 The `plotly` package also allows for quick animations like this. [Shiny](https://shiny.rstudio.com/) is an easy introductory tool to more novel data visualizations.
 
 
-
+<span style="color:orangered">Note:</span> The code below will only work once you install ffmpeg, ImageMagick, or other such drivers. See the [animation](https://github.com/dgrtwo/gganimate) package documentation for more details.
 
 ```{r plotly animation, eval=FALSE}
 suppressMessages(library(gganimate))
