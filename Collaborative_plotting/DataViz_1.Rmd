@@ -1,0 +1,76 @@
+---
+title: 'Data Visualization: Group 1'
+author: "Ana Bento & Reni Kaul"
+date: "August 18-19 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = "center")
+```
+
+
+
+Yesterday we started to explore data visualization in base `R`. Today we will spend time exploring different visualizations using the `ggplot2` package. The different approaches each have their advantages, so you will likely use both during your research career. 
+
+
+
+#Problem 1
+
+  Yesterday we explored the `nycflights13` dataset. One plot was a boxplot of the temperature by month using base `R`. The plot looked like this:
+   
+```{r boxplot}
+library(nycflights13) #load data from package
+
+boxplot(weather$temp ~ weather$month, xlab="month", ylab="Temperature (F)" ) #instead of assigning x and y values, you can use the syntax y ~ x
+```
+
+
+Today, your goal is to recreate this figure using the `ggplot2` package.  `ggplot2` was first published to CRAN in 2005, so a quick google search will return *MANY* tutorials, discussion pages, etc.  The general syntax for boxplots in `ggplot2` is:
+
+```{r function structure, eval=FALSE}
+ggplot(data, #matrix
+       aes(x= X.col, y= Y.col)) + #x and y columns in matrix to plot
+      geom_boxplot() #plot the data as a box plot
+```
+
+
+A basic `ggplot2` boxplot should look like this:
+
+```{r gg boxplot, echo=FALSE }
+library(ggplot2)
+weather$Month <- factor(weather$month,
+                           labels = c("Jan","Feb","March", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
+ggplot(weather, aes(x=as.factor(month), y=temp)) + geom_boxplot()
+
+```
+
+With additional customization, we can produce a plot with a little more shine. For example, this plot has transparent colored boxes and month names instead of numbers. 
+
+```{r gg boxplot2, echo=FALSE}
+fill <- "#4271AE"
+line <- "#1F3552"
+weather$Month <- factor(weather$month,
+                           labels = c("Jan","Feb","March", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
+ggplot(weather, aes(x=Month, y=temp)) + 
+  geom_boxplot(fill=fill, line=line, alpha=0.5) +
+  scale_y_continuous(name="Temperature") +
+  ggtitle("Temperature in NYC 2013")
+
+```
+
+Work with your team to create a polished `ggplot2` boxplot. It doesn't need to look like these figures, but you are welcome to use them as a guide. A very detailed tutorial is on [ZevRoss](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/). A more formal guide is in the [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) visualization chapter. 
+
+
+#Problem 2
+
+For this exercise, we will use `mtcars` in the `datasets` package. Install (if needed) and load the `datasets` package. Explore the `mtcars` dataset which is from the 1974 *Motor Trend US* magazine, and comprises fuel consumption, engine metrics,  etc. for 32 car models. 
+
+So far we have only created visualizations with 2 dimensions. We can add a third dimension to the data by coloring the plotted points. We can make a basic scatterplot of `mtcars` using `ggplot2`. Here the x-axis is car weight, y-axis mile per gallon, and color is the number of engine cylinders.
+
+```{r ggscatter, echo=FALSE}
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, color = as.factor(cyl))) + geom_point()
+```
+
+
+Your goal is to create this figure, and modify it in at least 2 ways. The syntax for a scatterplot is similar to a boxplot but `geom_point()` is used in place of `geom_boxplot()`. 
