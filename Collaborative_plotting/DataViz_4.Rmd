@@ -80,10 +80,5 @@ ggplot(aq_trim, aes(x = Day, y = Ozone, size = Wind)) +
         geom_point(shape = 21)
 
 ```
-<<<<<<< HEAD
 
 Your goal is to create this figure, and color the points for the 3 different months. The syntax for a scatterplot is similar to a boxplot but `geom_point()` is used in place of `geom_boxplot()`. The first step is to pull out the 3 months of interest from the full `airquality` dataset. 
-
-=======
-Your goal is to create this figure, and color the points for the 3 different months. The syntax for a scatterplot is similar to a boxplot but `geom_violin()` is used in place of `geom_boxplot()`. The first step is to pull out the 3 months of interest from the full `airquality` dataset. 
->>>>>>> f14d92b03f9a95a58140c81655b159fa20b7f6a7
