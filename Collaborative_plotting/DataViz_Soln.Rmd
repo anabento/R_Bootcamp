@@ -1,0 +1,155 @@
+---
+title: 'Data Visualization: Group Solutions'
+author: "Ana Bento & Reni Kaul"
+date: "August 18-19 2017"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = "center")
+```
+
+
+
+Below are solutions for the different visualization challenges. As we saw, there are many paths to the same outcome. Here is just one. 
+
+
+
+#Problem 1
+
+  Yesterday we explored the `nycflights13` dataset. One plot was a boxplot of the temperature by month using base `R`. The plot looked like this:
+   
+```{r boxplot}
+library(nycflights13) #load data from package
+
+boxplot(weather$temp ~ weather$month, xlab="month", ylab="Temperature (F)" ) #instead of assigning x and y values, you can use the syntax y ~ x
+```
+
+
+Today, your goal is to recreate this figure using the `ggplot2` package.  `ggplot2` was first published to CRAN in 2005, so a quick google search will return *MANY* tutorials, discussion pages, etc.  The general syntax for boxplots in `ggplot2` is:
+
+```{r function structure, eval=FALSE}
+ggplot(data, #matrix
+       aes(x= X.col, y= Y.col)) + #x and y columns in matrix to plot
+      geom_boxplot() #plot the data as a box plot
+```
+
+##Solution
+
+A polished `ggplot2` boxplot could look like this:
+
+```{r gg boxplot, echo=TRUE }
+library(ggplot2)
+
+fill <- "#4271AE" #color of box fill
+line <- "#1F3552" #color of box outline
+weather$Month <- factor(weather$month,
+                           labels = c("Jan","Feb","March", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")) #convert month to ordered factor to automatically incorporate month label. 
+
+#plot
+ggplot(weather, aes(x=Month, y=temp)) +  #indicate the data, x and y values
+  geom_boxplot(fill=fill, line=line, alpha=0.5) + #add box plot layer
+  scale_y_continuous(name="Temperature") + #label y axis
+  ggtitle("Temperature in NYC 2013") #add title
+
+
+```
+
+
+A very detailed tutorial is on [ZevRoss](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/). A more formal guide is in the [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) visualization chapter. 
+
+
+# Group 1: Problem 2 Scatter plot
+
+For this exercise, we will use `mtcars` in the `datasets` package. Install (if needed) and load the `datasets` package. Explore the `mtcars` dataset which is from the 1974 *Motor Trend US* magazine, and comprises fuel consumption, engine metrics,  etc. for 32 car models. 
+
+So far we have only created visualizations with 2 dimensions. We can add a third dimension to the data by coloring the plotted points. We can make a basic scatterplot of `mtcars` using `ggplot2`. Here the x-axis is car weight, y-axis mile per gallon, and color is the number of engine cylinders.
+
+```{r ggscatter, echo=TRUE}
+ggplot(data = mtcars, aes(x = wt, y = mpg, color = as.factor(cyl))) + #set data, x,y and col values
+         geom_point() + #add points layer
+        scale_color_discrete(name="cylinders") + #change legend title
+        labs(x="Weight (1000 lbs)", 
+             y="miles per US gallon") + #add x and y axis labels
+        theme(axis.title = element_text(face = "bold", size=20)) #change font of both axis labels
+```
+
+
+#Grou 2: Problem 2 Multi-panel plots
+
+For this exercise, we will use `diamonds` in the `ggplot2` package. The `ggplot2` package should already be loaded. Explore the `diamonds` dataset which contains 10 attributes (price, cut, clarity, etc.) for ~54,000 diamonds. 
+
+So far we have only created single panel visualizations. Making multipanel visualizations is a quick way to look at trends between covariates. Here the x-axis is diamond carat, y-axis price, and each panel is diamond cut.  
+
+```{r ggscatter2, echo=TRUE, fig.height=10}
+
+ggplot(diamonds, aes(x=carat, y=price)) +
+  geom_point(alpha = 0.1) +  #add points layes, making points transparent since so many
+  scale_y_continuous(limits=c(0,20000))+ #set y limits
+  scale_x_continuous(limits=c(0,4))+ #set x limits
+  facet_wrap(~cut, ncol=2) + #make multipanel
+  geom_smooth(method="lm") + #add regression line to plotted points
+  theme(panel.background = element_rect(fill ="white"),
+        panel.grid.major= element_line(colour="grey95"),
+        strip.background = element_rect(colour = "black", fill="white")) #change color of backgrounds
+
+```
+
+#Group 3: Problem 2 Violin plots
+
+The `ggplot2` package can make highly stylized visualizations with relatively few codes of line. The violin plot is a good example of these stylized visualization. [Violin plots](http://www.letmegooglethat.com/?q=violin+plots) are a combination of a histogram and boxplot. Today you'll create a violin plot with data pulled from a unimodal, bimodal, and trimodal distribution. 
+
+```{r create data}
+###Sample gaussian distributions with 1, 2 and 3 modes.
+df <- data.frame(
+  "Distribution" = c(rep("Unimodal", 500),
+                     rep("Bimodal", 250),
+                     rep("Trimodal", 600)),
+  "Value" = c(rnorm(500, 6, 1),
+              rnorm(200, 3, .7), rnorm(50, 7, 0.4),
+              rnorm(200, 2, 0.7), rnorm(300, 5.5, 0.4), rnorm(100, 8, 0.4))
+)
+
+#check order of factor levels
+levels(df$Distribution)
+
+# Reorder levels, this will be needed for the plotting
+df$Distribution <- factor(df$Distribution,
+                          levels(df$Distribution)[c(3, 1, 2)])
+
+```
+
+This plot was created from the `df` object produced above. 
+
+```{r, echo=TRUE}
+
+ggplot(df, aes(Distribution, Value)) + #set x and y data
+      geom_violin(aes(fill = Distribution)) + #plot as violin 
+      scale_fill_brewer(palette="Set3")+ #set colors using color brewer
+      geom_boxplot(fill='#FFFFFF',alpha=.35) +#add boxplot of same data on top
+      theme(axis.title = element_text(face = "bold", size=20)) #change font of axis labels
+
+```
+
+
+ #Group 4: Problem 2 Weighted scatter plot
+
+For this exercise, we will use `airquality` in the `datasets` package. Install (if needed) and load the `datasets` package. Explore the `airquality` dataset, a daily air quality measurement of NYC in 1973.
+
+The `ggplot2` package can make highly stylized visualizations with relatively few codes of line. Weighted scatterplots are a good example of these visualizations. The figure below is the ozone reading, y-axis, as a function of the day of the month, x-axis, for July, August and September of 1973. The size of the points indicates the wind speed. 
+
+```{r, echo=TRUE}
+aq_trim <- airquality[which(airquality$Month == 7 |
+                            airquality$Month == 8 |
+                            airquality$Month == 9), ] #pull out the 3 months of interest from the 12 month data set
+aq_trim$Month <- factor(aq_trim$Month,
+                        labels = c("July", "August", "September")) #convert Month to a factor
+
+ggplot(aq_trim, aes(x = Day, y = Ozone, size = Wind, fill=Month)) + #define dataset, x,y, color and point size
+        geom_point(shape =25)+ #set points to be triangles 
+        labs(x = "Day of the month", y = "Ozone (ppb)") + #set x and y labs
+        scale_x_continuous(breaks = seq(1, 31, 5)) + #x-axis ticks from 1 to 31 by 5  
+        scale_size_area(max_size = 10) + #set the max value of point size
+        scale_size(range = c(1, 10)) #set the range of point sizes, making smallest points larger
+
+```
+
